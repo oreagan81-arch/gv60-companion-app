@@ -84,7 +84,7 @@ function QuickStart() {
       ))}
 
       <div className="card-glass p-4 text-sm text-muted-foreground">
-        Ready for depth? <Link to="/owen" className="text-primary">Open Owen's Recommended Settings</Link> or the <Link to="/guide" className="text-primary">Full Guide</Link>.
+        Ready for depth? <Link to="/settings" className="text-primary">Open Owen's Recommended Settings</Link> or the <Link to="/full-guide" className="text-primary">Full Guide</Link>.
       </div>
 
       <div className="flex flex-wrap gap-2 pt-2">
