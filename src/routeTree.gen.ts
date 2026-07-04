@@ -21,6 +21,7 @@ import { Route as GuideNavigationRouteImport } from './routes/guide.navigation'
 import { Route as GuideMaintenanceRouteImport } from './routes/guide.maintenance'
 import { Route as GuideDriveModesRouteImport } from './routes/guide.drive-modes'
 import { Route as GuideChargingRouteImport } from './routes/guide.charging'
+import { Route as FullGuideTechnologyRouteImport } from './routes/full-guide.technology'
 import { Route as FullGuideSafetyRouteImport } from './routes/full-guide.safety'
 import { Route as FullGuideQuickStartRouteImport } from './routes/full-guide.quick-start'
 import { Route as FullGuideMaintenanceRouteImport } from './routes/full-guide.maintenance'
@@ -88,6 +89,11 @@ const GuideChargingRoute = GuideChargingRouteImport.update({
   path: '/charging',
   getParentRoute: () => GuideRoute,
 } as any)
+const FullGuideTechnologyRoute = FullGuideTechnologyRouteImport.update({
+  id: '/technology',
+  path: '/technology',
+  getParentRoute: () => FullGuideRoute,
+} as any)
 const FullGuideSafetyRoute = FullGuideSafetyRouteImport.update({
   id: '/safety',
   path: '/safety',
@@ -132,6 +138,7 @@ export interface FileRoutesByFullPath {
   '/full-guide/maintenance': typeof FullGuideMaintenanceRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/full-guide/safety': typeof FullGuideSafetyRoute
+  '/full-guide/technology': typeof FullGuideTechnologyRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
   '/guide/maintenance': typeof GuideMaintenanceRoute
@@ -152,6 +159,7 @@ export interface FileRoutesByTo {
   '/full-guide/maintenance': typeof FullGuideMaintenanceRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/full-guide/safety': typeof FullGuideSafetyRoute
+  '/full-guide/technology': typeof FullGuideTechnologyRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
   '/guide/maintenance': typeof GuideMaintenanceRoute
@@ -173,6 +181,7 @@ export interface FileRoutesById {
   '/full-guide/maintenance': typeof FullGuideMaintenanceRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/full-guide/safety': typeof FullGuideSafetyRoute
+  '/full-guide/technology': typeof FullGuideTechnologyRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
   '/guide/maintenance': typeof GuideMaintenanceRoute
@@ -195,6 +204,7 @@ export interface FileRouteTypes {
     | '/full-guide/maintenance'
     | '/full-guide/quick-start'
     | '/full-guide/safety'
+    | '/full-guide/technology'
     | '/guide/charging'
     | '/guide/drive-modes'
     | '/guide/maintenance'
@@ -215,6 +225,7 @@ export interface FileRouteTypes {
     | '/full-guide/maintenance'
     | '/full-guide/quick-start'
     | '/full-guide/safety'
+    | '/full-guide/technology'
     | '/guide/charging'
     | '/guide/drive-modes'
     | '/guide/maintenance'
@@ -235,6 +246,7 @@ export interface FileRouteTypes {
     | '/full-guide/maintenance'
     | '/full-guide/quick-start'
     | '/full-guide/safety'
+    | '/full-guide/technology'
     | '/guide/charging'
     | '/guide/drive-modes'
     | '/guide/maintenance'
@@ -338,6 +350,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuideChargingRouteImport
       parentRoute: typeof GuideRoute
     }
+    '/full-guide/technology': {
+      id: '/full-guide/technology'
+      path: '/technology'
+      fullPath: '/full-guide/technology'
+      preLoaderRoute: typeof FullGuideTechnologyRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
     '/full-guide/safety': {
       id: '/full-guide/safety'
       path: '/safety'
@@ -390,6 +409,7 @@ interface FullGuideRouteChildren {
   FullGuideMaintenanceRoute: typeof FullGuideMaintenanceRoute
   FullGuideQuickStartRoute: typeof FullGuideQuickStartRoute
   FullGuideSafetyRoute: typeof FullGuideSafetyRoute
+  FullGuideTechnologyRoute: typeof FullGuideTechnologyRoute
 }
 
 const FullGuideRouteChildren: FullGuideRouteChildren = {
@@ -399,6 +419,7 @@ const FullGuideRouteChildren: FullGuideRouteChildren = {
   FullGuideMaintenanceRoute: FullGuideMaintenanceRoute,
   FullGuideQuickStartRoute: FullGuideQuickStartRoute,
   FullGuideSafetyRoute: FullGuideSafetyRoute,
+  FullGuideTechnologyRoute: FullGuideTechnologyRoute,
 }
 
 const FullGuideRouteWithChildren = FullGuideRoute._addFileChildren(
