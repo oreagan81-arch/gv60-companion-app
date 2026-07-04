@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as QuickStartRouteImport } from './routes/quick-start'
 import { Route as OwenRouteImport } from './routes/owen'
+import { Route as GuideRouteImport } from './routes/guide'
 import { Route as IndexRouteImport } from './routes/index'
 
 const QuickStartRoute = QuickStartRouteImport.update({
@@ -23,6 +24,11 @@ const OwenRoute = OwenRouteImport.update({
   path: '/owen',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuideRoute = GuideRouteImport.update({
+  id: '/guide',
+  path: '/guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,34 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/guide': typeof GuideRoute
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/guide': typeof GuideRoute
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/guide': typeof GuideRoute
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/owen' | '/quick-start'
+  fullPaths: '/' | '/guide' | '/owen' | '/quick-start'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/owen' | '/quick-start'
-  id: '__root__' | '/' | '/owen' | '/quick-start'
+  to: '/' | '/guide' | '/owen' | '/quick-start'
+  id: '__root__' | '/' | '/guide' | '/owen' | '/quick-start'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GuideRoute: typeof GuideRoute
   OwenRoute: typeof OwenRoute
   QuickStartRoute: typeof QuickStartRoute
 }
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OwenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guide': {
+      id: '/guide'
+      path: '/guide'
+      fullPath: '/guide'
+      preLoaderRoute: typeof GuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GuideRoute: GuideRoute,
   OwenRoute: OwenRoute,
   QuickStartRoute: QuickStartRoute,
 }
