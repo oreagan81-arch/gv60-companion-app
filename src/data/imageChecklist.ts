@@ -1,0 +1,168 @@
+export type ImagePriority = "High" | "Medium" | "Low";
+
+export type ImageChecklistItem = {
+  id: string;
+  title: string;
+  description: string;
+  suggestedCaption: string;
+  altText: string;
+  /** Chapter id from src/data/chapters.ts (or "global"). */
+  chapter: string;
+  priority: ImagePriority;
+};
+
+export const imageChecklist: ImageChecklistItem[] = [
+  {
+    id: "hero",
+    title: "Exterior hero image",
+    description: "Three-quarter front. Golden hour ideal.",
+    suggestedCaption: "Owen's 2023 Genesis GV60 Performance",
+    altText: "2023 Genesis GV60 Performance in three-quarter front view at golden hour",
+    chapter: "global",
+    priority: "High",
+  },
+  {
+    id: "dash",
+    title: "Dashboard overview",
+    description: "Both screens visible, powered on.",
+    suggestedCaption: "The full dashboard, both screens live.",
+    altText: "GV60 dashboard with driver cluster and center touchscreen powered on",
+    chapter: "cabin-tour",
+    priority: "High",
+  },
+  {
+    id: "wheel",
+    title: "Steering wheel controls",
+    description: "Left and right cluster of buttons.",
+    suggestedCaption: "Steering wheel controls at a glance.",
+    altText: "GV60 steering wheel showing left and right button clusters",
+    chapter: "cabin-tour",
+    priority: "High",
+  },
+  {
+    id: "center",
+    title: "Center screen",
+    description: "Home layout with tiles visible.",
+    suggestedCaption: "Center screen home layout.",
+    altText: "GV60 center infotainment screen showing the home tile layout",
+    chapter: "technology",
+    priority: "High",
+  },
+  {
+    id: "devices",
+    title: "Device Connections",
+    description: "Bluetooth / device pairing menu.",
+    suggestedCaption: "The Device Connections screen.",
+    altText: "GV60 device connections menu with Bluetooth pairing options",
+    chapter: "apple",
+    priority: "Medium",
+  },
+  {
+    id: "carplay",
+    title: "Apple CarPlay",
+    description: "CarPlay home on the center screen.",
+    suggestedCaption: "Wireless CarPlay running on the GV60.",
+    altText: "Apple CarPlay home screen displayed on the GV60 center screen",
+    chapter: "apple",
+    priority: "High",
+  },
+  {
+    id: "port",
+    title: "Charging port",
+    description: "Open door, connector visible.",
+    suggestedCaption: "Charge port with connector ready.",
+    altText: "GV60 rear charging port door open with CCS connector visible",
+    chapter: "charging",
+    priority: "High",
+  },
+  {
+    id: "ev-screen",
+    title: "EV charging screen",
+    description: "During an active session, kW shown.",
+    suggestedCaption: "Active DC fast-charging session, kW visible.",
+    altText: "GV60 charging screen during a DC fast-charging session showing charge rate in kW",
+    chapter: "charging",
+    priority: "Medium",
+  },
+  {
+    id: "drive-mode",
+    title: "Drive mode selector",
+    description: "Rotary + mode indicator.",
+    suggestedCaption: "Drive mode selector, Comfort highlighted.",
+    altText: "GV60 drive mode rotary selector with Comfort mode highlighted",
+    chapter: "driving",
+    priority: "Medium",
+  },
+  {
+    id: "boost",
+    title: "Boost button",
+    description: "Wheel-mounted Boost button close-up.",
+    suggestedCaption: "The wheel-mounted Boost button.",
+    altText: "Close-up of the Boost button on the GV60 Performance steering wheel",
+    chapter: "driving",
+    priority: "Medium",
+  },
+  {
+    id: "regen",
+    title: "Regen paddles",
+    description: "Behind the wheel, both paddles.",
+    suggestedCaption: "Regen paddles behind the wheel.",
+    altText: "GV60 regen paddles mounted behind the steering wheel",
+    chapter: "driving",
+    priority: "Medium",
+  },
+  {
+    id: "adas",
+    title: "Driver assistance display",
+    description: "Cluster view with lane + car icons.",
+    suggestedCaption: "Driver assistance active in the cluster.",
+    altText: "GV60 driver cluster showing lane and vehicle icons for active driver assistance",
+    chapter: "safety",
+    priority: "High",
+  },
+  {
+    id: "cam-360",
+    title: "360 camera",
+    description: "Overhead + side blended view.",
+    suggestedCaption: "360 camera in a tight parking spot.",
+    altText: "GV60 360-degree camera composite view with overhead and side perspectives",
+    chapter: "safety",
+    priority: "Medium",
+  },
+  {
+    id: "climate",
+    title: "Climate controls",
+    description: "Hard keys + touch row.",
+    suggestedCaption: "Climate controls hard-key row.",
+    altText: "GV60 climate controls showing hard keys and touch panel",
+    chapter: "cabin-tour",
+    priority: "Low",
+  },
+  {
+    id: "sensors",
+    title: "Sensor cleaning zones",
+    description: "Front radar, side mirrors, rear cams.",
+    suggestedCaption: "Where to clean weekly — front radar, mirrors, rear cameras.",
+    altText: "GV60 sensor cleaning zones highlighted at front radar, side mirrors, and rear cameras",
+    chapter: "maintenance",
+    priority: "High",
+  },
+  {
+    id: "kit",
+    title: "Maintenance kit",
+    description: "Owen's in-car essentials laid out.",
+    suggestedCaption: "Owen's in-car kit.",
+    altText: "Owen's in-car maintenance kit: microfiber, towel, gloves, charge cards, tire gauge, backup cable",
+    chapter: "maintenance",
+    priority: "Medium",
+  },
+  {
+    id: "roadtrip",
+    title: "Road trip charging screen",
+    description: "Route with charging stops overlaid.",
+    suggestedCaption: "Road trip route with planned charging stops.",
+    altText: "GV60 navigation screen showing a road trip route with planned DC fast-charging stops",
+    chapter: "charging",
+    priority: "Medium",
+  },
+];
