@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TroubleshootingRouteImport } from './routes/troubleshooting'
 import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as QuickStartRouteImport } from './routes/quick-start'
 import { Route as OwenRouteImport } from './routes/owen'
 import { Route as GuideRouteImport } from './routes/guide'
@@ -39,6 +40,11 @@ const TroubleshootingRoute = TroubleshootingRouteImport.update({
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QuickStartRoute = QuickStartRouteImport.update({
@@ -143,6 +149,7 @@ export interface FileRoutesByFullPath {
   '/guide': typeof GuideRouteWithChildren
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
+  '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/troubleshooting': typeof TroubleshootingRoute
   '/full-guide/apple': typeof FullGuideAppleRoute
@@ -166,6 +173,7 @@ export interface FileRoutesByTo {
   '/guide': typeof GuideRouteWithChildren
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
+  '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/troubleshooting': typeof TroubleshootingRoute
   '/full-guide/apple': typeof FullGuideAppleRoute
@@ -190,6 +198,7 @@ export interface FileRoutesById {
   '/guide': typeof GuideRouteWithChildren
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
+  '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/troubleshooting': typeof TroubleshootingRoute
   '/full-guide/apple': typeof FullGuideAppleRoute
@@ -215,6 +224,7 @@ export interface FileRouteTypes {
     | '/guide'
     | '/owen'
     | '/quick-start'
+    | '/search'
     | '/settings'
     | '/troubleshooting'
     | '/full-guide/apple'
@@ -238,6 +248,7 @@ export interface FileRouteTypes {
     | '/guide'
     | '/owen'
     | '/quick-start'
+    | '/search'
     | '/settings'
     | '/troubleshooting'
     | '/full-guide/apple'
@@ -261,6 +272,7 @@ export interface FileRouteTypes {
     | '/guide'
     | '/owen'
     | '/quick-start'
+    | '/search'
     | '/settings'
     | '/troubleshooting'
     | '/full-guide/apple'
@@ -285,6 +297,7 @@ export interface RootRouteChildren {
   GuideRoute: typeof GuideRouteWithChildren
   OwenRoute: typeof OwenRoute
   QuickStartRoute: typeof QuickStartRoute
+  SearchRoute: typeof SearchRoute
   SettingsRoute: typeof SettingsRoute
   TroubleshootingRoute: typeof TroubleshootingRoute
 }
@@ -303,6 +316,13 @@ declare module '@tanstack/react-router' {
       path: '/settings'
       fullPath: '/settings'
       preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/quick-start': {
@@ -493,6 +513,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuideRoute: GuideRouteWithChildren,
   OwenRoute: OwenRoute,
   QuickStartRoute: QuickStartRoute,
+  SearchRoute: SearchRoute,
   SettingsRoute: SettingsRoute,
   TroubleshootingRoute: TroubleshootingRoute,
 }
