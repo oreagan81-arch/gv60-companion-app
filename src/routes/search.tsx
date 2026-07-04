@@ -1,6 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
 import { SectionHeader, Chip } from "@/components/guide";
+import { search, type SearchResult, type SearchSource } from "@/lib/search";
 
 export const Route = createFileRoute("/search")({
   head: () => ({ meta: [
@@ -11,34 +12,71 @@ export const Route = createFileRoute("/search")({
 });
 
 const examples = [
-  "CarPlay", "regen", "Boost", "charging limit", "winter range",
-  "tire pressure", "Auto Hold", "Smart Cruise", "Apple Maps",
+  "CarPlay", "wrong phone connects", "regen", "Boost",
+  "charging limit", "winter range", "tire pressure",
+  "Auto Hold", "Smart Cruise", "Apple Maps",
   "clean sensors", "valet mode",
 ];
 
+function sourceClass(s: SearchSource) {
+  switch (s) {
+    case "Troubleshooting": return "bg-amber-500/15 text-amber-400";
+    case "Setting": return "bg-primary/15 text-primary";
+    case "Chapter": return "bg-primary/15 text-primary";
+    case "Section": return "bg-muted text-muted-foreground";
+    case "Image": return "bg-muted text-muted-foreground";
+  }
+}
+
+function highlight(text: string, query: string) {
+  const q = query.trim();
+  if (!q) return text;
+  const words = Array.from(new Set(q.split(/\s+/).filter(Boolean)));
+  if (!words.length) return text;
+  const escaped = words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const re = new RegExp(`(${escaped.join("|")})`, "gi");
+  const parts = text.split(re);
+  return parts.map((p, i) =>
+    re.test(p) ? <mark key={i} className="bg-primary/25 text-foreground rounded-sm px-0.5">{p}</mark> : <span key={i}>{p}</span>
+  );
+}
+
 function SearchPage() {
   const [q, setQ] = useState("");
+  const results = useMemo(() => search(q), [q]);
+  const hasQuery = q.trim() !== "";
 
   return (
     <div className="container-app py-8 space-y-6 pb-16">
       <SectionHeader
         eyebrow="Find anything"
         title="Search"
-        description="Search across chapters, settings, and troubleshooting entries."
+        description="Search across chapters, settings, troubleshooting, and image notes."
       />
 
-      <div className="card-glass p-4">
-        <label htmlFor="q" className="text-xs uppercase tracking-wider text-muted-foreground">Search</label>
-        <input
-          id="q"
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Try 'CarPlay' or 'winter range'…"
-          className="mt-2 w-full rounded-md border border-border bg-background px-3 py-2 text-base outline-none focus:border-primary"
-        />
+      <div className="card-glass p-4 sticky top-14 z-30 bg-background/95 backdrop-blur">
+        <label htmlFor="q" className="text-[10px] uppercase tracking-[0.2em] text-primary">Search</label>
+        <div className="mt-1 flex items-center gap-2">
+          <input
+            id="q"
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Try 'CarPlay' or 'winter range'…"
+            autoFocus
+            className="flex-1 rounded-md border border-border bg-background px-3 py-2 text-base outline-none focus:border-primary"
+          />
+          {hasQuery && (
+            <button onClick={() => setQ("")} className="text-xs text-muted-foreground underline">Clear</button>
+          )}
+        </div>
+        <p className="mt-2 text-[11px] text-muted-foreground">
+          {hasQuery
+            ? `${results.length} ${results.length === 1 ? "result" : "results"}`
+            : "Client-side search across all in-app content."}
+        </p>
       </div>
 
-      {q.trim() === "" ? (
+      {!hasQuery ? (
         <div className="card-glass p-5 space-y-3">
           <h2 className="font-display font-semibold">Try one of these</h2>
           <div className="flex flex-wrap gap-2">
@@ -53,21 +91,52 @@ function SearchPage() {
             ))}
           </div>
           <p className="text-xs text-muted-foreground pt-2">
-            Full-content search is coming in the next pass — right now this is the search shell.
+            Or browse the{" "}
+            <Link to="/full-guide" className="text-primary">Full Guide</Link>,{" "}
+            <Link to="/settings" className="text-primary">Recommended Settings</Link>, or{" "}
+            <Link to="/troubleshooting" className="text-primary">Troubleshooting</Link>.
           </p>
+        </div>
+      ) : results.length === 0 ? (
+        <div className="card-glass p-5 space-y-3">
+          <div className="flex gap-2 flex-wrap"><Chip>No exact match found</Chip></div>
+          <p className="text-sm text-muted-foreground">
+            Nothing matched <span className="italic">"{q}"</span>. Try a shorter word, or check:
+          </p>
+          <div className="flex flex-wrap gap-2 pt-1">
+            <Link to="/troubleshooting" className="rounded-md bg-primary px-3 py-2 text-xs font-medium text-primary-foreground">Troubleshooting</Link>
+            <Link to="/full-guide" className="rounded-md border border-border px-3 py-2 text-xs">Full Guide</Link>
+            <Link to="/settings" className="rounded-md border border-border px-3 py-2 text-xs">Recommended Settings</Link>
+          </div>
         </div>
       ) : (
-        <div className="card-glass p-5">
-          <div className="flex gap-2 flex-wrap mb-3">
-            <Chip tone="primary">Query</Chip>
-            <Chip>{q}</Chip>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            Search results will appear here once indexing is wired up. For now,
-            try the chapter pages directly.
-          </p>
-        </div>
+        <ul className="grid gap-2">
+          {results.map((r) => (
+            <ResultCard key={r.id} r={r} query={q} />
+          ))}
+        </ul>
       )}
     </div>
+  );
+}
+
+function ResultCard({ r, query }: { r: SearchResult; query: string }) {
+  const href = r.hash ? `${r.to}#${r.hash}` : r.to;
+  return (
+    <li className="card-glass p-4">
+      <div className="flex items-start justify-between gap-3 mb-1">
+        <h3 className="font-display font-semibold text-base leading-snug">{highlight(r.title, query)}</h3>
+        <span className={`shrink-0 text-[10px] uppercase tracking-wider rounded-full px-2 py-0.5 ${sourceClass(r.source)}`}>
+          {r.source}
+        </span>
+      </div>
+      <p className="text-[11px] uppercase tracking-wider text-muted-foreground mb-2">{r.category}</p>
+      <p className="text-sm text-muted-foreground">{highlight(r.excerpt, query)}</p>
+      <div className="mt-3">
+        <a href={href} className="inline-flex items-center rounded-md bg-primary/15 text-primary px-3 py-1.5 text-xs font-medium hover:bg-primary/25 transition">
+          Open →
+        </a>
+      </div>
+    </li>
   );
 }
