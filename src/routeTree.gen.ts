@@ -23,6 +23,7 @@ import { Route as GuideDriveModesRouteImport } from './routes/guide.drive-modes'
 import { Route as GuideChargingRouteImport } from './routes/guide.charging'
 import { Route as FullGuideSafetyRouteImport } from './routes/full-guide.safety'
 import { Route as FullGuideQuickStartRouteImport } from './routes/full-guide.quick-start'
+import { Route as FullGuideMaintenanceRouteImport } from './routes/full-guide.maintenance'
 import { Route as FullGuideChargingRouteImport } from './routes/full-guide.charging'
 
 const TroubleshootingRoute = TroubleshootingRouteImport.update({
@@ -95,6 +96,11 @@ const FullGuideQuickStartRoute = FullGuideQuickStartRouteImport.update({
   path: '/quick-start',
   getParentRoute: () => FullGuideRoute,
 } as any)
+const FullGuideMaintenanceRoute = FullGuideMaintenanceRouteImport.update({
+  id: '/maintenance',
+  path: '/maintenance',
+  getParentRoute: () => FullGuideRoute,
+} as any)
 const FullGuideChargingRoute = FullGuideChargingRouteImport.update({
   id: '/charging',
   path: '/charging',
@@ -109,6 +115,7 @@ export interface FileRoutesByFullPath {
   '/quick-start': typeof QuickStartRoute
   '/troubleshooting': typeof TroubleshootingRoute
   '/full-guide/charging': typeof FullGuideChargingRoute
+  '/full-guide/maintenance': typeof FullGuideMaintenanceRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/full-guide/safety': typeof FullGuideSafetyRoute
   '/guide/charging': typeof GuideChargingRoute
@@ -126,6 +133,7 @@ export interface FileRoutesByTo {
   '/quick-start': typeof QuickStartRoute
   '/troubleshooting': typeof TroubleshootingRoute
   '/full-guide/charging': typeof FullGuideChargingRoute
+  '/full-guide/maintenance': typeof FullGuideMaintenanceRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/full-guide/safety': typeof FullGuideSafetyRoute
   '/guide/charging': typeof GuideChargingRoute
@@ -144,6 +152,7 @@ export interface FileRoutesById {
   '/quick-start': typeof QuickStartRoute
   '/troubleshooting': typeof TroubleshootingRoute
   '/full-guide/charging': typeof FullGuideChargingRoute
+  '/full-guide/maintenance': typeof FullGuideMaintenanceRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/full-guide/safety': typeof FullGuideSafetyRoute
   '/guide/charging': typeof GuideChargingRoute
@@ -163,6 +172,7 @@ export interface FileRouteTypes {
     | '/quick-start'
     | '/troubleshooting'
     | '/full-guide/charging'
+    | '/full-guide/maintenance'
     | '/full-guide/quick-start'
     | '/full-guide/safety'
     | '/guide/charging'
@@ -180,6 +190,7 @@ export interface FileRouteTypes {
     | '/quick-start'
     | '/troubleshooting'
     | '/full-guide/charging'
+    | '/full-guide/maintenance'
     | '/full-guide/quick-start'
     | '/full-guide/safety'
     | '/guide/charging'
@@ -197,6 +208,7 @@ export interface FileRouteTypes {
     | '/quick-start'
     | '/troubleshooting'
     | '/full-guide/charging'
+    | '/full-guide/maintenance'
     | '/full-guide/quick-start'
     | '/full-guide/safety'
     | '/guide/charging'
@@ -316,6 +328,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FullGuideQuickStartRouteImport
       parentRoute: typeof FullGuideRoute
     }
+    '/full-guide/maintenance': {
+      id: '/full-guide/maintenance'
+      path: '/maintenance'
+      fullPath: '/full-guide/maintenance'
+      preLoaderRoute: typeof FullGuideMaintenanceRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
     '/full-guide/charging': {
       id: '/full-guide/charging'
       path: '/charging'
@@ -328,12 +347,14 @@ declare module '@tanstack/react-router' {
 
 interface FullGuideRouteChildren {
   FullGuideChargingRoute: typeof FullGuideChargingRoute
+  FullGuideMaintenanceRoute: typeof FullGuideMaintenanceRoute
   FullGuideQuickStartRoute: typeof FullGuideQuickStartRoute
   FullGuideSafetyRoute: typeof FullGuideSafetyRoute
 }
 
 const FullGuideRouteChildren: FullGuideRouteChildren = {
   FullGuideChargingRoute: FullGuideChargingRoute,
+  FullGuideMaintenanceRoute: FullGuideMaintenanceRoute,
   FullGuideQuickStartRoute: FullGuideQuickStartRoute,
   FullGuideSafetyRoute: FullGuideSafetyRoute,
 }
