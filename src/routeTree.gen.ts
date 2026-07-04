@@ -28,6 +28,7 @@ import { Route as FullGuideMaintenanceRouteImport } from './routes/full-guide.ma
 import { Route as FullGuideDrivingRouteImport } from './routes/full-guide.driving'
 import { Route as FullGuideChargingRouteImport } from './routes/full-guide.charging'
 import { Route as FullGuideCabinTourRouteImport } from './routes/full-guide.cabin-tour'
+import { Route as FullGuideAppleRouteImport } from './routes/full-guide.apple'
 
 const TroubleshootingRoute = TroubleshootingRouteImport.update({
   id: '/troubleshooting',
@@ -124,6 +125,11 @@ const FullGuideCabinTourRoute = FullGuideCabinTourRouteImport.update({
   path: '/cabin-tour',
   getParentRoute: () => FullGuideRoute,
 } as any)
+const FullGuideAppleRoute = FullGuideAppleRouteImport.update({
+  id: '/apple',
+  path: '/apple',
+  getParentRoute: () => FullGuideRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -132,6 +138,7 @@ export interface FileRoutesByFullPath {
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/troubleshooting': typeof TroubleshootingRoute
+  '/full-guide/apple': typeof FullGuideAppleRoute
   '/full-guide/cabin-tour': typeof FullGuideCabinTourRoute
   '/full-guide/charging': typeof FullGuideChargingRoute
   '/full-guide/driving': typeof FullGuideDrivingRoute
@@ -153,6 +160,7 @@ export interface FileRoutesByTo {
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/troubleshooting': typeof TroubleshootingRoute
+  '/full-guide/apple': typeof FullGuideAppleRoute
   '/full-guide/cabin-tour': typeof FullGuideCabinTourRoute
   '/full-guide/charging': typeof FullGuideChargingRoute
   '/full-guide/driving': typeof FullGuideDrivingRoute
@@ -175,6 +183,7 @@ export interface FileRoutesById {
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/troubleshooting': typeof TroubleshootingRoute
+  '/full-guide/apple': typeof FullGuideAppleRoute
   '/full-guide/cabin-tour': typeof FullGuideCabinTourRoute
   '/full-guide/charging': typeof FullGuideChargingRoute
   '/full-guide/driving': typeof FullGuideDrivingRoute
@@ -198,6 +207,7 @@ export interface FileRouteTypes {
     | '/owen'
     | '/quick-start'
     | '/troubleshooting'
+    | '/full-guide/apple'
     | '/full-guide/cabin-tour'
     | '/full-guide/charging'
     | '/full-guide/driving'
@@ -219,6 +229,7 @@ export interface FileRouteTypes {
     | '/owen'
     | '/quick-start'
     | '/troubleshooting'
+    | '/full-guide/apple'
     | '/full-guide/cabin-tour'
     | '/full-guide/charging'
     | '/full-guide/driving'
@@ -240,6 +251,7 @@ export interface FileRouteTypes {
     | '/owen'
     | '/quick-start'
     | '/troubleshooting'
+    | '/full-guide/apple'
     | '/full-guide/cabin-tour'
     | '/full-guide/charging'
     | '/full-guide/driving'
@@ -399,10 +411,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FullGuideCabinTourRouteImport
       parentRoute: typeof FullGuideRoute
     }
+    '/full-guide/apple': {
+      id: '/full-guide/apple'
+      path: '/apple'
+      fullPath: '/full-guide/apple'
+      preLoaderRoute: typeof FullGuideAppleRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
   }
 }
 
 interface FullGuideRouteChildren {
+  FullGuideAppleRoute: typeof FullGuideAppleRoute
   FullGuideCabinTourRoute: typeof FullGuideCabinTourRoute
   FullGuideChargingRoute: typeof FullGuideChargingRoute
   FullGuideDrivingRoute: typeof FullGuideDrivingRoute
@@ -413,6 +433,7 @@ interface FullGuideRouteChildren {
 }
 
 const FullGuideRouteChildren: FullGuideRouteChildren = {
+  FullGuideAppleRoute: FullGuideAppleRoute,
   FullGuideCabinTourRoute: FullGuideCabinTourRoute,
   FullGuideChargingRoute: FullGuideChargingRoute,
   FullGuideDrivingRoute: FullGuideDrivingRoute,
