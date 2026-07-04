@@ -9,38 +9,194 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TroubleshootingRouteImport } from './routes/troubleshooting'
+import { Route as QuickStartRouteImport } from './routes/quick-start'
+import { Route as OwenRouteImport } from './routes/owen'
+import { Route as GuideRouteImport } from './routes/guide'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GuideSafetyRouteImport } from './routes/guide.safety'
+import { Route as GuidePhoneCarplayRouteImport } from './routes/guide.phone-carplay'
+import { Route as GuideNavigationRouteImport } from './routes/guide.navigation'
+import { Route as GuideMaintenanceRouteImport } from './routes/guide.maintenance'
+import { Route as GuideDriveModesRouteImport } from './routes/guide.drive-modes'
+import { Route as GuideChargingRouteImport } from './routes/guide.charging'
 
+const TroubleshootingRoute = TroubleshootingRouteImport.update({
+  id: '/troubleshooting',
+  path: '/troubleshooting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuickStartRoute = QuickStartRouteImport.update({
+  id: '/quick-start',
+  path: '/quick-start',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwenRoute = OwenRouteImport.update({
+  id: '/owen',
+  path: '/owen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuideRoute = GuideRouteImport.update({
+  id: '/guide',
+  path: '/guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuideSafetyRoute = GuideSafetyRouteImport.update({
+  id: '/safety',
+  path: '/safety',
+  getParentRoute: () => GuideRoute,
+} as any)
+const GuidePhoneCarplayRoute = GuidePhoneCarplayRouteImport.update({
+  id: '/phone-carplay',
+  path: '/phone-carplay',
+  getParentRoute: () => GuideRoute,
+} as any)
+const GuideNavigationRoute = GuideNavigationRouteImport.update({
+  id: '/navigation',
+  path: '/navigation',
+  getParentRoute: () => GuideRoute,
+} as any)
+const GuideMaintenanceRoute = GuideMaintenanceRouteImport.update({
+  id: '/maintenance',
+  path: '/maintenance',
+  getParentRoute: () => GuideRoute,
+} as any)
+const GuideDriveModesRoute = GuideDriveModesRouteImport.update({
+  id: '/drive-modes',
+  path: '/drive-modes',
+  getParentRoute: () => GuideRoute,
+} as any)
+const GuideChargingRoute = GuideChargingRouteImport.update({
+  id: '/charging',
+  path: '/charging',
+  getParentRoute: () => GuideRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/guide': typeof GuideRouteWithChildren
+  '/owen': typeof OwenRoute
+  '/quick-start': typeof QuickStartRoute
+  '/troubleshooting': typeof TroubleshootingRoute
+  '/guide/charging': typeof GuideChargingRoute
+  '/guide/drive-modes': typeof GuideDriveModesRoute
+  '/guide/maintenance': typeof GuideMaintenanceRoute
+  '/guide/navigation': typeof GuideNavigationRoute
+  '/guide/phone-carplay': typeof GuidePhoneCarplayRoute
+  '/guide/safety': typeof GuideSafetyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/guide': typeof GuideRouteWithChildren
+  '/owen': typeof OwenRoute
+  '/quick-start': typeof QuickStartRoute
+  '/troubleshooting': typeof TroubleshootingRoute
+  '/guide/charging': typeof GuideChargingRoute
+  '/guide/drive-modes': typeof GuideDriveModesRoute
+  '/guide/maintenance': typeof GuideMaintenanceRoute
+  '/guide/navigation': typeof GuideNavigationRoute
+  '/guide/phone-carplay': typeof GuidePhoneCarplayRoute
+  '/guide/safety': typeof GuideSafetyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/guide': typeof GuideRouteWithChildren
+  '/owen': typeof OwenRoute
+  '/quick-start': typeof QuickStartRoute
+  '/troubleshooting': typeof TroubleshootingRoute
+  '/guide/charging': typeof GuideChargingRoute
+  '/guide/drive-modes': typeof GuideDriveModesRoute
+  '/guide/maintenance': typeof GuideMaintenanceRoute
+  '/guide/navigation': typeof GuideNavigationRoute
+  '/guide/phone-carplay': typeof GuidePhoneCarplayRoute
+  '/guide/safety': typeof GuideSafetyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/guide'
+    | '/owen'
+    | '/quick-start'
+    | '/troubleshooting'
+    | '/guide/charging'
+    | '/guide/drive-modes'
+    | '/guide/maintenance'
+    | '/guide/navigation'
+    | '/guide/phone-carplay'
+    | '/guide/safety'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/guide'
+    | '/owen'
+    | '/quick-start'
+    | '/troubleshooting'
+    | '/guide/charging'
+    | '/guide/drive-modes'
+    | '/guide/maintenance'
+    | '/guide/navigation'
+    | '/guide/phone-carplay'
+    | '/guide/safety'
+  id:
+    | '__root__'
+    | '/'
+    | '/guide'
+    | '/owen'
+    | '/quick-start'
+    | '/troubleshooting'
+    | '/guide/charging'
+    | '/guide/drive-modes'
+    | '/guide/maintenance'
+    | '/guide/navigation'
+    | '/guide/phone-carplay'
+    | '/guide/safety'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GuideRoute: typeof GuideRouteWithChildren
+  OwenRoute: typeof OwenRoute
+  QuickStartRoute: typeof QuickStartRoute
+  TroubleshootingRoute: typeof TroubleshootingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/troubleshooting': {
+      id: '/troubleshooting'
+      path: '/troubleshooting'
+      fullPath: '/troubleshooting'
+      preLoaderRoute: typeof TroubleshootingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quick-start': {
+      id: '/quick-start'
+      path: '/quick-start'
+      fullPath: '/quick-start'
+      preLoaderRoute: typeof QuickStartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owen': {
+      id: '/owen'
+      path: '/owen'
+      fullPath: '/owen'
+      preLoaderRoute: typeof OwenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guide': {
+      id: '/guide'
+      path: '/guide'
+      fullPath: '/guide'
+      preLoaderRoute: typeof GuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +204,78 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guide/safety': {
+      id: '/guide/safety'
+      path: '/safety'
+      fullPath: '/guide/safety'
+      preLoaderRoute: typeof GuideSafetyRouteImport
+      parentRoute: typeof GuideRoute
+    }
+    '/guide/phone-carplay': {
+      id: '/guide/phone-carplay'
+      path: '/phone-carplay'
+      fullPath: '/guide/phone-carplay'
+      preLoaderRoute: typeof GuidePhoneCarplayRouteImport
+      parentRoute: typeof GuideRoute
+    }
+    '/guide/navigation': {
+      id: '/guide/navigation'
+      path: '/navigation'
+      fullPath: '/guide/navigation'
+      preLoaderRoute: typeof GuideNavigationRouteImport
+      parentRoute: typeof GuideRoute
+    }
+    '/guide/maintenance': {
+      id: '/guide/maintenance'
+      path: '/maintenance'
+      fullPath: '/guide/maintenance'
+      preLoaderRoute: typeof GuideMaintenanceRouteImport
+      parentRoute: typeof GuideRoute
+    }
+    '/guide/drive-modes': {
+      id: '/guide/drive-modes'
+      path: '/drive-modes'
+      fullPath: '/guide/drive-modes'
+      preLoaderRoute: typeof GuideDriveModesRouteImport
+      parentRoute: typeof GuideRoute
+    }
+    '/guide/charging': {
+      id: '/guide/charging'
+      path: '/charging'
+      fullPath: '/guide/charging'
+      preLoaderRoute: typeof GuideChargingRouteImport
+      parentRoute: typeof GuideRoute
+    }
   }
 }
 
+interface GuideRouteChildren {
+  GuideChargingRoute: typeof GuideChargingRoute
+  GuideDriveModesRoute: typeof GuideDriveModesRoute
+  GuideMaintenanceRoute: typeof GuideMaintenanceRoute
+  GuideNavigationRoute: typeof GuideNavigationRoute
+  GuidePhoneCarplayRoute: typeof GuidePhoneCarplayRoute
+  GuideSafetyRoute: typeof GuideSafetyRoute
+}
+
+const GuideRouteChildren: GuideRouteChildren = {
+  GuideChargingRoute: GuideChargingRoute,
+  GuideDriveModesRoute: GuideDriveModesRoute,
+  GuideMaintenanceRoute: GuideMaintenanceRoute,
+  GuideNavigationRoute: GuideNavigationRoute,
+  GuidePhoneCarplayRoute: GuidePhoneCarplayRoute,
+  GuideSafetyRoute: GuideSafetyRoute,
+}
+
+const GuideRouteWithChildren = GuideRoute._addFileChildren(GuideRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GuideRoute: GuideRouteWithChildren,
+  OwenRoute: OwenRoute,
+  QuickStartRoute: QuickStartRoute,
+  TroubleshootingRoute: TroubleshootingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
