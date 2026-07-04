@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as QuickStartRouteImport } from './routes/quick-start'
+import { Route as OwenRouteImport } from './routes/owen'
 import { Route as IndexRouteImport } from './routes/index'
 
 const QuickStartRoute = QuickStartRouteImport.update({
   id: '/quick-start',
   path: '/quick-start',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwenRoute = OwenRouteImport.update({
+  id: '/owen',
+  path: '/owen',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/quick-start'
+  fullPaths: '/' | '/owen' | '/quick-start'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/quick-start'
-  id: '__root__' | '/' | '/quick-start'
+  to: '/' | '/owen' | '/quick-start'
+  id: '__root__' | '/' | '/owen' | '/quick-start'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  OwenRoute: typeof OwenRoute
   QuickStartRoute: typeof QuickStartRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/quick-start'
       fullPath: '/quick-start'
       preLoaderRoute: typeof QuickStartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owen': {
+      id: '/owen'
+      path: '/owen'
+      fullPath: '/owen'
+      preLoaderRoute: typeof OwenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  OwenRoute: OwenRoute,
   QuickStartRoute: QuickStartRoute,
 }
 export const routeTree = rootRouteImport
