@@ -24,6 +24,7 @@ import { Route as GuideChargingRouteImport } from './routes/guide.charging'
 import { Route as FullGuideSafetyRouteImport } from './routes/full-guide.safety'
 import { Route as FullGuideQuickStartRouteImport } from './routes/full-guide.quick-start'
 import { Route as FullGuideMaintenanceRouteImport } from './routes/full-guide.maintenance'
+import { Route as FullGuideDrivingRouteImport } from './routes/full-guide.driving'
 import { Route as FullGuideChargingRouteImport } from './routes/full-guide.charging'
 import { Route as FullGuideCabinTourRouteImport } from './routes/full-guide.cabin-tour'
 
@@ -102,6 +103,11 @@ const FullGuideMaintenanceRoute = FullGuideMaintenanceRouteImport.update({
   path: '/maintenance',
   getParentRoute: () => FullGuideRoute,
 } as any)
+const FullGuideDrivingRoute = FullGuideDrivingRouteImport.update({
+  id: '/driving',
+  path: '/driving',
+  getParentRoute: () => FullGuideRoute,
+} as any)
 const FullGuideChargingRoute = FullGuideChargingRouteImport.update({
   id: '/charging',
   path: '/charging',
@@ -122,6 +128,7 @@ export interface FileRoutesByFullPath {
   '/troubleshooting': typeof TroubleshootingRoute
   '/full-guide/cabin-tour': typeof FullGuideCabinTourRoute
   '/full-guide/charging': typeof FullGuideChargingRoute
+  '/full-guide/driving': typeof FullGuideDrivingRoute
   '/full-guide/maintenance': typeof FullGuideMaintenanceRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/full-guide/safety': typeof FullGuideSafetyRoute
@@ -141,6 +148,7 @@ export interface FileRoutesByTo {
   '/troubleshooting': typeof TroubleshootingRoute
   '/full-guide/cabin-tour': typeof FullGuideCabinTourRoute
   '/full-guide/charging': typeof FullGuideChargingRoute
+  '/full-guide/driving': typeof FullGuideDrivingRoute
   '/full-guide/maintenance': typeof FullGuideMaintenanceRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/full-guide/safety': typeof FullGuideSafetyRoute
@@ -161,6 +169,7 @@ export interface FileRoutesById {
   '/troubleshooting': typeof TroubleshootingRoute
   '/full-guide/cabin-tour': typeof FullGuideCabinTourRoute
   '/full-guide/charging': typeof FullGuideChargingRoute
+  '/full-guide/driving': typeof FullGuideDrivingRoute
   '/full-guide/maintenance': typeof FullGuideMaintenanceRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/full-guide/safety': typeof FullGuideSafetyRoute
@@ -182,6 +191,7 @@ export interface FileRouteTypes {
     | '/troubleshooting'
     | '/full-guide/cabin-tour'
     | '/full-guide/charging'
+    | '/full-guide/driving'
     | '/full-guide/maintenance'
     | '/full-guide/quick-start'
     | '/full-guide/safety'
@@ -201,6 +211,7 @@ export interface FileRouteTypes {
     | '/troubleshooting'
     | '/full-guide/cabin-tour'
     | '/full-guide/charging'
+    | '/full-guide/driving'
     | '/full-guide/maintenance'
     | '/full-guide/quick-start'
     | '/full-guide/safety'
@@ -220,6 +231,7 @@ export interface FileRouteTypes {
     | '/troubleshooting'
     | '/full-guide/cabin-tour'
     | '/full-guide/charging'
+    | '/full-guide/driving'
     | '/full-guide/maintenance'
     | '/full-guide/quick-start'
     | '/full-guide/safety'
@@ -347,6 +359,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FullGuideMaintenanceRouteImport
       parentRoute: typeof FullGuideRoute
     }
+    '/full-guide/driving': {
+      id: '/full-guide/driving'
+      path: '/driving'
+      fullPath: '/full-guide/driving'
+      preLoaderRoute: typeof FullGuideDrivingRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
     '/full-guide/charging': {
       id: '/full-guide/charging'
       path: '/charging'
@@ -367,6 +386,7 @@ declare module '@tanstack/react-router' {
 interface FullGuideRouteChildren {
   FullGuideCabinTourRoute: typeof FullGuideCabinTourRoute
   FullGuideChargingRoute: typeof FullGuideChargingRoute
+  FullGuideDrivingRoute: typeof FullGuideDrivingRoute
   FullGuideMaintenanceRoute: typeof FullGuideMaintenanceRoute
   FullGuideQuickStartRoute: typeof FullGuideQuickStartRoute
   FullGuideSafetyRoute: typeof FullGuideSafetyRoute
@@ -375,6 +395,7 @@ interface FullGuideRouteChildren {
 const FullGuideRouteChildren: FullGuideRouteChildren = {
   FullGuideCabinTourRoute: FullGuideCabinTourRoute,
   FullGuideChargingRoute: FullGuideChargingRoute,
+  FullGuideDrivingRoute: FullGuideDrivingRoute,
   FullGuideMaintenanceRoute: FullGuideMaintenanceRoute,
   FullGuideQuickStartRoute: FullGuideQuickStartRoute,
   FullGuideSafetyRoute: FullGuideSafetyRoute,
