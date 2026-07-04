@@ -231,7 +231,7 @@ const groups: { name: string; recs: Rec[] }[] = [
   },
 ];
 
-function OwenPage() {
+export function OwenPage() {
   return (
     <div className="container-app py-8 space-y-8 pb-16">
       <div className="space-y-3">
