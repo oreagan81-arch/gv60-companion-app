@@ -1,4 +1,5 @@
 import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
+import { chapters, type ChapterStatus } from "@/data/chapters";
 
 export const Route = createFileRoute("/full-guide")({
   head: () => ({
@@ -12,20 +13,7 @@ export const Route = createFileRoute("/full-guide")({
   component: FullGuideLayout,
 });
 
-type Status = "Expanded" | "Draft" | "Needs content";
-
-const chapters: { to: string; num: string; title: string; blurb: string; status: Status }[] = [
-  { to: "/full-guide/quick-start", num: "01", title: "First Week Quick Start Guide", blurb: "The essentials to know in your first seven days with the car.", status: "Expanded" },
-  { to: "/full-guide/cabin-tour", num: "02", title: "Complete Cabin Tour", blurb: "Every control, screen, storage nook, and interior feature.", status: "Needs content" },
-  { to: "/full-guide/driving", num: "03", title: "Driving Like a Pro", blurb: "Drive modes, regen, one-pedal, Boost, and smooth long-distance habits.", status: "Draft" },
-  { to: "/full-guide/technology", num: "04", title: "Complete Technology Guide", blurb: "Infotainment, cluster, HUD, voice, profiles, and OTA updates.", status: "Needs content" },
-  { to: "/full-guide/apple", num: "05", title: "Apple Ecosystem Guide", blurb: "iPhone pairing, CarPlay, Apple Maps, AirPods, and handoff patterns.", status: "Draft" },
-  { to: "/full-guide/charging", num: "06", title: "Charging, Battery, and Range Guide", blurb: "Home L2, DC fast, preconditioning, limits, and road-trip planning.", status: "Expanded" },
-  { to: "/full-guide/safety", num: "07", title: "Safety and Driver Assistance Guide", blurb: "Every ADAS system, recommended sensitivities, and Owen's defaults.", status: "Expanded" },
-  { to: "/full-guide/maintenance", num: "08", title: "Maintenance, Cleaning, and Care Guide", blurb: "Weekly checks, gentle cleaning, tires, and the in-car kit.", status: "Expanded" },
-];
-
-function statusClass(s: Status) {
+function statusClass(s: ChapterStatus) {
   if (s === "Expanded") return "bg-primary/15 text-primary";
   if (s === "Draft") return "bg-amber-500/15 text-amber-400";
   return "bg-muted text-muted-foreground";
@@ -50,8 +38,8 @@ function FullGuideLayout() {
 
       <ul className="grid gap-3">
         {chapters.map((c) => (
-          <li key={c.to}>
-            <Link to={c.to} className="card-glass block p-4 hover:border-primary/60 transition">
+          <li key={c.id}>
+            <Link to={c.route} className="card-glass block p-4 hover:border-primary/60 transition">
               <div className="flex items-start gap-4">
                 <span className="text-primary font-display text-2xl leading-none pt-1">{c.num}</span>
                 <div className="flex-1">
@@ -59,7 +47,10 @@ function FullGuideLayout() {
                     <h2 className="text-lg font-display font-semibold">{c.title}</h2>
                     <span className={`text-[10px] uppercase tracking-wider rounded-full px-2 py-0.5 ${statusClass(c.status)}`}>{c.status}</span>
                   </div>
-                  <p className="text-sm text-muted-foreground mt-1">{c.blurb}</p>
+                  {c.subtitle && (
+                    <p className="text-xs uppercase tracking-wider text-muted-foreground mt-0.5">{c.subtitle}</p>
+                  )}
+                  <p className="text-sm text-muted-foreground mt-1">{c.summary}</p>
                   <p className="mt-2 text-xs text-primary">Open chapter →</p>
                 </div>
               </div>
