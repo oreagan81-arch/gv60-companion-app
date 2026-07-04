@@ -13,7 +13,7 @@ export const Route = createFileRoute("/guide/safety")({
   component: SafetyChapter,
 });
 
-function SafetyChapter() {
+export function SafetyChapter() {
   return (
     <div className="container-app py-8 space-y-8 pb-16">
       <div>

@@ -10,9 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TroubleshootingRouteImport } from './routes/troubleshooting'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as QuickStartRouteImport } from './routes/quick-start'
 import { Route as OwenRouteImport } from './routes/owen'
+import { Route as ImagesRouteImport } from './routes/images'
 import { Route as GuideRouteImport } from './routes/guide'
+import { Route as FullGuideRouteImport } from './routes/full-guide'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GuideSafetyRouteImport } from './routes/guide.safety'
 import { Route as GuidePhoneCarplayRouteImport } from './routes/guide.phone-carplay'
@@ -20,10 +24,28 @@ import { Route as GuideNavigationRouteImport } from './routes/guide.navigation'
 import { Route as GuideMaintenanceRouteImport } from './routes/guide.maintenance'
 import { Route as GuideDriveModesRouteImport } from './routes/guide.drive-modes'
 import { Route as GuideChargingRouteImport } from './routes/guide.charging'
+import { Route as FullGuideTechnologyRouteImport } from './routes/full-guide.technology'
+import { Route as FullGuideSafetyRouteImport } from './routes/full-guide.safety'
+import { Route as FullGuideQuickStartRouteImport } from './routes/full-guide.quick-start'
+import { Route as FullGuideMaintenanceRouteImport } from './routes/full-guide.maintenance'
+import { Route as FullGuideDrivingRouteImport } from './routes/full-guide.driving'
+import { Route as FullGuideChargingRouteImport } from './routes/full-guide.charging'
+import { Route as FullGuideCabinTourRouteImport } from './routes/full-guide.cabin-tour'
+import { Route as FullGuideAppleRouteImport } from './routes/full-guide.apple'
 
 const TroubleshootingRoute = TroubleshootingRouteImport.update({
   id: '/troubleshooting',
   path: '/troubleshooting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QuickStartRoute = QuickStartRouteImport.update({
@@ -36,9 +58,19 @@ const OwenRoute = OwenRouteImport.update({
   path: '/owen',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ImagesRoute = ImagesRouteImport.update({
+  id: '/images',
+  path: '/images',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GuideRoute = GuideRouteImport.update({
   id: '/guide',
   path: '/guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FullGuideRoute = FullGuideRouteImport.update({
+  id: '/full-guide',
+  path: '/full-guide',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -76,13 +108,65 @@ const GuideChargingRoute = GuideChargingRouteImport.update({
   path: '/charging',
   getParentRoute: () => GuideRoute,
 } as any)
+const FullGuideTechnologyRoute = FullGuideTechnologyRouteImport.update({
+  id: '/technology',
+  path: '/technology',
+  getParentRoute: () => FullGuideRoute,
+} as any)
+const FullGuideSafetyRoute = FullGuideSafetyRouteImport.update({
+  id: '/safety',
+  path: '/safety',
+  getParentRoute: () => FullGuideRoute,
+} as any)
+const FullGuideQuickStartRoute = FullGuideQuickStartRouteImport.update({
+  id: '/quick-start',
+  path: '/quick-start',
+  getParentRoute: () => FullGuideRoute,
+} as any)
+const FullGuideMaintenanceRoute = FullGuideMaintenanceRouteImport.update({
+  id: '/maintenance',
+  path: '/maintenance',
+  getParentRoute: () => FullGuideRoute,
+} as any)
+const FullGuideDrivingRoute = FullGuideDrivingRouteImport.update({
+  id: '/driving',
+  path: '/driving',
+  getParentRoute: () => FullGuideRoute,
+} as any)
+const FullGuideChargingRoute = FullGuideChargingRouteImport.update({
+  id: '/charging',
+  path: '/charging',
+  getParentRoute: () => FullGuideRoute,
+} as any)
+const FullGuideCabinTourRoute = FullGuideCabinTourRouteImport.update({
+  id: '/cabin-tour',
+  path: '/cabin-tour',
+  getParentRoute: () => FullGuideRoute,
+} as any)
+const FullGuideAppleRoute = FullGuideAppleRouteImport.update({
+  id: '/apple',
+  path: '/apple',
+  getParentRoute: () => FullGuideRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/full-guide': typeof FullGuideRouteWithChildren
   '/guide': typeof GuideRouteWithChildren
+  '/images': typeof ImagesRoute
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
+  '/search': typeof SearchRoute
+  '/settings': typeof SettingsRoute
   '/troubleshooting': typeof TroubleshootingRoute
+  '/full-guide/apple': typeof FullGuideAppleRoute
+  '/full-guide/cabin-tour': typeof FullGuideCabinTourRoute
+  '/full-guide/charging': typeof FullGuideChargingRoute
+  '/full-guide/driving': typeof FullGuideDrivingRoute
+  '/full-guide/maintenance': typeof FullGuideMaintenanceRoute
+  '/full-guide/quick-start': typeof FullGuideQuickStartRoute
+  '/full-guide/safety': typeof FullGuideSafetyRoute
+  '/full-guide/technology': typeof FullGuideTechnologyRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
   '/guide/maintenance': typeof GuideMaintenanceRoute
@@ -92,10 +176,22 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/full-guide': typeof FullGuideRouteWithChildren
   '/guide': typeof GuideRouteWithChildren
+  '/images': typeof ImagesRoute
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
+  '/search': typeof SearchRoute
+  '/settings': typeof SettingsRoute
   '/troubleshooting': typeof TroubleshootingRoute
+  '/full-guide/apple': typeof FullGuideAppleRoute
+  '/full-guide/cabin-tour': typeof FullGuideCabinTourRoute
+  '/full-guide/charging': typeof FullGuideChargingRoute
+  '/full-guide/driving': typeof FullGuideDrivingRoute
+  '/full-guide/maintenance': typeof FullGuideMaintenanceRoute
+  '/full-guide/quick-start': typeof FullGuideQuickStartRoute
+  '/full-guide/safety': typeof FullGuideSafetyRoute
+  '/full-guide/technology': typeof FullGuideTechnologyRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
   '/guide/maintenance': typeof GuideMaintenanceRoute
@@ -106,10 +202,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/full-guide': typeof FullGuideRouteWithChildren
   '/guide': typeof GuideRouteWithChildren
+  '/images': typeof ImagesRoute
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
+  '/search': typeof SearchRoute
+  '/settings': typeof SettingsRoute
   '/troubleshooting': typeof TroubleshootingRoute
+  '/full-guide/apple': typeof FullGuideAppleRoute
+  '/full-guide/cabin-tour': typeof FullGuideCabinTourRoute
+  '/full-guide/charging': typeof FullGuideChargingRoute
+  '/full-guide/driving': typeof FullGuideDrivingRoute
+  '/full-guide/maintenance': typeof FullGuideMaintenanceRoute
+  '/full-guide/quick-start': typeof FullGuideQuickStartRoute
+  '/full-guide/safety': typeof FullGuideSafetyRoute
+  '/full-guide/technology': typeof FullGuideTechnologyRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
   '/guide/maintenance': typeof GuideMaintenanceRoute
@@ -121,10 +229,22 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/full-guide'
     | '/guide'
+    | '/images'
     | '/owen'
     | '/quick-start'
+    | '/search'
+    | '/settings'
     | '/troubleshooting'
+    | '/full-guide/apple'
+    | '/full-guide/cabin-tour'
+    | '/full-guide/charging'
+    | '/full-guide/driving'
+    | '/full-guide/maintenance'
+    | '/full-guide/quick-start'
+    | '/full-guide/safety'
+    | '/full-guide/technology'
     | '/guide/charging'
     | '/guide/drive-modes'
     | '/guide/maintenance'
@@ -134,10 +254,22 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/full-guide'
     | '/guide'
+    | '/images'
     | '/owen'
     | '/quick-start'
+    | '/search'
+    | '/settings'
     | '/troubleshooting'
+    | '/full-guide/apple'
+    | '/full-guide/cabin-tour'
+    | '/full-guide/charging'
+    | '/full-guide/driving'
+    | '/full-guide/maintenance'
+    | '/full-guide/quick-start'
+    | '/full-guide/safety'
+    | '/full-guide/technology'
     | '/guide/charging'
     | '/guide/drive-modes'
     | '/guide/maintenance'
@@ -147,10 +279,22 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/full-guide'
     | '/guide'
+    | '/images'
     | '/owen'
     | '/quick-start'
+    | '/search'
+    | '/settings'
     | '/troubleshooting'
+    | '/full-guide/apple'
+    | '/full-guide/cabin-tour'
+    | '/full-guide/charging'
+    | '/full-guide/driving'
+    | '/full-guide/maintenance'
+    | '/full-guide/quick-start'
+    | '/full-guide/safety'
+    | '/full-guide/technology'
     | '/guide/charging'
     | '/guide/drive-modes'
     | '/guide/maintenance'
@@ -161,9 +305,13 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FullGuideRoute: typeof FullGuideRouteWithChildren
   GuideRoute: typeof GuideRouteWithChildren
+  ImagesRoute: typeof ImagesRoute
   OwenRoute: typeof OwenRoute
   QuickStartRoute: typeof QuickStartRoute
+  SearchRoute: typeof SearchRoute
+  SettingsRoute: typeof SettingsRoute
   TroubleshootingRoute: typeof TroubleshootingRoute
 }
 
@@ -174,6 +322,20 @@ declare module '@tanstack/react-router' {
       path: '/troubleshooting'
       fullPath: '/troubleshooting'
       preLoaderRoute: typeof TroubleshootingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/quick-start': {
@@ -190,11 +352,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OwenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/images': {
+      id: '/images'
+      path: '/images'
+      fullPath: '/images'
+      preLoaderRoute: typeof ImagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guide': {
       id: '/guide'
       path: '/guide'
       fullPath: '/guide'
       preLoaderRoute: typeof GuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/full-guide': {
+      id: '/full-guide'
+      path: '/full-guide'
+      fullPath: '/full-guide'
+      preLoaderRoute: typeof FullGuideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -246,8 +422,90 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuideChargingRouteImport
       parentRoute: typeof GuideRoute
     }
+    '/full-guide/technology': {
+      id: '/full-guide/technology'
+      path: '/technology'
+      fullPath: '/full-guide/technology'
+      preLoaderRoute: typeof FullGuideTechnologyRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
+    '/full-guide/safety': {
+      id: '/full-guide/safety'
+      path: '/safety'
+      fullPath: '/full-guide/safety'
+      preLoaderRoute: typeof FullGuideSafetyRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
+    '/full-guide/quick-start': {
+      id: '/full-guide/quick-start'
+      path: '/quick-start'
+      fullPath: '/full-guide/quick-start'
+      preLoaderRoute: typeof FullGuideQuickStartRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
+    '/full-guide/maintenance': {
+      id: '/full-guide/maintenance'
+      path: '/maintenance'
+      fullPath: '/full-guide/maintenance'
+      preLoaderRoute: typeof FullGuideMaintenanceRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
+    '/full-guide/driving': {
+      id: '/full-guide/driving'
+      path: '/driving'
+      fullPath: '/full-guide/driving'
+      preLoaderRoute: typeof FullGuideDrivingRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
+    '/full-guide/charging': {
+      id: '/full-guide/charging'
+      path: '/charging'
+      fullPath: '/full-guide/charging'
+      preLoaderRoute: typeof FullGuideChargingRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
+    '/full-guide/cabin-tour': {
+      id: '/full-guide/cabin-tour'
+      path: '/cabin-tour'
+      fullPath: '/full-guide/cabin-tour'
+      preLoaderRoute: typeof FullGuideCabinTourRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
+    '/full-guide/apple': {
+      id: '/full-guide/apple'
+      path: '/apple'
+      fullPath: '/full-guide/apple'
+      preLoaderRoute: typeof FullGuideAppleRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
   }
 }
+
+interface FullGuideRouteChildren {
+  FullGuideAppleRoute: typeof FullGuideAppleRoute
+  FullGuideCabinTourRoute: typeof FullGuideCabinTourRoute
+  FullGuideChargingRoute: typeof FullGuideChargingRoute
+  FullGuideDrivingRoute: typeof FullGuideDrivingRoute
+  FullGuideMaintenanceRoute: typeof FullGuideMaintenanceRoute
+  FullGuideQuickStartRoute: typeof FullGuideQuickStartRoute
+  FullGuideSafetyRoute: typeof FullGuideSafetyRoute
+  FullGuideTechnologyRoute: typeof FullGuideTechnologyRoute
+}
+
+const FullGuideRouteChildren: FullGuideRouteChildren = {
+  FullGuideAppleRoute: FullGuideAppleRoute,
+  FullGuideCabinTourRoute: FullGuideCabinTourRoute,
+  FullGuideChargingRoute: FullGuideChargingRoute,
+  FullGuideDrivingRoute: FullGuideDrivingRoute,
+  FullGuideMaintenanceRoute: FullGuideMaintenanceRoute,
+  FullGuideQuickStartRoute: FullGuideQuickStartRoute,
+  FullGuideSafetyRoute: FullGuideSafetyRoute,
+  FullGuideTechnologyRoute: FullGuideTechnologyRoute,
+}
+
+const FullGuideRouteWithChildren = FullGuideRoute._addFileChildren(
+  FullGuideRouteChildren,
+)
 
 interface GuideRouteChildren {
   GuideChargingRoute: typeof GuideChargingRoute
@@ -271,9 +529,13 @@ const GuideRouteWithChildren = GuideRoute._addFileChildren(GuideRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FullGuideRoute: FullGuideRouteWithChildren,
   GuideRoute: GuideRouteWithChildren,
+  ImagesRoute: ImagesRoute,
   OwenRoute: OwenRoute,
   QuickStartRoute: QuickStartRoute,
+  SearchRoute: SearchRoute,
+  SettingsRoute: SettingsRoute,
   TroubleshootingRoute: TroubleshootingRoute,
 }
 export const routeTree = rootRouteImport

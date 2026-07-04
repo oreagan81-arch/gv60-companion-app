@@ -13,7 +13,7 @@ export const Route = createFileRoute("/guide/maintenance")({
   component: Chapter,
 });
 
-function Chapter() {
+export function Chapter() {
   return (
     <div className="container-app py-8 space-y-8 pb-16">
       <div><Link to="/guide" className="text-xs text-muted-foreground">← Full Guide</Link></div>
