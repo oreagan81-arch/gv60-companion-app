@@ -9,12 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TroubleshootingRouteImport } from './routes/troubleshooting'
 import { Route as QuickStartRouteImport } from './routes/quick-start'
 import { Route as OwenRouteImport } from './routes/owen'
 import { Route as GuideRouteImport } from './routes/guide'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GuideSafetyRouteImport } from './routes/guide.safety'
+import { Route as GuidePhoneCarplayRouteImport } from './routes/guide.phone-carplay'
+import { Route as GuideNavigationRouteImport } from './routes/guide.navigation'
+import { Route as GuideMaintenanceRouteImport } from './routes/guide.maintenance'
+import { Route as GuideDriveModesRouteImport } from './routes/guide.drive-modes'
+import { Route as GuideChargingRouteImport } from './routes/guide.charging'
 
+const TroubleshootingRoute = TroubleshootingRouteImport.update({
+  id: '/troubleshooting',
+  path: '/troubleshooting',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QuickStartRoute = QuickStartRouteImport.update({
   id: '/quick-start',
   path: '/quick-start',
@@ -40,12 +51,43 @@ const GuideSafetyRoute = GuideSafetyRouteImport.update({
   path: '/safety',
   getParentRoute: () => GuideRoute,
 } as any)
+const GuidePhoneCarplayRoute = GuidePhoneCarplayRouteImport.update({
+  id: '/phone-carplay',
+  path: '/phone-carplay',
+  getParentRoute: () => GuideRoute,
+} as any)
+const GuideNavigationRoute = GuideNavigationRouteImport.update({
+  id: '/navigation',
+  path: '/navigation',
+  getParentRoute: () => GuideRoute,
+} as any)
+const GuideMaintenanceRoute = GuideMaintenanceRouteImport.update({
+  id: '/maintenance',
+  path: '/maintenance',
+  getParentRoute: () => GuideRoute,
+} as any)
+const GuideDriveModesRoute = GuideDriveModesRouteImport.update({
+  id: '/drive-modes',
+  path: '/drive-modes',
+  getParentRoute: () => GuideRoute,
+} as any)
+const GuideChargingRoute = GuideChargingRouteImport.update({
+  id: '/charging',
+  path: '/charging',
+  getParentRoute: () => GuideRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/guide': typeof GuideRouteWithChildren
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
+  '/troubleshooting': typeof TroubleshootingRoute
+  '/guide/charging': typeof GuideChargingRoute
+  '/guide/drive-modes': typeof GuideDriveModesRoute
+  '/guide/maintenance': typeof GuideMaintenanceRoute
+  '/guide/navigation': typeof GuideNavigationRoute
+  '/guide/phone-carplay': typeof GuidePhoneCarplayRoute
   '/guide/safety': typeof GuideSafetyRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +95,12 @@ export interface FileRoutesByTo {
   '/guide': typeof GuideRouteWithChildren
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
+  '/troubleshooting': typeof TroubleshootingRoute
+  '/guide/charging': typeof GuideChargingRoute
+  '/guide/drive-modes': typeof GuideDriveModesRoute
+  '/guide/maintenance': typeof GuideMaintenanceRoute
+  '/guide/navigation': typeof GuideNavigationRoute
+  '/guide/phone-carplay': typeof GuidePhoneCarplayRoute
   '/guide/safety': typeof GuideSafetyRoute
 }
 export interface FileRoutesById {
@@ -61,14 +109,54 @@ export interface FileRoutesById {
   '/guide': typeof GuideRouteWithChildren
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
+  '/troubleshooting': typeof TroubleshootingRoute
+  '/guide/charging': typeof GuideChargingRoute
+  '/guide/drive-modes': typeof GuideDriveModesRoute
+  '/guide/maintenance': typeof GuideMaintenanceRoute
+  '/guide/navigation': typeof GuideNavigationRoute
+  '/guide/phone-carplay': typeof GuidePhoneCarplayRoute
   '/guide/safety': typeof GuideSafetyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/guide' | '/owen' | '/quick-start' | '/guide/safety'
+  fullPaths:
+    | '/'
+    | '/guide'
+    | '/owen'
+    | '/quick-start'
+    | '/troubleshooting'
+    | '/guide/charging'
+    | '/guide/drive-modes'
+    | '/guide/maintenance'
+    | '/guide/navigation'
+    | '/guide/phone-carplay'
+    | '/guide/safety'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/guide' | '/owen' | '/quick-start' | '/guide/safety'
-  id: '__root__' | '/' | '/guide' | '/owen' | '/quick-start' | '/guide/safety'
+  to:
+    | '/'
+    | '/guide'
+    | '/owen'
+    | '/quick-start'
+    | '/troubleshooting'
+    | '/guide/charging'
+    | '/guide/drive-modes'
+    | '/guide/maintenance'
+    | '/guide/navigation'
+    | '/guide/phone-carplay'
+    | '/guide/safety'
+  id:
+    | '__root__'
+    | '/'
+    | '/guide'
+    | '/owen'
+    | '/quick-start'
+    | '/troubleshooting'
+    | '/guide/charging'
+    | '/guide/drive-modes'
+    | '/guide/maintenance'
+    | '/guide/navigation'
+    | '/guide/phone-carplay'
+    | '/guide/safety'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,10 +164,18 @@ export interface RootRouteChildren {
   GuideRoute: typeof GuideRouteWithChildren
   OwenRoute: typeof OwenRoute
   QuickStartRoute: typeof QuickStartRoute
+  TroubleshootingRoute: typeof TroubleshootingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/troubleshooting': {
+      id: '/troubleshooting'
+      path: '/troubleshooting'
+      fullPath: '/troubleshooting'
+      preLoaderRoute: typeof TroubleshootingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/quick-start': {
       id: '/quick-start'
       path: '/quick-start'
@@ -115,14 +211,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuideSafetyRouteImport
       parentRoute: typeof GuideRoute
     }
+    '/guide/phone-carplay': {
+      id: '/guide/phone-carplay'
+      path: '/phone-carplay'
+      fullPath: '/guide/phone-carplay'
+      preLoaderRoute: typeof GuidePhoneCarplayRouteImport
+      parentRoute: typeof GuideRoute
+    }
+    '/guide/navigation': {
+      id: '/guide/navigation'
+      path: '/navigation'
+      fullPath: '/guide/navigation'
+      preLoaderRoute: typeof GuideNavigationRouteImport
+      parentRoute: typeof GuideRoute
+    }
+    '/guide/maintenance': {
+      id: '/guide/maintenance'
+      path: '/maintenance'
+      fullPath: '/guide/maintenance'
+      preLoaderRoute: typeof GuideMaintenanceRouteImport
+      parentRoute: typeof GuideRoute
+    }
+    '/guide/drive-modes': {
+      id: '/guide/drive-modes'
+      path: '/drive-modes'
+      fullPath: '/guide/drive-modes'
+      preLoaderRoute: typeof GuideDriveModesRouteImport
+      parentRoute: typeof GuideRoute
+    }
+    '/guide/charging': {
+      id: '/guide/charging'
+      path: '/charging'
+      fullPath: '/guide/charging'
+      preLoaderRoute: typeof GuideChargingRouteImport
+      parentRoute: typeof GuideRoute
+    }
   }
 }
 
 interface GuideRouteChildren {
+  GuideChargingRoute: typeof GuideChargingRoute
+  GuideDriveModesRoute: typeof GuideDriveModesRoute
+  GuideMaintenanceRoute: typeof GuideMaintenanceRoute
+  GuideNavigationRoute: typeof GuideNavigationRoute
+  GuidePhoneCarplayRoute: typeof GuidePhoneCarplayRoute
   GuideSafetyRoute: typeof GuideSafetyRoute
 }
 
 const GuideRouteChildren: GuideRouteChildren = {
+  GuideChargingRoute: GuideChargingRoute,
+  GuideDriveModesRoute: GuideDriveModesRoute,
+  GuideMaintenanceRoute: GuideMaintenanceRoute,
+  GuideNavigationRoute: GuideNavigationRoute,
+  GuidePhoneCarplayRoute: GuidePhoneCarplayRoute,
   GuideSafetyRoute: GuideSafetyRoute,
 }
 
@@ -133,6 +274,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuideRoute: GuideRouteWithChildren,
   OwenRoute: OwenRoute,
   QuickStartRoute: QuickStartRoute,
+  TroubleshootingRoute: TroubleshootingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
