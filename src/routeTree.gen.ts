@@ -21,6 +21,7 @@ import { Route as GuideNavigationRouteImport } from './routes/guide.navigation'
 import { Route as GuideMaintenanceRouteImport } from './routes/guide.maintenance'
 import { Route as GuideDriveModesRouteImport } from './routes/guide.drive-modes'
 import { Route as GuideChargingRouteImport } from './routes/guide.charging'
+import { Route as FullGuideQuickStartRouteImport } from './routes/full-guide.quick-start'
 
 const TroubleshootingRoute = TroubleshootingRouteImport.update({
   id: '/troubleshooting',
@@ -82,14 +83,20 @@ const GuideChargingRoute = GuideChargingRouteImport.update({
   path: '/charging',
   getParentRoute: () => GuideRoute,
 } as any)
+const FullGuideQuickStartRoute = FullGuideQuickStartRouteImport.update({
+  id: '/quick-start',
+  path: '/quick-start',
+  getParentRoute: () => FullGuideRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/full-guide': typeof FullGuideRoute
+  '/full-guide': typeof FullGuideRouteWithChildren
   '/guide': typeof GuideRouteWithChildren
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/troubleshooting': typeof TroubleshootingRoute
+  '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
   '/guide/maintenance': typeof GuideMaintenanceRoute
@@ -99,11 +106,12 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/full-guide': typeof FullGuideRoute
+  '/full-guide': typeof FullGuideRouteWithChildren
   '/guide': typeof GuideRouteWithChildren
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/troubleshooting': typeof TroubleshootingRoute
+  '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
   '/guide/maintenance': typeof GuideMaintenanceRoute
@@ -114,11 +122,12 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/full-guide': typeof FullGuideRoute
+  '/full-guide': typeof FullGuideRouteWithChildren
   '/guide': typeof GuideRouteWithChildren
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/troubleshooting': typeof TroubleshootingRoute
+  '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
   '/guide/maintenance': typeof GuideMaintenanceRoute
@@ -135,6 +144,7 @@ export interface FileRouteTypes {
     | '/owen'
     | '/quick-start'
     | '/troubleshooting'
+    | '/full-guide/quick-start'
     | '/guide/charging'
     | '/guide/drive-modes'
     | '/guide/maintenance'
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/owen'
     | '/quick-start'
     | '/troubleshooting'
+    | '/full-guide/quick-start'
     | '/guide/charging'
     | '/guide/drive-modes'
     | '/guide/maintenance'
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/owen'
     | '/quick-start'
     | '/troubleshooting'
+    | '/full-guide/quick-start'
     | '/guide/charging'
     | '/guide/drive-modes'
     | '/guide/maintenance'
@@ -173,7 +185,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  FullGuideRoute: typeof FullGuideRoute
+  FullGuideRoute: typeof FullGuideRouteWithChildren
   GuideRoute: typeof GuideRouteWithChildren
   OwenRoute: typeof OwenRoute
   QuickStartRoute: typeof QuickStartRoute
@@ -266,8 +278,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuideChargingRouteImport
       parentRoute: typeof GuideRoute
     }
+    '/full-guide/quick-start': {
+      id: '/full-guide/quick-start'
+      path: '/quick-start'
+      fullPath: '/full-guide/quick-start'
+      preLoaderRoute: typeof FullGuideQuickStartRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
   }
 }
+
+interface FullGuideRouteChildren {
+  FullGuideQuickStartRoute: typeof FullGuideQuickStartRoute
+}
+
+const FullGuideRouteChildren: FullGuideRouteChildren = {
+  FullGuideQuickStartRoute: FullGuideQuickStartRoute,
+}
+
+const FullGuideRouteWithChildren = FullGuideRoute._addFileChildren(
+  FullGuideRouteChildren,
+)
 
 interface GuideRouteChildren {
   GuideChargingRoute: typeof GuideChargingRoute
@@ -291,7 +322,7 @@ const GuideRouteWithChildren = GuideRoute._addFileChildren(GuideRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  FullGuideRoute: FullGuideRoute,
+  FullGuideRoute: FullGuideRouteWithChildren,
   GuideRoute: GuideRouteWithChildren,
   OwenRoute: OwenRoute,
   QuickStartRoute: QuickStartRoute,
