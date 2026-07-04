@@ -21,6 +21,7 @@ import { Route as GuideNavigationRouteImport } from './routes/guide.navigation'
 import { Route as GuideMaintenanceRouteImport } from './routes/guide.maintenance'
 import { Route as GuideDriveModesRouteImport } from './routes/guide.drive-modes'
 import { Route as GuideChargingRouteImport } from './routes/guide.charging'
+import { Route as FullGuideSafetyRouteImport } from './routes/full-guide.safety'
 import { Route as FullGuideQuickStartRouteImport } from './routes/full-guide.quick-start'
 import { Route as FullGuideChargingRouteImport } from './routes/full-guide.charging'
 
@@ -84,6 +85,11 @@ const GuideChargingRoute = GuideChargingRouteImport.update({
   path: '/charging',
   getParentRoute: () => GuideRoute,
 } as any)
+const FullGuideSafetyRoute = FullGuideSafetyRouteImport.update({
+  id: '/safety',
+  path: '/safety',
+  getParentRoute: () => FullGuideRoute,
+} as any)
 const FullGuideQuickStartRoute = FullGuideQuickStartRouteImport.update({
   id: '/quick-start',
   path: '/quick-start',
@@ -104,6 +110,7 @@ export interface FileRoutesByFullPath {
   '/troubleshooting': typeof TroubleshootingRoute
   '/full-guide/charging': typeof FullGuideChargingRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
+  '/full-guide/safety': typeof FullGuideSafetyRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
   '/guide/maintenance': typeof GuideMaintenanceRoute
@@ -120,6 +127,7 @@ export interface FileRoutesByTo {
   '/troubleshooting': typeof TroubleshootingRoute
   '/full-guide/charging': typeof FullGuideChargingRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
+  '/full-guide/safety': typeof FullGuideSafetyRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
   '/guide/maintenance': typeof GuideMaintenanceRoute
@@ -137,6 +145,7 @@ export interface FileRoutesById {
   '/troubleshooting': typeof TroubleshootingRoute
   '/full-guide/charging': typeof FullGuideChargingRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
+  '/full-guide/safety': typeof FullGuideSafetyRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
   '/guide/maintenance': typeof GuideMaintenanceRoute
@@ -155,6 +164,7 @@ export interface FileRouteTypes {
     | '/troubleshooting'
     | '/full-guide/charging'
     | '/full-guide/quick-start'
+    | '/full-guide/safety'
     | '/guide/charging'
     | '/guide/drive-modes'
     | '/guide/maintenance'
@@ -171,6 +181,7 @@ export interface FileRouteTypes {
     | '/troubleshooting'
     | '/full-guide/charging'
     | '/full-guide/quick-start'
+    | '/full-guide/safety'
     | '/guide/charging'
     | '/guide/drive-modes'
     | '/guide/maintenance'
@@ -187,6 +198,7 @@ export interface FileRouteTypes {
     | '/troubleshooting'
     | '/full-guide/charging'
     | '/full-guide/quick-start'
+    | '/full-guide/safety'
     | '/guide/charging'
     | '/guide/drive-modes'
     | '/guide/maintenance'
@@ -290,6 +302,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuideChargingRouteImport
       parentRoute: typeof GuideRoute
     }
+    '/full-guide/safety': {
+      id: '/full-guide/safety'
+      path: '/safety'
+      fullPath: '/full-guide/safety'
+      preLoaderRoute: typeof FullGuideSafetyRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
     '/full-guide/quick-start': {
       id: '/full-guide/quick-start'
       path: '/quick-start'
@@ -310,11 +329,13 @@ declare module '@tanstack/react-router' {
 interface FullGuideRouteChildren {
   FullGuideChargingRoute: typeof FullGuideChargingRoute
   FullGuideQuickStartRoute: typeof FullGuideQuickStartRoute
+  FullGuideSafetyRoute: typeof FullGuideSafetyRoute
 }
 
 const FullGuideRouteChildren: FullGuideRouteChildren = {
   FullGuideChargingRoute: FullGuideChargingRoute,
   FullGuideQuickStartRoute: FullGuideQuickStartRoute,
+  FullGuideSafetyRoute: FullGuideSafetyRoute,
 }
 
 const FullGuideRouteWithChildren = FullGuideRoute._addFileChildren(
