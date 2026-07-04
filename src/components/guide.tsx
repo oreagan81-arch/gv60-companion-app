@@ -1,0 +1,110 @@
+import { type ReactNode } from "react";
+
+export function SectionHeader({ eyebrow, title, description }: { eyebrow?: string; title: string; description?: string }) {
+  return (
+    <div className="space-y-2">
+      {eyebrow && <p className="text-[11px] uppercase tracking-[0.2em] text-primary">{eyebrow}</p>}
+      <h1 className="text-3xl sm:text-4xl font-display font-semibold leading-tight">{title}</h1>
+      {description && <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>}
+      <div className="copper-rule mt-4" />
+    </div>
+  );
+}
+
+export function ImagePlaceholder({ caption }: { caption: string }) {
+  return (
+    <figure className="my-4 rounded-xl border border-dashed border-border/70 bg-muted/40 p-4 text-center">
+      <div className="flex items-center justify-center h-32 rounded-lg bg-background/50 text-3xl text-primary/60">◧</div>
+      <figcaption className="mt-2 text-[11px] italic text-muted-foreground">Image: {caption}</figcaption>
+    </figure>
+  );
+}
+
+export function FeatureCard({
+  title, whatItDoes, recommendation, bestFor, changeWhen, ownerNote, troubleshoot, image,
+}: {
+  title: string;
+  whatItDoes: string;
+  recommendation: string;
+  bestFor: string[];
+  changeWhen: string[];
+  ownerNote: string;
+  troubleshoot?: string;
+  image?: string;
+}) {
+  return (
+    <article className="card-glass p-5 space-y-4">
+      <header>
+        <h3 className="text-xl font-display font-semibold">{title}</h3>
+        <div className="copper-rule mt-2 w-16 !bg-primary" style={{ background: "var(--primary)" }} />
+      </header>
+
+      <Row label="What it does" value={whatItDoes} />
+      <Row label="Recommended setting" value={recommendation} highlight />
+
+      <div>
+        <p className="text-[11px] uppercase tracking-[0.15em] text-primary mb-1">Best for</p>
+        <ul className="text-sm space-y-0.5 text-muted-foreground">
+          {bestFor.map((b) => <li key={b}>• {b}</li>)}
+        </ul>
+      </div>
+
+      <div>
+        <p className="text-[11px] uppercase tracking-[0.15em] text-primary mb-1">Change it when</p>
+        <ul className="text-sm space-y-0.5 text-muted-foreground">
+          {changeWhen.map((c) => <li key={c}>• {c}</li>)}
+        </ul>
+      </div>
+
+      <blockquote className="border-l-2 border-primary pl-3 py-1 text-sm italic text-foreground/90">
+        <span className="not-italic text-[10px] uppercase tracking-[0.15em] text-primary block mb-1">Owner suggestion</span>
+        {ownerNote}
+      </blockquote>
+
+      {troubleshoot && (
+        <details className="text-sm rounded-md bg-muted/40 border border-border/50">
+          <summary className="cursor-pointer px-3 py-2 text-primary font-medium">Related troubleshooting</summary>
+          <p className="px-3 pb-3 pt-1 text-muted-foreground">{troubleshoot}</p>
+        </details>
+      )}
+
+      {image && <ImagePlaceholder caption={image} />}
+    </article>
+  );
+}
+
+function Row({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
+  return (
+    <div>
+      <p className="text-[11px] uppercase tracking-[0.15em] text-primary mb-1">{label}</p>
+      <p className={highlight ? "text-base font-medium text-foreground" : "text-sm text-muted-foreground leading-relaxed"}>{value}</p>
+    </div>
+  );
+}
+
+export function Chip({ children, tone = "default" }: { children: ReactNode; tone?: "default" | "primary" | "warning" | "success" }) {
+  const tones = {
+    default: "bg-muted text-muted-foreground",
+    primary: "bg-primary/15 text-primary",
+    warning: "bg-warning/15 text-warning",
+    success: "bg-success/15 text-success",
+  };
+  return <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-medium ${tones[tone]}`}>{children}</span>;
+}
+
+export function SettingTable({ rows }: { rows: [string, string][] }) {
+  return (
+    <div className="rounded-lg border border-border overflow-hidden">
+      <table className="w-full text-sm">
+        <tbody>
+          {rows.map(([k, v], i) => (
+            <tr key={k} className={i % 2 ? "bg-muted/30" : ""}>
+              <td className="px-3 py-2 text-muted-foreground w-1/2 border-r border-border/50">{k}</td>
+              <td className="px-3 py-2 font-medium">{v}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
