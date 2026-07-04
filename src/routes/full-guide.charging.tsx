@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { SectionHeader, Chip } from "@/components/guide";
+import { Chip } from "@/components/guide";
+import { Chapter as ChargingChapter } from "./guide.charging";
 
 export const Route = createFileRoute("/full-guide/charging")({
   head: () => ({ meta: [
@@ -8,9 +9,6 @@ export const Route = createFileRoute("/full-guide/charging")({
   ]}),
   component: Page,
 });
-
-// Reuse the existing detailed content
-import { Chapter as ChargingChapter } from "./guide.charging";
 
 function Page() {
   return (
@@ -23,6 +21,3 @@ function Page() {
     </div>
   );
 }
-
-// silence unused warning
-void SectionHeader;

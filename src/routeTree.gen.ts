@@ -22,6 +22,7 @@ import { Route as GuideMaintenanceRouteImport } from './routes/guide.maintenance
 import { Route as GuideDriveModesRouteImport } from './routes/guide.drive-modes'
 import { Route as GuideChargingRouteImport } from './routes/guide.charging'
 import { Route as FullGuideQuickStartRouteImport } from './routes/full-guide.quick-start'
+import { Route as FullGuideChargingRouteImport } from './routes/full-guide.charging'
 
 const TroubleshootingRoute = TroubleshootingRouteImport.update({
   id: '/troubleshooting',
@@ -88,6 +89,11 @@ const FullGuideQuickStartRoute = FullGuideQuickStartRouteImport.update({
   path: '/quick-start',
   getParentRoute: () => FullGuideRoute,
 } as any)
+const FullGuideChargingRoute = FullGuideChargingRouteImport.update({
+  id: '/charging',
+  path: '/charging',
+  getParentRoute: () => FullGuideRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/troubleshooting': typeof TroubleshootingRoute
+  '/full-guide/charging': typeof FullGuideChargingRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
@@ -111,6 +118,7 @@ export interface FileRoutesByTo {
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/troubleshooting': typeof TroubleshootingRoute
+  '/full-guide/charging': typeof FullGuideChargingRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
@@ -127,6 +135,7 @@ export interface FileRoutesById {
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/troubleshooting': typeof TroubleshootingRoute
+  '/full-guide/charging': typeof FullGuideChargingRoute
   '/full-guide/quick-start': typeof FullGuideQuickStartRoute
   '/guide/charging': typeof GuideChargingRoute
   '/guide/drive-modes': typeof GuideDriveModesRoute
@@ -144,6 +153,7 @@ export interface FileRouteTypes {
     | '/owen'
     | '/quick-start'
     | '/troubleshooting'
+    | '/full-guide/charging'
     | '/full-guide/quick-start'
     | '/guide/charging'
     | '/guide/drive-modes'
@@ -159,6 +169,7 @@ export interface FileRouteTypes {
     | '/owen'
     | '/quick-start'
     | '/troubleshooting'
+    | '/full-guide/charging'
     | '/full-guide/quick-start'
     | '/guide/charging'
     | '/guide/drive-modes'
@@ -174,6 +185,7 @@ export interface FileRouteTypes {
     | '/owen'
     | '/quick-start'
     | '/troubleshooting'
+    | '/full-guide/charging'
     | '/full-guide/quick-start'
     | '/guide/charging'
     | '/guide/drive-modes'
@@ -285,14 +297,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FullGuideQuickStartRouteImport
       parentRoute: typeof FullGuideRoute
     }
+    '/full-guide/charging': {
+      id: '/full-guide/charging'
+      path: '/charging'
+      fullPath: '/full-guide/charging'
+      preLoaderRoute: typeof FullGuideChargingRouteImport
+      parentRoute: typeof FullGuideRoute
+    }
   }
 }
 
 interface FullGuideRouteChildren {
+  FullGuideChargingRoute: typeof FullGuideChargingRoute
   FullGuideQuickStartRoute: typeof FullGuideQuickStartRoute
 }
 
 const FullGuideRouteChildren: FullGuideRouteChildren = {
+  FullGuideChargingRoute: FullGuideChargingRoute,
   FullGuideQuickStartRoute: FullGuideQuickStartRoute,
 }
 
