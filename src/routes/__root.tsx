@@ -92,16 +92,20 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function TopNav() {
+  const linkBase = "rounded-full px-3 py-1.5 text-muted-foreground hover:text-foreground hover:bg-muted transition";
+  const linkActive = "rounded-full px-3 py-1.5 bg-primary/15 text-primary";
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md">
       <div className="container-app flex h-14 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <span className="text-lg font-display font-semibold tracking-tight">GV60 <span className="text-primary">Companion</span></span>
         </Link>
-        <nav className="flex items-center gap-1 text-xs">
-          <Link to="/quick-start" className="rounded-full px-3 py-1.5 text-muted-foreground hover:text-foreground hover:bg-muted transition" activeProps={{ className: "rounded-full px-3 py-1.5 bg-primary/15 text-primary" }}>Quick Start</Link>
-          <Link to="/owen" className="rounded-full px-3 py-1.5 text-muted-foreground hover:text-foreground hover:bg-muted transition" activeProps={{ className: "rounded-full px-3 py-1.5 bg-primary/15 text-primary" }}>For Owen</Link>
-          <Link to="/guide" className="rounded-full px-3 py-1.5 text-muted-foreground hover:text-foreground hover:bg-muted transition" activeProps={{ className: "rounded-full px-3 py-1.5 bg-primary/15 text-primary" }}>Guide</Link>
+        <nav className="hidden md:flex items-center gap-1 text-xs">
+          <Link to="/quick-start" className={linkBase} activeProps={{ className: linkActive }}>Quick Start</Link>
+          <Link to="/full-guide" className={linkBase} activeProps={{ className: linkActive }}>Full Guide</Link>
+          <Link to="/settings" className={linkBase} activeProps={{ className: linkActive }}>Settings</Link>
+          <Link to="/troubleshooting" className={linkBase} activeProps={{ className: linkActive }}>Troubleshoot</Link>
+          <Link to="/search" className={linkBase} activeProps={{ className: linkActive }}>Search</Link>
         </nav>
       </div>
     </header>
@@ -109,25 +113,38 @@ function TopNav() {
 }
 
 function BottomTabs() {
-  const tabClass = "flex flex-col items-center gap-0.5 py-2 px-3 text-[10px] text-muted-foreground";
-  const activeClass = "flex flex-col items-center gap-0.5 py-2 px-3 text-[10px] text-primary";
+  const tabClass = "flex flex-col items-center gap-0.5 py-2 px-2 text-[10px] text-muted-foreground";
+  const activeClass = "flex flex-col items-center gap-0.5 py-2 px-2 text-[10px] text-primary";
   return (
     <nav className="sticky bottom-0 z-40 border-t border-border/60 bg-background/95 backdrop-blur-md pb-[env(safe-area-inset-bottom)] md:hidden">
-      <div className="container-app grid grid-cols-4">
+      <div className="container-app grid grid-cols-5">
         <Link to="/" className={tabClass} activeProps={{ className: activeClass }} activeOptions={{ exact: true }}>
           <span aria-hidden>🏠</span><span>Home</span>
         </Link>
         <Link to="/quick-start" className={tabClass} activeProps={{ className: activeClass }}>
           <span aria-hidden>⚡</span><span>Quick Start</span>
         </Link>
-        <Link to="/owen" className={tabClass} activeProps={{ className: activeClass }}>
-          <span aria-hidden>◆</span><span>For Owen</span>
+        <Link to="/settings" className={tabClass} activeProps={{ className: activeClass }}>
+          <span aria-hidden>◆</span><span>Settings</span>
         </Link>
-        <Link to="/guide" className={tabClass} activeProps={{ className: activeClass }}>
-          <span aria-hidden>📖</span><span>Guide</span>
+        <Link to="/troubleshooting" className={tabClass} activeProps={{ className: activeClass }}>
+          <span aria-hidden>🛠</span><span>Troubleshoot</span>
+        </Link>
+        <Link to="/search" className={tabClass} activeProps={{ className: activeClass }}>
+          <span aria-hidden>🔍</span><span>Search</span>
         </Link>
       </div>
     </nav>
+  );
+}
+
+function GlobalDisclaimer() {
+  return (
+    <div className="container-app pb-8 pt-4">
+      <div className="rounded-lg border border-border/60 bg-card/40 p-3 text-[11px] leading-relaxed text-muted-foreground">
+        Feature availability, menu names, and behavior may vary by software version, region, and equipment. Confirm in your exact vehicle and official Genesis materials.
+      </div>
+    </div>
   );
 }
 
@@ -138,6 +155,7 @@ function RootComponent() {
       <div className="min-h-screen flex flex-col">
         <TopNav />
         <main className="flex-1"><Outlet /></main>
+        <GlobalDisclaimer />
         <BottomTabs />
       </div>
     </QueryClientProvider>
