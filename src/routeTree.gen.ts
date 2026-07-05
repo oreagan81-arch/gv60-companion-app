@@ -14,6 +14,7 @@ import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as QuickStartRouteImport } from './routes/quick-start'
 import { Route as OwenRouteImport } from './routes/owen'
+import { Route as InCarRouteImport } from './routes/in-car'
 import { Route as ImagesRouteImport } from './routes/images'
 import { Route as GuideRouteImport } from './routes/guide'
 import { Route as FullGuideRouteImport } from './routes/full-guide'
@@ -57,6 +58,11 @@ const QuickStartRoute = QuickStartRouteImport.update({
 const OwenRoute = OwenRouteImport.update({
   id: '/owen',
   path: '/owen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InCarRoute = InCarRouteImport.update({
+  id: '/in-car',
+  path: '/in-car',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ImagesRoute = ImagesRouteImport.update({
@@ -161,6 +167,7 @@ export interface FileRoutesByFullPath {
   '/full-guide': typeof FullGuideRouteWithChildren
   '/guide': typeof GuideRouteWithChildren
   '/images': typeof ImagesRoute
+  '/in-car': typeof InCarRoute
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/search': typeof SearchRoute
@@ -187,6 +194,7 @@ export interface FileRoutesByTo {
   '/full-guide': typeof FullGuideRouteWithChildren
   '/guide': typeof GuideRouteWithChildren
   '/images': typeof ImagesRoute
+  '/in-car': typeof InCarRoute
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/search': typeof SearchRoute
@@ -214,6 +222,7 @@ export interface FileRoutesById {
   '/full-guide': typeof FullGuideRouteWithChildren
   '/guide': typeof GuideRouteWithChildren
   '/images': typeof ImagesRoute
+  '/in-car': typeof InCarRoute
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/search': typeof SearchRoute
@@ -242,6 +251,7 @@ export interface FileRouteTypes {
     | '/full-guide'
     | '/guide'
     | '/images'
+    | '/in-car'
     | '/owen'
     | '/quick-start'
     | '/search'
@@ -268,6 +278,7 @@ export interface FileRouteTypes {
     | '/full-guide'
     | '/guide'
     | '/images'
+    | '/in-car'
     | '/owen'
     | '/quick-start'
     | '/search'
@@ -294,6 +305,7 @@ export interface FileRouteTypes {
     | '/full-guide'
     | '/guide'
     | '/images'
+    | '/in-car'
     | '/owen'
     | '/quick-start'
     | '/search'
@@ -321,6 +333,7 @@ export interface RootRouteChildren {
   FullGuideRoute: typeof FullGuideRouteWithChildren
   GuideRoute: typeof GuideRouteWithChildren
   ImagesRoute: typeof ImagesRoute
+  InCarRoute: typeof InCarRoute
   OwenRoute: typeof OwenRoute
   QuickStartRoute: typeof QuickStartRoute
   SearchRoute: typeof SearchRoute
@@ -363,6 +376,13 @@ declare module '@tanstack/react-router' {
       path: '/owen'
       fullPath: '/owen'
       preLoaderRoute: typeof OwenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/in-car': {
+      id: '/in-car'
+      path: '/in-car'
+      fullPath: '/in-car'
+      preLoaderRoute: typeof InCarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/images': {
@@ -553,6 +573,7 @@ const rootRouteChildren: RootRouteChildren = {
   FullGuideRoute: FullGuideRouteWithChildren,
   GuideRoute: GuideRouteWithChildren,
   ImagesRoute: ImagesRoute,
+  InCarRoute: InCarRoute,
   OwenRoute: OwenRoute,
   QuickStartRoute: QuickStartRoute,
   SearchRoute: SearchRoute,
