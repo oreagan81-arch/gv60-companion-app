@@ -24,6 +24,9 @@ const categoryOrder: TroubleshootingCategory[] = [
   "Phone & CarPlay",
   "Charging",
   "Range",
+  "Profiles & Settings",
+  "Climate",
+  "Maintenance",
 ];
 
 function Troubleshooting() {
