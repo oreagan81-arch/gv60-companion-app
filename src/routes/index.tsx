@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { InfographicCard } from "@/components/InfographicCard";
+import { gv60Infographics } from "@/data/infographics";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -33,6 +35,14 @@ function Home() {
       </section>
 
       <section className="grid gap-4">
+        <InfographicCard
+          title="Visual Controls Guide"
+          description="A quick visual reference for the GV60 controls Owen is most likely to need while learning the car."
+          imageSrc={gv60Infographics.visualControls.imageSrc}
+          alt={gv60Infographics.visualControls.alt}
+          to="/images"
+          linkLabel="Open image guide"
+        />
         <ModeCard
           to="/in-car"
           eyebrow="Right now"

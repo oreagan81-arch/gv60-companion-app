@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { InfographicCard } from "@/components/InfographicCard";
 import { SectionHeader, Chip } from "@/components/guide";
+import { gv60Infographics } from "@/data/infographics";
 
 export const Route = createFileRoute("/in-car")({
   head: () => ({
@@ -127,6 +129,15 @@ function InCarPage() {
         <Chip tone="primary">Mobile-first</Chip>
         <Chip>Large tap targets</Chip>
       </div>
+
+      <InfographicCard
+        title={gv60Infographics.keyControls.title}
+        description="Keep this visual nearby for the controls Owen is most likely to need from the driver's seat."
+        imageSrc={gv60Infographics.keyControls.imageSrc}
+        alt={gv60Infographics.keyControls.alt}
+        to="/images"
+        linkLabel="Open visuals"
+      />
 
       <div className="grid grid-cols-2 gap-3">
         {actions.map((a) => (

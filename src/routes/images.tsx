@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { InfographicCard } from "@/components/InfographicCard";
 import { SectionHeader, Chip, ImagePlaceholder } from "@/components/guide";
+import { gv60Infographics } from "@/data/infographics";
 import { imageSources, imageSourcePreferences } from "@/data/imageSources";
 
 export const Route = createFileRoute("/images")({
@@ -56,6 +58,33 @@ function ImagesPage() {
             ))}
           </ol>
         </div>
+      </section>
+
+      <section className="grid gap-4">
+        <InfographicCard
+          title={gv60Infographics.visualControls.title}
+          description={gv60Infographics.visualControls.description}
+          imageSrc={gv60Infographics.visualControls.imageSrc}
+          alt={gv60Infographics.visualControls.alt}
+          to="/full-guide"
+          linkLabel="Open full guide"
+        />
+        <InfographicCard
+          title={gv60Infographics.dashboardControls.title}
+          description={gv60Infographics.dashboardControls.description}
+          imageSrc={gv60Infographics.dashboardControls.imageSrc}
+          alt={gv60Infographics.dashboardControls.alt}
+          to="/full-guide/cabin-tour"
+          linkLabel="Open cabin tour"
+        />
+        <InfographicCard
+          title={gv60Infographics.keyControls.title}
+          description={gv60Infographics.keyControls.description}
+          imageSrc={gv60Infographics.keyControls.imageSrc}
+          alt={gv60Infographics.keyControls.alt}
+          to="/in-car"
+          linkLabel="Open In the Car Now"
+        />
       </section>
 
       <ul className="grid gap-4 sm:grid-cols-2">

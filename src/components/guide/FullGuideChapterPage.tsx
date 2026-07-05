@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { BookmarkButton } from "@/components/BookmarkButton";
+import { InfographicCard } from "@/components/InfographicCard";
 import { Chip, ImagePlaceholder, SectionHeader } from "@/components/guide";
 import { getChapter, type ChapterSection } from "@/data/chapters";
+import { gv60Infographics } from "@/data/infographics";
 
 export function FullGuideChapterPage({ chapterId }: { chapterId: string }) {
   const chapter = getChapter(chapterId);
@@ -25,6 +27,8 @@ export function FullGuideChapterPage({ chapterId }: { chapterId: string }) {
         <Chip tone={chapter.status === "Expanded" ? "primary" : "default"}>{chapter.status}</Chip>
         {chapter.subtitle && <Chip>{chapter.subtitle}</Chip>}
       </div>
+
+      <ChapterInfographics chapterId={chapter.id} />
 
       {chapter.sections.length > 0 && (
         <nav aria-label="Sections" className="card-glass p-4">
@@ -60,6 +64,45 @@ export function FullGuideChapterPage({ chapterId }: { chapterId: string }) {
         Confirm in your exact vehicle and official Genesis materials.
       </p>
     </div>
+  );
+}
+
+function ChapterInfographics({ chapterId }: { chapterId: string }) {
+  if (!["cabin-tour", "driving", "technology"].includes(chapterId)) return null;
+
+  const cards =
+    chapterId === "driving"
+      ? [gv60Infographics.keyControls]
+      : chapterId === "technology"
+        ? [gv60Infographics.dashboardControls]
+        : [gv60Infographics.dashboardControls, gv60Infographics.keyControls];
+
+  return (
+    <section className="grid gap-4">
+      {cards.map((card) => (
+        <InfographicCard
+          key={card.id}
+          title={card.title}
+          description={card.description}
+          imageSrc={card.imageSrc}
+          alt={card.alt}
+          to={
+            chapterId === "driving"
+              ? "/full-guide/driving"
+              : chapterId === "technology"
+                ? "/full-guide/technology"
+                : "/full-guide/cabin-tour"
+          }
+          linkLabel={
+            chapterId === "driving"
+              ? "Open driving guide"
+              : chapterId === "technology"
+                ? "Open technology guide"
+                : "Open cabin guide"
+          }
+        />
+      ))}
+    </section>
   );
 }
 

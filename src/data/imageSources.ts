@@ -10,6 +10,7 @@ export type ImageUsageStatus =
 export type PreferredSourceType =
   | "official-genesis"
   | "manufacturer-press"
+  | "owner-generated"
   | "owner-photo"
   | "manual-screenshot"
   | "public-domain-or-licensed"
@@ -69,6 +70,75 @@ const appleDrivingFocus =
   "https://support.apple.com/guide/iphone/use-driving-focus-iph5c3f5b77b/ios";
 
 export const imageSources: ImageSourceItem[] = [
+  {
+    id: "gv60-key-controls-infographic",
+    title: "GV60 key controls and features infographic",
+    description: "Generated multi-panel visual guide for the GV60's major controls and features.",
+    chapterId: "global",
+    category: "Interior / cabin",
+    desiredImage:
+      "Large local infographic showing exterior views, steering wheel controls, center console, dash layout, seat adjustments, climate, charging port, charging cable, USB/power, wireless charger, storage, frunk, and rear power outlet.",
+    preferredSourceType: "owner-generated",
+    localAssetPath: "/images/gv60/infographics/gv60-key-controls-guide.png",
+    imagePreviewUrl: "/images/gv60/infographics/gv60-key-controls-guide.png",
+    safeToEmbed: true,
+    sourceName: "Local generated infographic",
+    licenseNotes:
+      "Owner-generated local asset created for this app. Safe to embed from the public folder.",
+    usageStatus: "approved-local-asset",
+    altText:
+      "Multi-panel GV60 infographic showing exterior views, steering wheel controls, center console controls, dashboard layout, seat adjustments, climate controls, charging port, storage, and cargo areas",
+    colorMatch: "not-applicable",
+    priority: "High",
+    replacementNeeded: false,
+    notes: "Displayed on Home, Images, Cabin Tour, Driving, Technology, and In the Car Now.",
+  },
+  {
+    id: "gv60-dashboard-controls-infographic",
+    title: "GV60 visual controls infographic",
+    description: "Generated wide dark visual guide for major GV60 controls and features.",
+    chapterId: "global",
+    category: "Interior / cabin",
+    desiredImage:
+      "Wide local infographic mapping exterior views, steering wheel controls, center console controls, dash and infotainment layout, seat controls, climate controls, charging, storage, frunk, and rear power.",
+    preferredSourceType: "owner-generated",
+    localAssetPath: "/images/gv60/infographics/gv60-dashboard-controls-guide.png",
+    imagePreviewUrl: "/images/gv60/infographics/gv60-dashboard-controls-guide.png",
+    safeToEmbed: true,
+    sourceName: "Local generated infographic",
+    licenseNotes:
+      "Owner-generated local asset created for this app. Safe to embed from the public folder.",
+    usageStatus: "approved-local-asset",
+    altText:
+      "Wide dark GV60 visual controls guide with labeled panels for exterior, steering wheel, center console, dashboard, seats, climate, charging, storage, frunk, and power outlet",
+    colorMatch: "not-applicable",
+    priority: "High",
+    replacementNeeded: false,
+    notes: "Displayed on Home, Images, Cabin Tour, Driving, Technology, and In the Car Now.",
+  },
+  {
+    id: "gv60-visual-controls-app-preview",
+    title: "GV60 visual controls app-preview infographic",
+    description: "Generated app-style visual controls guide preview.",
+    chapterId: "global",
+    category: "Interior / cabin",
+    desiredImage:
+      "Tall local app-style visual controls guide showing the key controls and features infographic inside a GV60 Companion layout.",
+    preferredSourceType: "owner-generated",
+    localAssetPath: "/images/gv60/infographics/gv60-visual-controls-guide.png",
+    imagePreviewUrl: "/images/gv60/infographics/gv60-visual-controls-guide.png",
+    safeToEmbed: true,
+    sourceName: "Local generated infographic",
+    licenseNotes:
+      "Owner-generated local asset provided for this app. Safe to embed from the public folder.",
+    usageStatus: "approved-local-asset",
+    altText:
+      "App-style GV60 visual controls guide page showing the key controls and features infographic with navigation chrome",
+    colorMatch: "not-applicable",
+    priority: "High",
+    replacementNeeded: false,
+    notes: "Displayed prominently on Home and Images as the Visual Controls Guide entry point.",
+  },
   {
     id: "gv60-hero-atacama-copper",
     title: "2023 Genesis GV60 Performance exterior hero",
