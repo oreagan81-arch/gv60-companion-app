@@ -38,7 +38,7 @@ function Page() {
           <li>Wireless CarPlay setup and reliability</li>
           <li>Apple Maps vs Google Maps vs Waze — when to use each</li>
           <li>AirPods handoff etiquette in the car</li>
-          <li>Apple Watch as a spare key idea</li>
+          <li>Apple Watch: navigation prompts, charging &amp; app notifications — a subtle support device, not a primary driving interface</li>
           <li>Siri from the wheel</li>
         </ul>
       </div>
