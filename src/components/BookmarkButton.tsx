@@ -1,3 +1,4 @@
+import type { MouseEvent } from "react";
 import { useBookmarks, type Bookmark, type BookmarkType } from "@/lib/bookmarks";
 
 type Props = {
