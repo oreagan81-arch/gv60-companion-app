@@ -122,7 +122,8 @@ function TopNav() {
   const linkActive = "rounded-full px-3 py-1.5 bg-primary/15 text-primary";
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md">
-      <div className="container-app flex h-14 items-center justify-between">
+      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-5">
+
         <Link to="/" className="flex items-center gap-2">
           <span className="text-lg font-display font-semibold tracking-tight">
             GV60 <span className="text-primary">Companion</span>
