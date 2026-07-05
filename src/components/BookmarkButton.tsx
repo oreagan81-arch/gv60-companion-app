@@ -18,7 +18,7 @@ export function BookmarkButton({ id, type, title, category, to, hash, variant = 
   if (!available) return null;
   const on = isBookmarked(id);
 
-  const handle = (e: React.MouseEvent) => {
+  const handle = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     const b: Omit<Bookmark, "savedAt"> = { id, type, title, category, to, hash };
