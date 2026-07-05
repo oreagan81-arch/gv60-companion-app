@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionHeader, Chip } from "@/components/guide";
 import { BookmarkButton } from "@/components/BookmarkButton";
-import { OwenPage } from "./owen";
+import { OwenSettingsContent } from "./owen";
 import { settingsCards } from "@/data/settingsCards";
 
 export const Route = createFileRoute("/settings")({
