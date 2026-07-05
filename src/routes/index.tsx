@@ -20,17 +20,17 @@ function Home() {
         </p>
         <div className="copper-rule" />
         <p className="text-xs text-muted-foreground">
-          2023 Genesis GV60 Performance · Personalized settings for Owen
+          2023 Genesis GV60 Performance · Exterior target:{" "}
+          <span className="text-primary">Atacama Copper / Atacama Copper Matte</span>
         </p>
-        <p className="text-[11px] text-muted-foreground">
-          {liveAppUrl ? (
+        {liveAppUrl && (
+          <p className="text-[11px] text-muted-foreground">
             <a href={liveAppUrl} className="text-primary underline underline-offset-2">
               Live app
             </a>
-          ) : (
-            "Live app link has not been configured yet."
-          )}
-        </p>
+          </p>
+        )}
+
       </section>
 
       <section className="grid gap-4">
