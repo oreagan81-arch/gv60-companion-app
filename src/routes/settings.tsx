@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionHeader, Chip } from "@/components/guide";
+import { BookmarkButton } from "@/components/BookmarkButton";
 import { OwenPage } from "./owen";
 import { settingsCards } from "@/data/settingsCards";
 
