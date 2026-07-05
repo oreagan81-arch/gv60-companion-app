@@ -1,5 +1,12 @@
 export type TroubleshootingCategory =
-  "Driver Assistance" | "Cameras & Sensors" | "Phone & CarPlay" | "Charging" | "Range";
+  | "Driver Assistance"
+  | "Cameras & Sensors"
+  | "Phone & CarPlay"
+  | "Charging"
+  | "Range"
+  | "Profiles & Settings"
+  | "Climate"
+  | "Maintenance";
 
 export type TroubleshootingCard = {
   id: string;
@@ -11,6 +18,43 @@ export type TroubleshootingCard = {
 };
 
 export const troubleshootingCards: TroubleshootingCard[] = [
+  {
+    id: "smart-cruise-no-engage",
+    problem: "Smart Cruise will not engage",
+    category: "Driver Assistance",
+    firstCheck: "Vehicle speed, sensor visibility, seatbelt/brake state, and cluster messages.",
+    steps: [
+      "Confirm the road and speed are appropriate for Smart Cruise.",
+      "Check for blocked front radar or windshield camera.",
+      "Verify the driver's seatbelt is buckled and the brake is not being held.",
+      "Read the exact cluster message before changing settings.",
+    ],
+    relatedSections: [{ to: "/full-guide/driving", label: "Smart Cruise basics" }],
+  },
+  {
+    id: "lane-assist-unavailable",
+    problem: "Lane assistance unavailable",
+    category: "Driver Assistance",
+    firstCheck: "Lane markings and windshield camera cleanliness.",
+    steps: [
+      "Look for faded paint, construction zones, glare, snow, or heavy rain.",
+      "Clean the windshield area in front of the camera.",
+      "Watch the cluster icons to see when the car recognizes lane markings again.",
+    ],
+    relatedSections: [{ to: "/full-guide/safety", label: "Safety chapter" }],
+  },
+  {
+    id: "sensor-camera-blocked",
+    problem: "Sensor/camera blocked message",
+    category: "Driver Assistance",
+    firstCheck: "Front radar, windshield camera, mirror sensors, and rear camera surfaces.",
+    steps: [
+      "Clean the sensor and camera zones with a microfiber cloth.",
+      "Check for snow, ice, mud, water film, or road salt.",
+      "Drive a short distance after cleaning so systems can re-check availability.",
+    ],
+    relatedSections: [{ to: "/full-guide/maintenance", label: "Sensor cleaning" }],
+  },
   {
     id: "forward-warn",
     problem: "Forward warnings happen too often",
@@ -59,6 +103,18 @@ export const troubleshootingCards: TroubleshootingCard[] = [
     ],
   },
   {
+    id: "blind-spot-camera-unclear",
+    problem: "Blind-spot camera unclear",
+    category: "Cameras & Sensors",
+    firstCheck: "Side mirror camera lens cleanliness and weather film.",
+    steps: [
+      "Wipe the mirror camera area gently with microfiber.",
+      "Check for rain beads, road salt, wax, or fingerprints.",
+      "Confirm the blind-spot camera display is enabled in driver-assistance settings.",
+    ],
+    relatedSections: [{ to: "/full-guide/cabin-tour", label: "Blind-spot camera display" }],
+  },
+  {
     id: "park-sensors",
     problem: "Parking sensors beep too much",
     category: "Cameras & Sensors",
@@ -103,6 +159,19 @@ export const troubleshootingCards: TroubleshootingCard[] = [
     ],
   },
   {
+    id: "camera-unavailable",
+    problem: "Camera unavailable",
+    category: "Cameras & Sensors",
+    firstCheck: "Vehicle speed, camera button state, and whether any lens is blocked.",
+    steps: [
+      "Slow below the speed where parking cameras are available.",
+      "Press the camera button again and check the center screen message.",
+      "Clean the front, rear, and mirror camera lenses.",
+      "Restart the vehicle only after reading any warning message.",
+    ],
+    relatedSections: [{ to: "/full-guide/driving", label: "360 camera habits" }],
+  },
+  {
     id: "carplay-drop",
     problem: "CarPlay keeps dropping",
     category: "Phone & CarPlay",
@@ -114,6 +183,46 @@ export const troubleshootingCards: TroubleshootingCard[] = [
       "Only add secondary phones once the primary is solid.",
     ],
     relatedSections: [{ to: "/full-guide/apple", label: "Phone & CarPlay" }],
+  },
+  {
+    id: "carplay-no-appear",
+    problem: "CarPlay does not appear",
+    category: "Phone & CarPlay",
+    firstCheck:
+      "Device Connections, iPhone CarPlay permission, and whether the primary phone is connected.",
+    steps: [
+      "Open Device Connections and confirm the primary iPhone is selected.",
+      "On iPhone, check Settings -> General -> CarPlay and allow the GV60.",
+      "Test with the backup cable stored in the vehicle.",
+      "If needed, forget the car on both sides and do a clean pairing.",
+    ],
+    relatedSections: [{ to: "/full-guide/apple", label: "First CarPlay test" }],
+  },
+  {
+    id: "siri-no-response",
+    problem: "Siri does not respond",
+    category: "Phone & CarPlay",
+    firstCheck: "Voice button press length and CarPlay connection state.",
+    steps: [
+      "Long-press the steering wheel voice button for Siri.",
+      "Confirm CarPlay is connected and the iPhone is not locked out of Siri.",
+      "Check iPhone Siri settings and microphone permissions.",
+      "If vehicle voice answers instead, practice short press versus long press while parked.",
+    ],
+    relatedSections: [{ to: "/full-guide/apple", label: "Siri in the GV60" }],
+  },
+  {
+    id: "audio-no-carplay-screen",
+    problem: "Audio works but CarPlay screen does not",
+    category: "Phone & CarPlay",
+    firstCheck: "Phone projection state, not just Bluetooth audio.",
+    steps: [
+      "Open Device Connections and choose phone projection/CarPlay for the primary iPhone.",
+      "Disconnect any secondary phone that may have claimed the screen.",
+      "Test the backup cable.",
+      "Do a clean pairing if Bluetooth audio returns but CarPlay does not.",
+    ],
+    relatedSections: [{ to: "/full-guide/apple", label: "CarPlay troubleshooting" }],
   },
   {
     id: "range-est",
@@ -128,6 +237,45 @@ export const troubleshootingCards: TroubleshootingCard[] = [
     relatedSections: [{ to: "/full-guide/charging", label: "Charging & range" }],
   },
   {
+    id: "winter-range-drop",
+    problem: "Winter range drop",
+    category: "Range",
+    firstCheck: "Temperature, tire pressure, speed, and climate use.",
+    steps: [
+      "Use battery percentage as the primary planning number.",
+      "Precondition while plugged in before leaving.",
+      "Check cold tire pressure with a gauge.",
+      "Expect highway speed and cabin heat to lower the forecast.",
+    ],
+    relatedSections: [{ to: "/full-guide/charging", label: "Winter range" }],
+  },
+  {
+    id: "highway-range-low",
+    problem: "Highway range lower than expected",
+    category: "Range",
+    firstCheck: "Speed, wind, weather, tires, and elevation.",
+    steps: [
+      "Compare battery percentage used, not only the range estimate.",
+      "Reduce speed slightly and re-check the consumption trend.",
+      "Verify tire pressure cold.",
+      "Plan the next charging stop with margin instead of chasing the estimate.",
+    ],
+    relatedSections: [{ to: "/full-guide/driving", label: "Road-trip driving rhythm" }],
+  },
+  {
+    id: "charge-target-confusion",
+    problem: "Charge target confusion",
+    category: "Charging",
+    firstCheck: "Charging target and schedule settings in the EV screen or app.",
+    steps: [
+      "Open the EV or charging settings screen and verify the target percentage.",
+      "Check whether a schedule is delaying charging.",
+      "Raise the target before road trips, then return to the daily setting.",
+      "Confirm the app and vehicle show the same plan.",
+    ],
+    relatedSections: [{ to: "/full-guide/technology", label: "Charging settings screen" }],
+  },
+  {
     id: "slow-charge",
     problem: "Slower than expected charging",
     category: "Charging",
@@ -140,6 +288,32 @@ export const troubleshootingCards: TroubleshootingCard[] = [
     relatedSections: [{ to: "/full-guide/charging", label: "Charging & range" }],
   },
   {
+    id: "dc-fast-charge-problem",
+    problem: "DC fast charging problem",
+    category: "Charging",
+    firstCheck: "Station status, connector seating, and battery preconditioning.",
+    steps: [
+      "Reseat the connector until the station and car both confirm a session.",
+      "Try another stall before assuming the car is the issue.",
+      "Use native navigation to precondition for planned DC fast charging.",
+      "Check charging app/payment status and station fault messages.",
+    ],
+    relatedSections: [{ to: "/full-guide/charging", label: "DC fast charging" }],
+  },
+  {
+    id: "preconditioning-confusion",
+    problem: "Preconditioning confusion",
+    category: "Charging",
+    firstCheck: "Whether native navigation is routing to a DC fast charger.",
+    steps: [
+      "Use the built-in navigation for charger routing when preconditioning matters.",
+      "Confirm the charger is selected as a charging stop, not just a map point.",
+      "Give the car time to warm or cool the battery before arrival.",
+      "Expect behavior to vary by temperature and battery state.",
+    ],
+    relatedSections: [{ to: "/full-guide/technology", label: "Native navigation basics" }],
+  },
+  {
     id: "no-l2",
     problem: "Car won't take a home L2 charge",
     category: "Charging",
@@ -150,6 +324,19 @@ export const troubleshootingCards: TroubleshootingCard[] = [
       "Reseat the connector firmly.",
       "Try a scheduled charge later — sometimes the handshake needs a retry.",
     ],
+  },
+  {
+    id: "charging-no-start",
+    problem: "Charging does not start",
+    category: "Charging",
+    firstCheck: "Schedule, charge target, connector latch, EVSE power, and app status.",
+    steps: [
+      "Check whether the car is waiting for a scheduled charge window.",
+      "Verify the target is above the current battery percentage.",
+      "Reseat the connector and check station or EVSE lights.",
+      "Look for app notifications or vehicle messages explaining the pause.",
+    ],
+    relatedSections: [{ to: "/full-guide/charging", label: "Charging troubleshooting" }],
   },
   {
     id: "wrong-phone",
@@ -181,7 +368,7 @@ export const troubleshootingCards: TroubleshootingCard[] = [
   {
     id: "software-update",
     problem: "Software update won't install",
-    category: "Phone & CarPlay",
+    category: "Maintenance",
     firstCheck: "Wi-Fi connection + battery state + parked with ignition off.",
     steps: [
       "Confirm the car is on strong Wi-Fi.",
@@ -189,11 +376,12 @@ export const troubleshootingCards: TroubleshootingCard[] = [
       "Park, close doors, and leave the car alone during the update.",
       "If it stalls, try again overnight while plugged in.",
     ],
+    relatedSections: [{ to: "/full-guide/technology", label: "Software updates / OTA habits" }],
   },
   {
     id: "tire-pressure",
     problem: "Tire pressure warning is on",
-    category: "Cameras & Sensors",
+    category: "Maintenance",
     firstCheck: "Check all four tires cold with a real gauge.",
     steps: [
       "Inflate to the door-jamb sticker pressure (cold).",
@@ -202,5 +390,96 @@ export const troubleshootingCards: TroubleshootingCard[] = [
       "Reset TPMS after inflating and drive a few miles.",
     ],
     relatedSections: [{ to: "/full-guide/maintenance", label: "Maintenance" }],
+  },
+  {
+    id: "seat-memory-wrong",
+    problem: "Seat memory wrong",
+    category: "Profiles & Settings",
+    firstCheck: "Active driver profile and the physical memory button used.",
+    steps: [
+      "Load the correct driver profile first.",
+      "Adjust seat, steering wheel, and mirrors while parked.",
+      "Save the memory position only after the driving position feels correct.",
+      "Re-test after exiting and returning to the vehicle.",
+    ],
+    relatedSections: [{ to: "/full-guide/cabin-tour", label: "Seat memory" }],
+  },
+  {
+    id: "driver-profile-wrong",
+    problem: "Driver profile wrong",
+    category: "Profiles & Settings",
+    firstCheck: "Profile shown on the center screen or cluster.",
+    steps: [
+      "Switch to Owen's profile before changing settings.",
+      "Confirm seat memory and phone priority belong to that profile.",
+      "Create a separate profile for a regular second driver.",
+      "Avoid sharing one profile for multiple regular drivers.",
+    ],
+    relatedSections: [{ to: "/full-guide/technology", label: "Driver profiles" }],
+  },
+  {
+    id: "phone-priority-wrong",
+    problem: "Phone priority wrong",
+    category: "Profiles & Settings",
+    firstCheck: "Device Connections and the active driver profile.",
+    steps: [
+      "Load the correct profile.",
+      "Open Device Connections and disconnect the phone that should not be primary.",
+      "If the pattern repeats, remove all phones and pair the primary phone first.",
+      "Add secondary phones only after two clean drives.",
+    ],
+    relatedSections: [{ to: "/full-guide/apple", label: "Multiple iPhones" }],
+  },
+  {
+    id: "valet-guest-confusion",
+    problem: "Valet/guest setup confusion",
+    category: "Profiles & Settings",
+    firstCheck: "Whether valet or guest mode is currently active.",
+    steps: [
+      "Check the profile, guest, or valet status before driving away.",
+      "Disable valet mode when the car is back with Owen.",
+      "Use guest setup for one-off drivers instead of changing Owen's profile.",
+      "Verify saved destinations and phone behavior after leaving valet mode.",
+    ],
+    relatedSections: [{ to: "/full-guide/technology", label: "Guest / valet setup" }],
+  },
+  {
+    id: "remote-climate-not-working",
+    problem: "Remote climate not working",
+    category: "Climate",
+    firstCheck: "Genesis app login, vehicle signal, battery state, and vehicle status.",
+    steps: [
+      "Confirm the Genesis app shows a fresh vehicle status timestamp.",
+      "Check that the vehicle has signal and enough battery.",
+      "Try again while the vehicle is plugged in.",
+      "If the app command fails repeatedly, check Bluelink/account status.",
+    ],
+    relatedSections: [{ to: "/full-guide/technology", label: "Remote climate" }],
+  },
+  {
+    id: "defrost-fogging",
+    problem: "Defrost / fogging issue",
+    category: "Climate",
+    firstCheck: "Defrost mode, fan speed, A/C state, and cabin recirculation.",
+    steps: [
+      "Use front defrost rather than manually guessing airflow.",
+      "Allow A/C to run because it removes moisture.",
+      "Turn off recirculation until glass clears.",
+      "Clean the inside windshield if fog returns quickly.",
+    ],
+    relatedSections: [{ to: "/full-guide/cabin-tour", label: "Defrost controls" }],
+  },
+  {
+    id: "dirty-sensors",
+    problem: "Dirty sensors",
+    category: "Maintenance",
+    firstCheck: "Front radar, windshield camera, mirror cameras, rear camera, and parking sensors.",
+    steps: [
+      "Use a clean microfiber cloth on camera lenses and glossy surfaces.",
+      "Remove snow, salt, bugs, and water film from sensor zones.",
+      "Re-check driver-assistance status after cleaning.",
+      "Do not use abrasive cloths or harsh cleaners.",
+    ],
+    relatedSections: [{ to: "/full-guide/maintenance", label: "Cleaning touch surfaces" }],
   },
 ];
