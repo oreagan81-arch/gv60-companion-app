@@ -200,6 +200,14 @@ export const settingsCards: SettingsCard[] = [
         related: { to: "/full-guide/apple", label: "Phone & CarPlay" },
       },
       {
+        feature: "Device Connections",
+        setting: "Keep only Owen's primary iPhone in the Device Connections list",
+        why: "Fewer devices = fewer wrong-phone-connects moments and CarPlay drops.",
+        changeWhen: "Adding a household phone? Do a clean pair test first.",
+        bestFor: "Reliable auto-connect every time the door opens.",
+        related: { to: "/full-guide/apple", label: "Apple Ecosystem" },
+      },
+      {
         feature: "Phone setup",
         setting: "Pair Owen's primary iPhone first",
         why: "Extra phones on top of a flaky connection just multiply problems.",
