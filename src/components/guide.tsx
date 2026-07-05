@@ -11,7 +11,51 @@ export function SectionHeader({ eyebrow, title, description }: { eyebrow?: strin
   );
 }
 
-export function ImagePlaceholder({ caption }: { caption: string }) {
+export type ImagePlaceholderData = {
+  title: string;
+  description: string;
+  suggestedCaption?: string;
+  altText?: string;
+  priority?: "High" | "Medium" | "Low";
+  chapter?: string;
+};
+
+export function ImagePlaceholder({ caption, image }: { caption?: string; image?: ImagePlaceholderData }) {
+  if (image) {
+    const priorityCls =
+      image.priority === "High" ? "bg-primary/15 text-primary" :
+      image.priority === "Medium" ? "bg-amber-500/15 text-amber-400" :
+      "bg-muted text-muted-foreground";
+    return (
+      <figure className="my-4 rounded-xl border border-dashed border-border/70 bg-muted/40 p-4">
+        <div className="flex items-center justify-between gap-2 mb-2">
+          <p className="text-sm font-display font-semibold">{image.title}</p>
+          {image.priority && (
+            <span className={`text-[10px] uppercase tracking-wider rounded-full px-2 py-0.5 ${priorityCls}`}>{image.priority}</span>
+          )}
+        </div>
+        <div className="flex items-center justify-center h-24 rounded-lg bg-background/50 text-2xl text-primary/60 mb-3">◧</div>
+        <dl className="space-y-1.5 text-xs">
+          <div>
+            <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">What to shoot</dt>
+            <dd className="text-muted-foreground">{image.description}</dd>
+          </div>
+          {image.suggestedCaption && (
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">Suggested caption</dt>
+              <dd className="text-muted-foreground italic">{image.suggestedCaption}</dd>
+            </div>
+          )}
+          {image.altText && (
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">Alt text</dt>
+              <dd className="text-muted-foreground">{image.altText}</dd>
+            </div>
+          )}
+        </dl>
+      </figure>
+    );
+  }
   return (
     <figure className="my-4 rounded-xl border border-dashed border-border/70 bg-muted/40 p-4 text-center">
       <div className="flex items-center justify-center h-32 rounded-lg bg-background/50 text-3xl text-primary/60">◧</div>
