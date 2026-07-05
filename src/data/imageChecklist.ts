@@ -143,7 +143,8 @@ export const imageChecklist: ImageChecklistItem[] = [
     title: "Sensor cleaning zones",
     description: "Front radar, side mirrors, rear cams.",
     suggestedCaption: "Where to clean weekly — front radar, mirrors, rear cameras.",
-    altText: "GV60 sensor cleaning zones highlighted at front radar, side mirrors, and rear cameras",
+    altText:
+      "GV60 sensor cleaning zones highlighted at front radar, side mirrors, and rear cameras",
     chapter: "maintenance",
     priority: "High",
   },
@@ -152,7 +153,8 @@ export const imageChecklist: ImageChecklistItem[] = [
     title: "Maintenance kit",
     description: "Owen's in-car essentials laid out.",
     suggestedCaption: "Owen's in-car kit.",
-    altText: "Owen's in-car maintenance kit: microfiber, towel, gloves, charge cards, tire gauge, backup cable",
+    altText:
+      "Owen's in-car maintenance kit: microfiber, towel, gloves, charge cards, tire gauge, backup cable",
     chapter: "maintenance",
     priority: "Medium",
   },

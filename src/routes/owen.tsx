@@ -6,9 +6,16 @@ export const Route = createFileRoute("/owen")({
   head: () => ({
     meta: [
       { title: "Recommended Settings for Owen Reagan — 2023 Genesis GV60 Performance" },
-      { name: "description", content: "Personalized recommended settings for Owen Reagan's 2023 Genesis GV60 Performance: drive modes, regen, weather setups, phone, charging, navigation, and more." },
+      {
+        name: "description",
+        content:
+          "Personalized recommended settings for Owen Reagan's 2023 Genesis GV60 Performance: drive modes, regen, weather setups, phone, charging, navigation, and more.",
+      },
       { property: "og:title", content: "Recommended Settings for Owen Reagan" },
-      { property: "og:description", content: "Owen's tuned defaults for the 2023 Genesis GV60 Performance." },
+      {
+        property: "og:description",
+        content: "Owen's tuned defaults for the 2023 Genesis GV60 Performance.",
+      },
     ],
   }),
   component: OwenPage,
@@ -39,17 +46,31 @@ export function OwenSettingsContent() {
                   <h3 className="text-base font-semibold">{item.feature}</h3>
                 </header>
                 <div className="rounded-md bg-primary/10 border border-primary/30 px-3 py-2 text-sm">
-                  <span className="text-[10px] uppercase tracking-[0.15em] text-primary block">Recommended</span>
+                  <span className="text-[10px] uppercase tracking-[0.15em] text-primary block">
+                    Recommended
+                  </span>
                   <span className="font-medium">{item.setting}</span>
                 </div>
                 <div className="grid gap-2 text-sm">
                   {item.bestFor && (
-                    <p><span className="text-[10px] uppercase tracking-[0.15em] text-primary block mb-0.5">Best for</span><span className="text-muted-foreground">{item.bestFor}</span></p>
+                    <p>
+                      <span className="text-[10px] uppercase tracking-[0.15em] text-primary block mb-0.5">
+                        Best for
+                      </span>
+                      <span className="text-muted-foreground">{item.bestFor}</span>
+                    </p>
                   )}
-                  <p><span className="text-[10px] uppercase tracking-[0.15em] text-primary block mb-0.5">Change it when</span><span className="text-muted-foreground">{item.changeWhen}</span></p>
+                  <p>
+                    <span className="text-[10px] uppercase tracking-[0.15em] text-primary block mb-0.5">
+                      Change it when
+                    </span>
+                    <span className="text-muted-foreground">{item.changeWhen}</span>
+                  </p>
                 </div>
                 <blockquote className="border-l-2 border-primary pl-3 text-sm italic">
-                  <span className="not-italic text-[10px] uppercase tracking-[0.15em] text-primary block mb-1">Owen suggestion</span>
+                  <span className="not-italic text-[10px] uppercase tracking-[0.15em] text-primary block mb-1">
+                    Owen suggestion
+                  </span>
                   {item.why}
                 </blockquote>
                 {item.related && (
@@ -75,9 +96,8 @@ export function OwenPage() {
           Recommended Settings for <span className="text-primary">Owen Reagan</span>
         </h1>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          A tuned default setup for Owen's 2023 Genesis GV60 Performance. These
-          are opinionated starting points — safe, comfortable, and easy to
-          revisit when conditions change.
+          A tuned default setup for Owen's 2023 Genesis GV60 Performance. These are opinionated
+          starting points — safe, comfortable, and easy to revisit when conditions change.
         </p>
         <div className="copper-rule" />
         <div className="flex flex-wrap gap-2">
@@ -94,9 +114,14 @@ export function OwenPage() {
       <div className="card-glass p-4 text-sm">
         <p className="text-muted-foreground">
           Ready to try these in the car? Open the{" "}
-          <Link to="/quick-start" className="text-primary">Quick Start checklist</Link>{" "}
+          <Link to="/quick-start" className="text-primary">
+            Quick Start checklist
+          </Link>{" "}
           or dig into the{" "}
-          <Link to="/full-guide" className="text-primary">Full Guide</Link>.
+          <Link to="/full-guide" className="text-primary">
+            Full Guide
+          </Link>
+          .
         </p>
       </div>
     </div>

@@ -5,12 +5,21 @@ import { OwenSettingsContent } from "./owen";
 import { settingsCards } from "@/data/settingsCards";
 
 export const Route = createFileRoute("/settings")({
-  head: () => ({ meta: [
-    { title: "Recommended Settings for Owen Reagan — 2023 Genesis GV60 Performance" },
-    { name: "description", content: "Owen's personalized recommended settings for the 2023 Genesis GV60 Performance." },
-    { property: "og:title", content: "Recommended Settings for Owen Reagan" },
-    { property: "og:description", content: "Personalized defaults across driving, comfort, weather, Apple, charging, safety, and maintenance." },
-  ]}),
+  head: () => ({
+    meta: [
+      { title: "Recommended Settings for Owen Reagan — 2023 Genesis GV60 Performance" },
+      {
+        name: "description",
+        content: "Owen's personalized recommended settings for the 2023 Genesis GV60 Performance.",
+      },
+      { property: "og:title", content: "Recommended Settings for Owen Reagan" },
+      {
+        property: "og:description",
+        content:
+          "Personalized defaults across driving, comfort, weather, Apple, charging, safety, and maintenance.",
+      },
+    ],
+  }),
   component: SettingsHub,
 });
 
@@ -36,7 +45,9 @@ function SettingsHub() {
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
                   <h3 className="font-display font-semibold">{s.title}</h3>
                   {s.tag && (
-                    <span className="text-[10px] uppercase tracking-wider bg-primary/15 text-primary rounded-full px-2 py-0.5">{s.tag}</span>
+                    <span className="text-[10px] uppercase tracking-wider bg-primary/15 text-primary rounded-full px-2 py-0.5">
+                      {s.tag}
+                    </span>
                   )}
                 </div>
                 <p className="text-sm text-muted-foreground">{s.summary}</p>
@@ -67,7 +78,10 @@ function SettingsHub() {
 
       <div className="card-glass p-4 text-sm text-muted-foreground">
         Ready to apply them in the car? Use{" "}
-        <Link to="/quick-start" className="text-primary">Quick Start</Link> for the guided checklist.
+        <Link to="/quick-start" className="text-primary">
+          Quick Start
+        </Link>{" "}
+        for the guided checklist.
       </div>
     </div>
   );

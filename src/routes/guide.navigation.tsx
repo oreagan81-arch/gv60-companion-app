@@ -5,7 +5,10 @@ export const Route = createFileRoute("/guide/navigation")({
   head: () => ({
     meta: [
       { title: "Navigation — GV60 Full Guide" },
-      { name: "description", content: "Apple Maps, Google Maps, Waze, and built-in navigation — how Owen uses each." },
+      {
+        name: "description",
+        content: "Apple Maps, Google Maps, Waze, and built-in navigation — how Owen uses each.",
+      },
       { property: "og:title", content: "Navigation — GV60" },
       { property: "og:description", content: "The right nav app for the right moment." },
     ],
@@ -16,7 +19,11 @@ export const Route = createFileRoute("/guide/navigation")({
 function Chapter() {
   return (
     <div className="container-app py-8 space-y-8 pb-16">
-      <div><Link to="/guide" className="text-xs text-muted-foreground">← Full Guide</Link></div>
+      <div>
+        <Link to="/guide" className="text-xs text-muted-foreground">
+          ← Full Guide
+        </Link>
+      </div>
       <SectionHeader
         eyebrow="Chapter 03"
         title="Navigation"
@@ -25,20 +32,30 @@ function Chapter() {
 
       <section className="card-glass p-5 space-y-3">
         <h2 className="text-xl font-display font-semibold">At a glance</h2>
-        <SettingTable rows={[
-          ["Daily Apple ecosystem use", "Apple Maps"],
-          ["Search-heavy trips", "Google Maps"],
-          ["Alerts / unfamiliar highways", "Waze"],
-          ["Backup / no signal", "Built-in navigation"],
-        ]} />
+        <SettingTable
+          rows={[
+            ["Daily Apple ecosystem use", "Apple Maps"],
+            ["Search-heavy trips", "Google Maps"],
+            ["Alerts / unfamiliar highways", "Waze"],
+            ["Backup / no signal", "Built-in navigation"],
+          ]}
+        />
       </section>
 
       <FeatureCard
         title="Apple Maps — the daily default"
         whatItDoes="Native, calm, and deeply integrated with Owen's iPhone and CarPlay."
         recommendation="Use for daily driving in the Apple ecosystem."
-        bestFor={["Commutes", "Familiar routes", "Clean CarPlay experience", "Handoff from phone → car"]}
-        changeWhen={["Hunting for a specific business → Google Maps", "Heavy traffic / cops / hazards → Waze"]}
+        bestFor={[
+          "Commutes",
+          "Familiar routes",
+          "Clean CarPlay experience",
+          "Handoff from phone → car",
+        ]}
+        changeWhen={[
+          "Hunting for a specific business → Google Maps",
+          "Heavy traffic / cops / hazards → Waze",
+        ]}
         ownerNote="Apple Maps is the quietest default. Let it be."
       />
 
@@ -71,7 +88,9 @@ function Chapter() {
 
       <div className="flex flex-wrap gap-2 pt-2">
         <Chip tone="primary">Chapter 03</Chip>
-        <Link to="/owen#nav" className="text-xs text-primary self-center">Owen's nav defaults →</Link>
+        <Link to="/owen#nav" className="text-xs text-primary self-center">
+          Owen's nav defaults →
+        </Link>
       </div>
     </div>
   );

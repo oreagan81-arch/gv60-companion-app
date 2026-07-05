@@ -3,10 +3,15 @@ import { SectionHeader, Chip } from "@/components/guide";
 import { useBookmarks, type BookmarkType } from "@/lib/bookmarks";
 
 export const Route = createFileRoute("/favorites")({
-  head: () => ({ meta: [
-    { title: "Favorites — Owen's GV60 Companion" },
-    { name: "description", content: "Owen's saved guide sections, settings, and troubleshooting cards." },
-  ]}),
+  head: () => ({
+    meta: [
+      { title: "Favorites — Owen's GV60 Companion" },
+      {
+        name: "description",
+        content: "Owen's saved guide sections, settings, and troubleshooting cards.",
+      },
+    ],
+  }),
   component: FavoritesPage,
 });
 
@@ -45,9 +50,18 @@ function FavoritesPage() {
           <p className="text-sm text-muted-foreground">No favorites yet.</p>
           <p className="text-sm text-muted-foreground">
             Look for the <span className="text-primary">☆</span> button on{" "}
-            <Link to="/settings" className="text-primary">Settings</Link>,{" "}
-            <Link to="/troubleshooting" className="text-primary">Troubleshooting</Link>, and{" "}
-            <Link to="/full-guide" className="text-primary">Full Guide</Link> cards.
+            <Link to="/settings" className="text-primary">
+              Settings
+            </Link>
+            ,{" "}
+            <Link to="/troubleshooting" className="text-primary">
+              Troubleshooting
+            </Link>
+            , and{" "}
+            <Link to="/full-guide" className="text-primary">
+              Full Guide
+            </Link>{" "}
+            cards.
           </p>
         </div>
       )}
@@ -62,12 +76,16 @@ function FavoritesPage() {
                 <div className="flex items-start gap-3">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap mb-1">
-                      <span className={`text-[10px] uppercase tracking-wider rounded-full px-2 py-0.5 ${typeTone[b.type]}`}>
+                      <span
+                        className={`text-[10px] uppercase tracking-wider rounded-full px-2 py-0.5 ${typeTone[b.type]}`}
+                      >
                         {typeLabel[b.type]}
                       </span>
                       <span className="text-[11px] text-muted-foreground">{b.category}</span>
                     </div>
-                    <h3 className="font-display font-semibold leading-snug break-words">{b.title}</h3>
+                    <h3 className="font-display font-semibold leading-snug break-words">
+                      {b.title}
+                    </h3>
                   </div>
                   <div className="flex flex-col gap-2 items-end">
                     <Link

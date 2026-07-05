@@ -73,13 +73,7 @@ function Page() {
   );
 }
 
-function SectionCard({
-  chapterTitle,
-  section,
-}: {
-  chapterTitle: string;
-  section: ChapterSection;
-}) {
+function SectionCard({ chapterTitle, section }: { chapterTitle: string; section: ChapterSection }) {
   return (
     <article id={section.id} className="card-glass p-5 space-y-4 scroll-mt-24">
       <header className="flex items-start justify-between gap-3">
@@ -173,6 +167,9 @@ function SectionCard({
       )}
 
       {section.imagePlaceholder && <ImagePlaceholder caption={section.imagePlaceholder} />}
+      {section.imagePlaceholders?.map((caption) => (
+        <ImagePlaceholder key={caption} caption={caption} />
+      ))}
     </article>
   );
 }

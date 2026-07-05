@@ -6,7 +6,11 @@ export const Route = createFileRoute("/full-guide")({
   head: () => ({
     meta: [
       { title: "Full Guide — Owen's GV60 Companion" },
-      { name: "description", content: "The complete chapter-by-chapter owner guide for the 2023 Genesis GV60 Performance." },
+      {
+        name: "description",
+        content:
+          "The complete chapter-by-chapter owner guide for the 2023 Genesis GV60 Performance.",
+      },
       { property: "og:title", content: "GV60 Full Guide" },
       { property: "og:description", content: "Chapter-by-chapter owner companion." },
     ],
@@ -42,14 +46,22 @@ function FullGuideLayout() {
           <li key={c.id} className="card-glass p-4 hover:border-primary/60 transition">
             <div className="flex items-start gap-4">
               <Link to={c.route} className="flex items-start gap-4 flex-1 min-w-0">
-                <span className="text-primary font-display text-2xl leading-none pt-1">{c.num}</span>
+                <span className="text-primary font-display text-2xl leading-none pt-1">
+                  {c.num}
+                </span>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <h2 className="text-lg font-display font-semibold">{c.title}</h2>
-                    <span className={`text-[10px] uppercase tracking-wider rounded-full px-2 py-0.5 ${statusClass(c.status)}`}>{c.status}</span>
+                    <span
+                      className={`text-[10px] uppercase tracking-wider rounded-full px-2 py-0.5 ${statusClass(c.status)}`}
+                    >
+                      {c.status}
+                    </span>
                   </div>
                   {c.subtitle && (
-                    <p className="text-xs uppercase tracking-wider text-muted-foreground mt-0.5">{c.subtitle}</p>
+                    <p className="text-xs uppercase tracking-wider text-muted-foreground mt-0.5">
+                      {c.subtitle}
+                    </p>
                   )}
                   <p className="text-sm text-muted-foreground mt-1">{c.summary}</p>
                   <p className="mt-2 text-xs text-primary">Open chapter →</p>
@@ -69,7 +81,10 @@ function FullGuideLayout() {
 
       <div className="card-glass p-4 text-sm text-muted-foreground">
         Looking for the personalized version? See{" "}
-        <Link to="/settings" className="text-primary">Recommended Settings for Owen Reagan</Link>.
+        <Link to="/settings" className="text-primary">
+          Recommended Settings for Owen Reagan
+        </Link>
+        .
       </div>
     </div>
   );

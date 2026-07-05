@@ -5,9 +5,15 @@ export const Route = createFileRoute("/guide/drive-modes")({
   head: () => ({
     meta: [
       { title: "Drive Modes & Regen — GV60 Full Guide" },
-      { name: "description", content: "GV60 drive modes, regen levels, and Boost — with Owen's recommended defaults." },
+      {
+        name: "description",
+        content: "GV60 drive modes, regen levels, and Boost — with Owen's recommended defaults.",
+      },
       { property: "og:title", content: "Drive Modes & Regen — GV60" },
-      { property: "og:description", content: "Comfort, Sport, Snow, and how to think about regen and Boost." },
+      {
+        property: "og:description",
+        content: "Comfort, Sport, Snow, and how to think about regen and Boost.",
+      },
     ],
   }),
   component: Chapter,
@@ -16,7 +22,11 @@ export const Route = createFileRoute("/guide/drive-modes")({
 function Chapter() {
   return (
     <div className="container-app py-8 space-y-8 pb-16">
-      <div><Link to="/guide" className="text-xs text-muted-foreground">← Full Guide</Link></div>
+      <div>
+        <Link to="/guide" className="text-xs text-muted-foreground">
+          ← Full Guide
+        </Link>
+      </div>
       <SectionHeader
         eyebrow="Chapter 01"
         title="Drive Modes & Regen"
@@ -25,15 +35,17 @@ function Chapter() {
 
       <section className="card-glass p-5 space-y-3">
         <h2 className="text-xl font-display font-semibold">At a glance</h2>
-        <SettingTable rows={[
-          ["Daily default", "Comfort"],
-          ["Daily regen", "Auto or Level 2"],
-          ["With passengers", "Regen Level 1–2"],
-          ["Rain", "Eco or Comfort · low–moderate regen"],
-          ["Winter", "Snow / Eco / Comfort · low–moderate regen"],
-          ["Performance", "Sport or Sport+ · dry & safe only"],
-          ["Boost", "Special-use only"],
-        ]} />
+        <SettingTable
+          rows={[
+            ["Daily default", "Comfort"],
+            ["Daily regen", "Auto or Level 2"],
+            ["With passengers", "Regen Level 1–2"],
+            ["Rain", "Eco or Comfort · low–moderate regen"],
+            ["Winter", "Snow / Eco / Comfort · low–moderate regen"],
+            ["Performance", "Sport or Sport+ · dry & safe only"],
+            ["Boost", "Special-use only"],
+          ]}
+        />
       </section>
 
       <FeatureCard
@@ -87,7 +99,9 @@ function Chapter() {
 
       <div className="flex flex-wrap gap-2 pt-2">
         <Chip tone="primary">Chapter 01</Chip>
-        <Link to="/owen#drive-mode" className="text-xs text-primary self-center">Owen's drive-mode defaults →</Link>
+        <Link to="/owen#drive-mode" className="text-xs text-primary self-center">
+          Owen's drive-mode defaults →
+        </Link>
       </div>
     </div>
   );

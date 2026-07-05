@@ -5,7 +5,10 @@ export const Route = createFileRoute("/guide/maintenance")({
   head: () => ({
     meta: [
       { title: "Maintenance & In-Car Kit — GV60 Full Guide" },
-      { name: "description", content: "Weekly checks, gentle cleaning, and the in-car kit that saves you." },
+      {
+        name: "description",
+        content: "Weekly checks, gentle cleaning, and the in-car kit that saves you.",
+      },
       { property: "og:title", content: "Maintenance & Kit — GV60" },
       { property: "og:description", content: "Five minutes weekly saves whole afternoons." },
     ],
@@ -16,7 +19,11 @@ export const Route = createFileRoute("/guide/maintenance")({
 export function Chapter() {
   return (
     <div className="container-app py-8 space-y-8 pb-16">
-      <div><Link to="/guide" className="text-xs text-muted-foreground">← Full Guide</Link></div>
+      <div>
+        <Link to="/guide" className="text-xs text-muted-foreground">
+          ← Full Guide
+        </Link>
+      </div>
       <SectionHeader
         eyebrow="Chapter 06"
         title="Maintenance & In-Car Kit"
@@ -25,13 +32,17 @@ export function Chapter() {
 
       <section className="card-glass p-5 space-y-3">
         <h2 className="text-xl font-display font-semibold">Weekly checks</h2>
-        <SettingTable rows={[
-          ["Tire pressure", "Weekly — cold, before driving"],
-          ["Cameras & sensors", "Wipe clean, especially after weather"],
-          ["Charge port", "Inspect for debris or damage"],
-          ["Charging cable", "Check connector, jacket, and strain reliefs"],
-        ]} />
-        <p className="text-sm italic text-primary">Owner: five minutes weekly saves whole afternoons later.</p>
+        <SettingTable
+          rows={[
+            ["Tire pressure", "Weekly — cold, before driving"],
+            ["Cameras & sensors", "Wipe clean, especially after weather"],
+            ["Charge port", "Inspect for debris or damage"],
+            ["Charging cable", "Check connector, jacket, and strain reliefs"],
+          ]}
+        />
+        <p className="text-sm italic text-primary">
+          Owner: five minutes weekly saves whole afternoons later.
+        </p>
       </section>
 
       <FeatureCard
@@ -54,7 +65,9 @@ export function Chapter() {
 
       <div className="flex flex-wrap gap-2 pt-2">
         <Chip tone="primary">Chapter 06</Chip>
-        <Link to="/owen#maint" className="text-xs text-primary self-center">Owen's maintenance defaults →</Link>
+        <Link to="/owen#maint" className="text-xs text-primary self-center">
+          Owen's maintenance defaults →
+        </Link>
       </div>
     </div>
   );

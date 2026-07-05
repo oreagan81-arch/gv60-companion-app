@@ -13,9 +13,8 @@ function Home() {
           Owen's <span className="text-primary">GV60</span> Companion
         </h1>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          A personalized guide for Owen Reagan's 2023 Genesis GV60 Performance.
-          Two ways in — a fast checklist for sitting in the car, or the full
-          chapter-by-chapter owner guide.
+          A personalized guide for Owen Reagan's 2023 Genesis GV60 Performance. Two ways in — a fast
+          checklist for sitting in the car, or the full chapter-by-chapter owner guide.
         </p>
         <div className="copper-rule" />
         <p className="text-xs text-muted-foreground">
@@ -79,8 +78,22 @@ function Home() {
 }
 
 function ModeCard({
-  to, eyebrow, title, description, cta, badge, featured,
-}: { to: string; eyebrow: string; title: string; description: string; cta: string; badge: string; featured?: boolean }) {
+  to,
+  eyebrow,
+  title,
+  description,
+  cta,
+  badge,
+  featured,
+}: {
+  to: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  cta: string;
+  badge: string;
+  featured?: boolean;
+}) {
   return (
     <Link
       to={to}
@@ -88,7 +101,9 @@ function ModeCard({
     >
       <div className="flex items-center justify-between mb-2">
         <span className="text-[10px] uppercase tracking-[0.2em] text-primary">{eyebrow}</span>
-        <span className="text-[10px] uppercase tracking-wider bg-primary/15 text-primary rounded-full px-2 py-0.5">{badge}</span>
+        <span className="text-[10px] uppercase tracking-wider bg-primary/15 text-primary rounded-full px-2 py-0.5">
+          {badge}
+        </span>
       </div>
       <h3 className="text-2xl font-display font-semibold">{title}</h3>
       <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{description}</p>
@@ -99,7 +114,10 @@ function ModeCard({
 
 function QuickLink({ to, label }: { to: string; label: string }) {
   return (
-    <Link to={to} className="rounded-lg border border-border bg-card/50 px-3 py-3 hover:border-primary/50 transition">
+    <Link
+      to={to}
+      className="rounded-lg border border-border bg-card/50 px-3 py-3 hover:border-primary/50 transition"
+    >
       {label} <span className="text-primary">→</span>
     </Link>
   );

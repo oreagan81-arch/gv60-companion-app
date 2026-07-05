@@ -54,7 +54,9 @@ function write(list: Bookmark[]) {
 
 /** In-memory subscriber list so multiple hook instances stay in sync. */
 const listeners = new Set<() => void>();
-function emit() { listeners.forEach((l) => l()); }
+function emit() {
+  listeners.forEach((l) => l());
+}
 
 export function useBookmarks() {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
@@ -65,7 +67,9 @@ export function useBookmarks() {
     setReady(true);
     const l = () => setBookmarks(read());
     listeners.add(l);
-    const onStorage = (e: StorageEvent) => { if (e.key === KEY) l(); };
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === KEY) l();
+    };
     window.addEventListener("storage", onStorage);
     return () => {
       listeners.delete(l);
@@ -73,10 +77,7 @@ export function useBookmarks() {
     };
   }, []);
 
-  const isBookmarked = useCallback(
-    (id: string) => bookmarks.some((b) => b.id === id),
-    [bookmarks],
-  );
+  const isBookmarked = useCallback((id: string) => bookmarks.some((b) => b.id === id), [bookmarks]);
 
   const toggle = useCallback((b: Omit<Bookmark, "savedAt">) => {
     const current = read();

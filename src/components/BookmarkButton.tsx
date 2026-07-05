@@ -13,7 +13,16 @@ type Props = {
   className?: string;
 };
 
-export function BookmarkButton({ id, type, title, category, to, hash, variant = "icon", className = "" }: Props) {
+export function BookmarkButton({
+  id,
+  type,
+  title,
+  category,
+  to,
+  hash,
+  variant = "icon",
+  className = "",
+}: Props) {
   const { isBookmarked, toggle, available } = useBookmarks();
   if (!available) return null;
   const on = isBookmarked(id);
@@ -53,10 +62,14 @@ export function BookmarkButton({ id, type, title, category, to, hash, variant = 
       aria-label={label}
       title={label}
       className={`shrink-0 inline-flex items-center justify-center h-8 w-8 rounded-full transition ${
-        on ? "text-primary bg-primary/15" : "text-muted-foreground hover:text-primary hover:bg-primary/10"
+        on
+          ? "text-primary bg-primary/15"
+          : "text-muted-foreground hover:text-primary hover:bg-primary/10"
       } ${className}`}
     >
-      <span aria-hidden className="text-lg leading-none">{icon}</span>
+      <span aria-hidden className="text-lg leading-none">
+        {icon}
+      </span>
     </button>
   );
 }

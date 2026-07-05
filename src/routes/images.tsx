@@ -3,10 +3,12 @@ import { SectionHeader, Chip, ImagePlaceholder } from "@/components/guide";
 import { imageChecklist } from "@/data/imageChecklist";
 
 export const Route = createFileRoute("/images")({
-  head: () => ({ meta: [
-    { title: "Image Production Checklist — Owen's GV60 Companion" },
-    { name: "description", content: "Photos needed to complete the GV60 companion guide." },
-  ]}),
+  head: () => ({
+    meta: [
+      { title: "Image Production Checklist — Owen's GV60 Companion" },
+      { name: "description", content: "Photos needed to complete the GV60 companion guide." },
+    ],
+  }),
   component: ImagesPage,
 });
 
@@ -36,4 +38,3 @@ function ImagesPage() {
     </div>
   );
 }
-

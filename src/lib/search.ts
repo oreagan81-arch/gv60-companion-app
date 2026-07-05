@@ -33,9 +33,13 @@ function build(): SearchDoc[] {
     });
     for (const s of ch.sections) {
       const parts = [
-        s.title, s.body ?? "", s.recommendedSetting ?? "",
-        ...(s.bestFor ?? []), ...(s.changeItWhen ?? []),
-        s.ownerSuggestion ?? "", s.troubleshooting ?? "",
+        s.title,
+        s.body ?? "",
+        s.recommendedSetting ?? "",
+        ...(s.bestFor ?? []),
+        ...(s.changeItWhen ?? []),
+        s.ownerSuggestion ?? "",
+        s.troubleshooting ?? "",
       ];
       const excerpt = s.body ?? s.recommendedSetting ?? `Section of ${ch.title}`;
       docs.push({
@@ -71,9 +75,9 @@ function build(): SearchDoc[] {
         title: item.feature,
         category: `Settings · ${card.title}`,
         excerpt,
-        haystack: [
-          item.feature, item.setting, item.why, item.changeWhen, item.bestFor ?? "",
-        ].join(" \n ").toLowerCase(),
+        haystack: [item.feature, item.setting, item.why, item.changeWhen, item.bestFor ?? ""]
+          .join(" \n ")
+          .toLowerCase(),
         to: "/settings",
         hash: card.id,
       });
@@ -101,9 +105,9 @@ function build(): SearchDoc[] {
       title: img.title,
       category: `Image · ${img.chapter}`,
       excerpt: img.description,
-      haystack: [
-        img.title, img.description, img.suggestedCaption, img.altText, img.chapter,
-      ].join(" \n ").toLowerCase(),
+      haystack: [img.title, img.description, img.suggestedCaption, img.altText, img.chapter]
+        .join(" \n ")
+        .toLowerCase(),
       to: "/images",
     });
   }
@@ -132,11 +136,15 @@ export function search(query: string, limit = 40): SearchResult[] {
     let matchedAll = true;
 
     for (const w of words) {
-      if (!doc.haystack.includes(w)) { matchedAll = false; break; }
+      if (!doc.haystack.includes(w)) {
+        matchedAll = false;
+        break;
+      }
       if (title.includes(w)) score += 5;
       if (title.startsWith(w)) score += 3;
       // word-boundary bump
-      if (new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`).test(doc.haystack)) score += 1;
+      if (new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`).test(doc.haystack))
+        score += 1;
       score += 1;
     }
 

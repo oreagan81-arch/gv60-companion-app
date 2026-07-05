@@ -1,9 +1,5 @@
 export type TroubleshootingCategory =
-  | "Driver Assistance"
-  | "Cameras & Sensors"
-  | "Phone & CarPlay"
-  | "Charging"
-  | "Range";
+  "Driver Assistance" | "Cameras & Sensors" | "Phone & CarPlay" | "Charging" | "Range";
 
 export type TroubleshootingCard = {
   id: string;
@@ -208,4 +204,3 @@ export const troubleshootingCards: TroubleshootingCard[] = [
     relatedSections: [{ to: "/full-guide/maintenance", label: "Maintenance" }],
   },
 ];
-

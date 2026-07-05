@@ -9,7 +9,10 @@ export const Route = createFileRoute("/troubleshooting")({
       { title: "Troubleshooting — Owen's GV60 Companion" },
       { name: "description", content: "Common GV60 issues and where to look first." },
       { property: "og:title", content: "GV60 Troubleshooting" },
-      { property: "og:description", content: "The four usual suspects and how to work through them." },
+      {
+        property: "og:description",
+        content: "The four usual suspects and how to work through them.",
+      },
     ],
   }),
   component: Troubleshooting,
@@ -45,17 +48,28 @@ function Troubleshooting() {
                     <details className="flex-1 min-w-0">
                       <summary className="cursor-pointer font-medium">{c.problem}</summary>
                       <div className="mt-3 space-y-3 text-sm">
-                        <p><span className="text-[10px] uppercase tracking-[0.15em] text-primary block mb-0.5">First check</span>{c.firstCheck}</p>
+                        <p>
+                          <span className="text-[10px] uppercase tracking-[0.15em] text-primary block mb-0.5">
+                            First check
+                          </span>
+                          {c.firstCheck}
+                        </p>
                         <div>
-                          <span className="text-[10px] uppercase tracking-[0.15em] text-primary block mb-1">Steps</span>
+                          <span className="text-[10px] uppercase tracking-[0.15em] text-primary block mb-1">
+                            Steps
+                          </span>
                           <ol className="list-decimal pl-5 space-y-1 text-muted-foreground">
-                            {c.steps.map((s, i) => <li key={i}>{s}</li>)}
+                            {c.steps.map((s, i) => (
+                              <li key={i}>{s}</li>
+                            ))}
                           </ol>
                         </div>
                         {c.relatedSections?.length ? (
                           <p className="text-xs">
                             {c.relatedSections.map((r) => (
-                              <Link key={r.to} to={r.to} className="text-primary mr-3">Related: {r.label} →</Link>
+                              <Link key={r.to} to={r.to} className="text-primary mr-3">
+                                Related: {r.label} →
+                              </Link>
                             ))}
                           </p>
                         ) : null}
@@ -78,8 +92,14 @@ function Troubleshooting() {
 
       <div className="card-glass p-4 text-sm text-muted-foreground">
         Still stuck? Cross-check the{" "}
-        <Link to="/guide/safety" className="text-primary">Safety chapter</Link> or Owen's{" "}
-        <Link to="/settings" className="text-primary">Recommended Settings</Link>.
+        <Link to="/guide/safety" className="text-primary">
+          Safety chapter
+        </Link>{" "}
+        or Owen's{" "}
+        <Link to="/settings" className="text-primary">
+          Recommended Settings
+        </Link>
+        .
       </div>
 
       <div className="flex flex-wrap gap-2">
