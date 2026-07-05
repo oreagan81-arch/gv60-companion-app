@@ -14,34 +14,20 @@ export const Route = createFileRoute("/owen")({
   component: OwenPage,
 });
 
-export function OwenPage() {
+/**
+ * Reusable settings body — no page wrapper, no title header.
+ * Rendered inside /owen (with its own page header) AND /settings (inside the hub).
+ */
+export function OwenSettingsContent() {
   return (
-    <div className="container-app py-8 space-y-8 pb-16">
-      <div className="space-y-3">
-        <p className="text-[11px] uppercase tracking-[0.25em] text-primary">Personalized</p>
-        <h1 className="text-3xl sm:text-4xl font-display font-semibold leading-tight">
-          Recommended Settings for <span className="text-primary">Owen Reagan</span>
-        </h1>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          A tuned default setup for Owen's 2023 Genesis GV60 Performance. These
-          are opinionated starting points — safe, comfortable, and easy to
-          revisit when conditions change.
-        </p>
-        <div className="copper-rule" />
-        <div className="flex flex-wrap gap-2">
-          <Chip tone="primary">2023 GV60 Performance</Chip>
-          <Chip>Owen's baseline</Chip>
-          <Chip tone="success">Reviewable anytime</Chip>
-        </div>
-      </div>
-
+    <div className="space-y-8">
       <section className="card-glass p-4">
         <h2 className="text-sm uppercase tracking-[0.2em] text-primary mb-3">At a glance</h2>
         <SettingTable rows={atAGlance} />
       </section>
 
       {settingsCards.map((card) => (
-        <section key={card.id} id={card.id} className="space-y-4">
+        <section key={card.id} id={card.id} className="space-y-4 scroll-mt-24">
           <div>
             <h2 className="text-lg font-display font-semibold">{card.title}</h2>
             <p className="text-sm text-muted-foreground">{card.summary}</p>
@@ -76,6 +62,32 @@ export function OwenPage() {
           </div>
         </section>
       ))}
+    </div>
+  );
+}
+
+export function OwenPage() {
+  return (
+    <div className="container-app py-8 space-y-8 pb-16">
+      <div className="space-y-3">
+        <p className="text-[11px] uppercase tracking-[0.25em] text-primary">Personalized</p>
+        <h1 className="text-3xl sm:text-4xl font-display font-semibold leading-tight">
+          Recommended Settings for <span className="text-primary">Owen Reagan</span>
+        </h1>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          A tuned default setup for Owen's 2023 Genesis GV60 Performance. These
+          are opinionated starting points — safe, comfortable, and easy to
+          revisit when conditions change.
+        </p>
+        <div className="copper-rule" />
+        <div className="flex flex-wrap gap-2">
+          <Chip tone="primary">2023 GV60 Performance</Chip>
+          <Chip>Owen's baseline</Chip>
+          <Chip tone="success">Reviewable anytime</Chip>
+        </div>
+      </div>
+
+      <OwenSettingsContent />
 
       <ImagePlaceholder caption="Owen's GV60 Performance — hero exterior, 3/4 front" />
 
