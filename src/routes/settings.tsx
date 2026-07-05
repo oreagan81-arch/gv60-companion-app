@@ -63,7 +63,7 @@ function SettingsHub() {
         </p>
       </section>
 
-      <OwenPage />
+      <OwenSettingsContent />
 
       <div className="card-glass p-4 text-sm text-muted-foreground">
         Ready to apply them in the car? Use{" "}
