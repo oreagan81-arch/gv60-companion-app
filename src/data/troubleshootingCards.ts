@@ -26,7 +26,7 @@ export const troubleshootingCards: TroubleshootingCard[] = [
       "Adjust warning sensitivity only after two calmer drives.",
       "Clean the front radar/camera area.",
     ],
-    relatedSections: [{ to: "/guide/safety", label: "Safety chapter" }],
+    relatedSections: [{ to: "/full-guide/safety", label: "Safety chapter" }],
   },
   {
     id: "blind-spot",
@@ -38,7 +38,7 @@ export const troubleshootingCards: TroubleshootingCard[] = [
       "Expect different behavior in rain, spray, and fast-approaching vehicles.",
       "Re-verify after a wash.",
     ],
-    relatedSections: [{ to: "/guide/safety", label: "Safety chapter" }],
+    relatedSections: [{ to: "/full-guide/safety", label: "Safety chapter" }],
   },
   {
     id: "lane-confused",
@@ -117,7 +117,7 @@ export const troubleshootingCards: TroubleshootingCard[] = [
       "Use the native CarPlay path first — no adapters.",
       "Only add secondary phones once the primary is solid.",
     ],
-    relatedSections: [{ to: "/guide/phone-carplay", label: "Phone & CarPlay" }],
+    relatedSections: [{ to: "/full-guide/apple", label: "Phone & CarPlay" }],
   },
   {
     id: "range-est",
@@ -129,7 +129,7 @@ export const troubleshootingCards: TroubleshootingCard[] = [
       "Remember the estimate is based on recent driving.",
       "Use percentage for planning; estimate as a sanity check.",
     ],
-    relatedSections: [{ to: "/guide/charging", label: "Charging & range" }],
+    relatedSections: [{ to: "/full-guide/charging", label: "Charging & range" }],
   },
   {
     id: "slow-charge",
@@ -141,7 +141,7 @@ export const troubleshootingCards: TroubleshootingCard[] = [
       "Inspect connector cleanliness and cable condition.",
       "Try a different stall or station.",
     ],
-    relatedSections: [{ to: "/guide/charging", label: "Charging & range" }],
+    relatedSections: [{ to: "/full-guide/charging", label: "Charging & range" }],
   },
   {
     id: "no-l2",

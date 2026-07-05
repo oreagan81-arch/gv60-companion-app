@@ -32,7 +32,7 @@ export const settingsCards: SettingsCard[] = [
         why: "Owen's baseline. Everything else is a purposeful switch.",
         changeWhen: "Snow → Snow mode. Dry canyon / track day → Sport or Sport+.",
         bestFor: "Daily commuting, mixed roads, passengers on board.",
-        related: { to: "/guide/drive-modes", label: "Drive modes & regen" },
+        related: { to: "/full-guide/driving", label: "Drive modes & regen" },
       },
       {
         feature: "Daily regen starting point",
@@ -114,7 +114,7 @@ export const settingsCards: SettingsCard[] = [
         why: "Smoothness is safety. Lower regen so lift-off doesn't upset the rear.",
         changeWhen: "Stops raining and roads dry → return to daily default.",
         bestFor: "Wet commutes, downpours, standing water.",
-        related: { to: "/guide/safety", label: "Rain safety card" },
+        related: { to: "/full-guide/safety", label: "Rain safety card" },
       },
     ],
   },
@@ -145,7 +145,7 @@ export const settingsCards: SettingsCard[] = [
         why: "Charge for tomorrow's drive, not just tomorrow's percentage.",
         changeWhen: "Road trip tomorrow → raise the night before.",
         bestFor: "Battery longevity + everyday range headroom.",
-        related: { to: "/guide/charging", label: "Charging guide" },
+        related: { to: "/full-guide/charging", label: "Charging guide" },
       },
       {
         feature: "Range mindset",
@@ -183,7 +183,7 @@ export const settingsCards: SettingsCard[] = [
         why: "The car does this well. Don't add hardware you don't need.",
         changeWhen: "Only buy dongles / adapters if the native path truly fails.",
         bestFor: "Wireless CarPlay right out of the box.",
-        related: { to: "/guide/phone-carplay", label: "Phone & CarPlay" },
+        related: { to: "/full-guide/apple", label: "Phone & CarPlay" },
       },
       {
         feature: "Phone setup",
@@ -198,7 +198,7 @@ export const settingsCards: SettingsCard[] = [
         why: "Owen doesn't need one winner — he needs the right tool for the trip.",
         changeWhen: "No signal or CarPlay dropout → built-in navigation.",
         bestFor: "Apple ecosystem daily; other apps for their strengths.",
-        related: { to: "/guide/navigation", label: "Navigation guide" },
+        related: { to: "/full-guide/apple", label: "Navigation guide" },
       },
     ],
   },
@@ -236,7 +236,7 @@ export const settingsCards: SettingsCard[] = [
         why: "Don't turn off a warning just because it surprised you once.",
         changeWhen: "Only after you truly know what an alert is telling you.",
         bestFor: "Building trust and understanding of each system.",
-        related: { to: "/guide/safety", label: "Safety chapter" },
+        related: { to: "/full-guide/safety", label: "Safety chapter" },
       },
       {
         feature: "Smart Cruise following distance",
@@ -266,7 +266,7 @@ export const settingsCards: SettingsCard[] = [
         why: "Five minutes weekly saves whole afternoons later.",
         changeWhen: "After storms, road trips, or salty winter roads → check sooner.",
         bestFor: "Catching small issues before they become expensive ones.",
-        related: { to: "/guide/maintenance", label: "Maintenance guide" },
+        related: { to: "/full-guide/maintenance", label: "Maintenance guide" },
       },
       {
         feature: "In-car kit",
