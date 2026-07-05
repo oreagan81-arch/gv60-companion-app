@@ -1,5 +1,6 @@
 import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { chapters, type ChapterStatus } from "@/data/chapters";
+import { BookmarkButton } from "@/components/BookmarkButton";
 
 export const Route = createFileRoute("/full-guide")({
   head: () => ({
