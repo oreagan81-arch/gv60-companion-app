@@ -27,7 +27,6 @@ export function BookmarkButton({
   if (!ready || !available) return null;
   const on = isBookmarked(id);
 
-
   const handle = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();

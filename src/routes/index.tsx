@@ -30,7 +30,6 @@ function Home() {
             </a>
           </p>
         )}
-
       </section>
 
       <section className="grid gap-4">
@@ -84,7 +83,6 @@ function Home() {
           <QuickLink to="/in-car" label="In the Car Now" />
           <QuickLink to="/search" label="🔍 Search" />
           <QuickLink to="/images" label="Image Sources" />
-
         </div>
       </section>
     </div>
