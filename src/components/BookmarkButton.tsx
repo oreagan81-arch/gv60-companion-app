@@ -23,8 +23,8 @@ export function BookmarkButton({
   variant = "icon",
   className = "",
 }: Props) {
-  const { isBookmarked, toggle, available } = useBookmarks();
-  if (!available) return null;
+  const { isBookmarked, toggle, available, ready } = useBookmarks();
+  if (!ready || !available) return null;
   const on = isBookmarked(id);
 
   const handle = (e: MouseEvent) => {
