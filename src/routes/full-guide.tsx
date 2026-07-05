@@ -1,5 +1,6 @@
 import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { chapters, type ChapterStatus } from "@/data/chapters";
+import { BookmarkButton } from "@/components/BookmarkButton";
 
 export const Route = createFileRoute("/full-guide")({
   head: () => ({
@@ -38,11 +39,11 @@ function FullGuideLayout() {
 
       <ul className="grid gap-3">
         {chapters.map((c) => (
-          <li key={c.id}>
-            <Link to={c.route} className="card-glass block p-4 hover:border-primary/60 transition">
-              <div className="flex items-start gap-4">
+          <li key={c.id} className="card-glass p-4 hover:border-primary/60 transition">
+            <div className="flex items-start gap-4">
+              <Link to={c.route} className="flex items-start gap-4 flex-1 min-w-0">
                 <span className="text-primary font-display text-2xl leading-none pt-1">{c.num}</span>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <h2 className="text-lg font-display font-semibold">{c.title}</h2>
                     <span className={`text-[10px] uppercase tracking-wider rounded-full px-2 py-0.5 ${statusClass(c.status)}`}>{c.status}</span>
@@ -53,8 +54,15 @@ function FullGuideLayout() {
                   <p className="text-sm text-muted-foreground mt-1">{c.summary}</p>
                   <p className="mt-2 text-xs text-primary">Open chapter →</p>
                 </div>
-              </div>
-            </Link>
+              </Link>
+              <BookmarkButton
+                id={`chapter:${c.id}`}
+                type="guide"
+                title={c.title}
+                category="Full Guide"
+                to={c.route}
+              />
+            </div>
           </li>
         ))}
       </ul>

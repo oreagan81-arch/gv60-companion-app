@@ -25,6 +25,15 @@ function Home() {
 
       <section className="grid gap-4">
         <ModeCard
+          to="/in-car"
+          eyebrow="Right now"
+          title="In the Car Now"
+          description="Big-button dashboard for the moments you're actually sitting in the driver's seat — pair the phone, fix CarPlay, set regen, prep for winter."
+          cta="Open dashboard"
+          badge="One-hand"
+          featured
+        />
+        <ModeCard
           to="/quick-start"
           eyebrow="Mode 1"
           title="Quick Start"
@@ -47,7 +56,6 @@ function Home() {
           description="Owen's tuned defaults for daily drive mode, regen, weather setups, phone pairing, charging, navigation, and more."
           cta="View Owen's setup"
           badge="For Owen"
-          featured
         />
       </section>
 
@@ -62,6 +70,8 @@ function Home() {
           <QuickLink to="/guide/maintenance" label="Maintenance & Kit" />
           <QuickLink to="/troubleshooting" label="Troubleshooting" />
           <QuickLink to="/owen" label="For Owen" />
+          <QuickLink to="/favorites" label="★ Favorites" />
+          <QuickLink to="/in-car" label="In the Car Now" />
         </div>
       </section>
     </div>

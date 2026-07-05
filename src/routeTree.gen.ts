@@ -14,9 +14,11 @@ import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as QuickStartRouteImport } from './routes/quick-start'
 import { Route as OwenRouteImport } from './routes/owen'
+import { Route as InCarRouteImport } from './routes/in-car'
 import { Route as ImagesRouteImport } from './routes/images'
 import { Route as GuideRouteImport } from './routes/guide'
 import { Route as FullGuideRouteImport } from './routes/full-guide'
+import { Route as FavoritesRouteImport } from './routes/favorites'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GuideSafetyRouteImport } from './routes/guide.safety'
 import { Route as GuidePhoneCarplayRouteImport } from './routes/guide.phone-carplay'
@@ -58,6 +60,11 @@ const OwenRoute = OwenRouteImport.update({
   path: '/owen',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InCarRoute = InCarRouteImport.update({
+  id: '/in-car',
+  path: '/in-car',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ImagesRoute = ImagesRouteImport.update({
   id: '/images',
   path: '/images',
@@ -71,6 +78,11 @@ const GuideRoute = GuideRouteImport.update({
 const FullGuideRoute = FullGuideRouteImport.update({
   id: '/full-guide',
   path: '/full-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FavoritesRoute = FavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -151,9 +163,11 @@ const FullGuideAppleRoute = FullGuideAppleRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
   '/full-guide': typeof FullGuideRouteWithChildren
   '/guide': typeof GuideRouteWithChildren
   '/images': typeof ImagesRoute
+  '/in-car': typeof InCarRoute
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/search': typeof SearchRoute
@@ -176,9 +190,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
   '/full-guide': typeof FullGuideRouteWithChildren
   '/guide': typeof GuideRouteWithChildren
   '/images': typeof ImagesRoute
+  '/in-car': typeof InCarRoute
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/search': typeof SearchRoute
@@ -202,9 +218,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
   '/full-guide': typeof FullGuideRouteWithChildren
   '/guide': typeof GuideRouteWithChildren
   '/images': typeof ImagesRoute
+  '/in-car': typeof InCarRoute
   '/owen': typeof OwenRoute
   '/quick-start': typeof QuickStartRoute
   '/search': typeof SearchRoute
@@ -229,9 +247,11 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/favorites'
     | '/full-guide'
     | '/guide'
     | '/images'
+    | '/in-car'
     | '/owen'
     | '/quick-start'
     | '/search'
@@ -254,9 +274,11 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/favorites'
     | '/full-guide'
     | '/guide'
     | '/images'
+    | '/in-car'
     | '/owen'
     | '/quick-start'
     | '/search'
@@ -279,9 +301,11 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/favorites'
     | '/full-guide'
     | '/guide'
     | '/images'
+    | '/in-car'
     | '/owen'
     | '/quick-start'
     | '/search'
@@ -305,9 +329,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FavoritesRoute: typeof FavoritesRoute
   FullGuideRoute: typeof FullGuideRouteWithChildren
   GuideRoute: typeof GuideRouteWithChildren
   ImagesRoute: typeof ImagesRoute
+  InCarRoute: typeof InCarRoute
   OwenRoute: typeof OwenRoute
   QuickStartRoute: typeof QuickStartRoute
   SearchRoute: typeof SearchRoute
@@ -352,6 +378,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OwenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/in-car': {
+      id: '/in-car'
+      path: '/in-car'
+      fullPath: '/in-car'
+      preLoaderRoute: typeof InCarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/images': {
       id: '/images'
       path: '/images'
@@ -371,6 +404,13 @@ declare module '@tanstack/react-router' {
       path: '/full-guide'
       fullPath: '/full-guide'
       preLoaderRoute: typeof FullGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favorites': {
+      id: '/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -529,9 +569,11 @@ const GuideRouteWithChildren = GuideRoute._addFileChildren(GuideRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FavoritesRoute: FavoritesRoute,
   FullGuideRoute: FullGuideRouteWithChildren,
   GuideRoute: GuideRouteWithChildren,
   ImagesRoute: ImagesRoute,
+  InCarRoute: InCarRoute,
   OwenRoute: OwenRoute,
   QuickStartRoute: QuickStartRoute,
   SearchRoute: SearchRoute,

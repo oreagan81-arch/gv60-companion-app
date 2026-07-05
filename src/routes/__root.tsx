@@ -101,10 +101,12 @@ function TopNav() {
           <span className="text-lg font-display font-semibold tracking-tight">GV60 <span className="text-primary">Companion</span></span>
         </Link>
         <nav className="hidden md:flex items-center gap-1 text-xs">
+          <Link to="/in-car" className={linkBase} activeProps={{ className: linkActive }}>In Car</Link>
           <Link to="/quick-start" className={linkBase} activeProps={{ className: linkActive }}>Quick Start</Link>
           <Link to="/full-guide" className={linkBase} activeProps={{ className: linkActive }}>Full Guide</Link>
           <Link to="/settings" className={linkBase} activeProps={{ className: linkActive }}>Settings</Link>
           <Link to="/troubleshooting" className={linkBase} activeProps={{ className: linkActive }}>Troubleshoot</Link>
+          <Link to="/favorites" className={linkBase} activeProps={{ className: linkActive }}>★</Link>
           <Link to="/search" className={linkBase} activeProps={{ className: linkActive }}>Search</Link>
         </nav>
       </div>

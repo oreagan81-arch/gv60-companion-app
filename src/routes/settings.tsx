@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionHeader, Chip } from "@/components/guide";
+import { BookmarkButton } from "@/components/BookmarkButton";
 import { OwenPage } from "./owen";
 import { settingsCards } from "@/data/settingsCards";
 
@@ -29,15 +30,27 @@ function SettingsHub() {
 
       <section className="grid gap-3 sm:grid-cols-2">
         {settingsCards.map((s) => (
-          <a key={s.id} href={`#${s.id}`} className="card-glass block p-4 hover:border-primary/60 transition">
-            <div className="flex items-center justify-between mb-1">
-              <h3 className="font-display font-semibold">{s.title}</h3>
-              {s.tag && (
-                <span className="text-[10px] uppercase tracking-wider bg-primary/15 text-primary rounded-full px-2 py-0.5">{s.tag}</span>
-              )}
+          <div key={s.id} className="card-glass p-4 hover:border-primary/60 transition">
+            <div className="flex items-start justify-between gap-2 mb-1">
+              <a href={`#${s.id}`} className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-1 flex-wrap">
+                  <h3 className="font-display font-semibold">{s.title}</h3>
+                  {s.tag && (
+                    <span className="text-[10px] uppercase tracking-wider bg-primary/15 text-primary rounded-full px-2 py-0.5">{s.tag}</span>
+                  )}
+                </div>
+                <p className="text-sm text-muted-foreground">{s.summary}</p>
+              </a>
+              <BookmarkButton
+                id={`setting:${s.id}`}
+                type="setting"
+                title={s.title}
+                category="Recommended Settings"
+                to="/settings"
+                hash={s.id}
+              />
             </div>
-            <p className="text-sm text-muted-foreground">{s.summary}</p>
-          </a>
+          </div>
         ))}
       </section>
 
