@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionHeader, Chip } from "@/components/guide";
+import { BookmarkButton } from "@/components/BookmarkButton";
 import { troubleshootingCards, type TroubleshootingCategory } from "@/data/troubleshootingCards";
 
 export const Route = createFileRoute("/troubleshooting")({
