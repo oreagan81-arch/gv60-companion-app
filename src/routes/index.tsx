@@ -5,6 +5,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const liveAppUrl = import.meta.env.VITE_PUBLIC_APP_URL as string | undefined;
+
   return (
     <div className="container-app py-8 space-y-10">
       <section className="space-y-4">
@@ -19,6 +21,15 @@ function Home() {
         <div className="copper-rule" />
         <p className="text-xs text-muted-foreground">
           2023 Genesis GV60 Performance · Personalized settings for Owen
+        </p>
+        <p className="text-[11px] text-muted-foreground">
+          {liveAppUrl ? (
+            <a href={liveAppUrl} className="text-primary underline underline-offset-2">
+              Live app
+            </a>
+          ) : (
+            "Live app link has not been configured yet."
+          )}
         </p>
       </section>
 

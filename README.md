@@ -70,3 +70,28 @@ newer data-driven chapters use a reusable full-guide chapter renderer.
 
 This GitHub repository is the source code for the app. It is not necessarily the live deployed app
 unless a deployment target has been configured separately.
+
+Live app link: not configured in this repo yet. When a deployment URL exists, add it here and set
+`VITE_PUBLIC_APP_URL` so the homepage can show the live app destination.
+
+## Image Sourcing
+
+The app does not require Owen to take every screenshot or photo himself. Image placeholders can be
+matched to official Genesis/manufacturer references, owner photos, manual screenshots, or clearly
+licensed/public-domain assets where legally appropriate.
+
+Do not copy third-party review photos into the repo unless permission or license clarity exists.
+When licensing is unclear, keep the image as a source-candidate URL/reference instead of bundling
+the file.
+
+Preferred exterior imagery should show a 2023 Genesis GV60 Performance in Atacama Copper or
+Atacama Copper Matte when available. If exact Atacama Copper imagery is unavailable, use this
+fallback order:
+
+1. Same generation GV60 Performance in a similar copper/orange tone
+2. Same generation GV60 Performance in another color
+3. Same generation GV60 exterior official image
+4. Generic GV60 image as external reference only
+
+Some vehicle UI screens may remain placeholders until official/manual screenshots or owner captures
+are available and reviewed.

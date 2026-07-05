@@ -2,6 +2,7 @@ import { chapters } from "@/data/chapters";
 import { settingsCards } from "@/data/settingsCards";
 import { troubleshootingCards } from "@/data/troubleshootingCards";
 import { imageChecklist } from "@/data/imageChecklist";
+import { imageSources } from "@/data/imageSources";
 
 export type SearchSource = "Chapter" | "Section" | "Setting" | "Troubleshooting" | "Image";
 
@@ -106,6 +107,35 @@ function build(): SearchDoc[] {
       category: `Image · ${img.chapter}`,
       excerpt: img.description,
       haystack: [img.title, img.description, img.suggestedCaption, img.altText, img.chapter]
+        .join(" \n ")
+        .toLowerCase(),
+      to: "/images",
+    });
+  }
+
+  // Image source candidates
+  for (const img of imageSources) {
+    docs.push({
+      id: `image-source:${img.id}`,
+      source: "Image",
+      title: img.title,
+      category: `Image · ${img.category}`,
+      excerpt: img.desiredImage,
+      haystack: [
+        img.title,
+        img.description,
+        img.chapterId,
+        img.sectionId ?? "",
+        img.category,
+        img.desiredImage,
+        img.preferredSourceType,
+        img.sourceName ?? "",
+        img.licenseNotes,
+        img.usageStatus,
+        img.altText,
+        img.colorMatch ?? "",
+        img.notes ?? "",
+      ]
         .join(" \n ")
         .toLowerCase(),
       to: "/images",

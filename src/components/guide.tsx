@@ -22,20 +22,43 @@ export function SectionHeader({
 }
 
 export type ImagePlaceholderData = {
+  id?: string;
   title: string;
   description: string;
   suggestedCaption?: string;
   altText?: string;
   priority?: "High" | "Medium" | "Low";
   chapter?: string;
+  category?: string;
+  desiredImage?: string;
+  sourceUrl?: string;
+  sourceName?: string;
+  licenseNotes?: string;
+  usageStatus?: string;
+  preferredSourceType?: string;
+  replacementNeeded?: boolean;
+  reviewRequired?: boolean;
+  notes?: string;
 };
 
 export function ImagePlaceholder({
   caption,
   image,
+  imageId,
+  desiredImage,
+  sourceUrl,
+  sourceName,
+  status,
+  altText,
 }: {
   caption?: string;
   image?: ImagePlaceholderData;
+  imageId?: string;
+  desiredImage?: string;
+  sourceUrl?: string;
+  sourceName?: string;
+  status?: string;
+  altText?: string;
 }) {
   if (image) {
     const priorityCls =
@@ -48,13 +71,20 @@ export function ImagePlaceholder({
       <figure className="my-4 rounded-xl border border-dashed border-border/70 bg-muted/40 p-4">
         <div className="flex items-center justify-between gap-2 mb-2">
           <p className="text-sm font-display font-semibold">{image.title}</p>
-          {image.priority && (
-            <span
-              className={`text-[10px] uppercase tracking-wider rounded-full px-2 py-0.5 ${priorityCls}`}
-            >
-              {image.priority}
-            </span>
-          )}
+          <div className="flex gap-1.5 flex-wrap justify-end">
+            {image.priority && (
+              <span
+                className={`text-[10px] uppercase tracking-wider rounded-full px-2 py-0.5 ${priorityCls}`}
+              >
+                {image.priority}
+              </span>
+            )}
+            {image.usageStatus && (
+              <span className="text-[10px] uppercase tracking-wider rounded-full px-2 py-0.5 bg-muted text-muted-foreground">
+                {image.usageStatus.replaceAll("-", " ")}
+              </span>
+            )}
+          </div>
         </div>
         <div className="flex items-center justify-center h-24 rounded-lg bg-background/50 text-2xl text-primary/60 mb-3">
           ◧
@@ -64,6 +94,14 @@ export function ImagePlaceholder({
             <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">What to shoot</dt>
             <dd className="text-muted-foreground">{image.description}</dd>
           </div>
+          {image.desiredImage && (
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">
+                Desired image
+              </dt>
+              <dd className="text-muted-foreground">{image.desiredImage}</dd>
+            </div>
+          )}
           {image.suggestedCaption && (
             <div>
               <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">
@@ -78,10 +116,60 @@ export function ImagePlaceholder({
               <dd className="text-muted-foreground">{image.altText}</dd>
             </div>
           )}
+          {image.sourceUrl && (
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">
+                Source candidate
+              </dt>
+              <dd>
+                <a
+                  href={image.sourceUrl}
+                  className="text-primary underline underline-offset-2"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {image.sourceName ?? image.sourceUrl}
+                </a>
+              </dd>
+            </div>
+          )}
+          {image.licenseNotes && (
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">Usage note</dt>
+              <dd className="text-muted-foreground">{image.licenseNotes}</dd>
+            </div>
+          )}
+          {image.preferredSourceType && (
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">
+                Preferred source
+              </dt>
+              <dd className="text-muted-foreground">
+                {image.preferredSourceType.replaceAll("-", " ")}
+              </dd>
+            </div>
+          )}
+          {image.notes && (
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">Notes</dt>
+              <dd className="text-muted-foreground">{image.notes}</dd>
+            </div>
+          )}
+          {image.replacementNeeded !== undefined && (
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">Review</dt>
+              <dd className="text-muted-foreground">
+                {image.replacementNeeded ? "Replacement needed" : "No replacement needed"}
+                {image.reviewRequired ? " · manual review required" : ""}
+              </dd>
+            </div>
+          )}
         </dl>
       </figure>
     );
   }
+
+  const hasRichCaption = imageId || desiredImage || sourceUrl || status || altText;
   return (
     <figure className="my-4 rounded-xl border border-dashed border-border/70 bg-muted/40 p-4 text-center">
       <div className="flex items-center justify-center h-32 rounded-lg bg-background/50 text-3xl text-primary/60">
@@ -90,6 +178,53 @@ export function ImagePlaceholder({
       <figcaption className="mt-2 text-[11px] italic text-muted-foreground">
         Image: {caption}
       </figcaption>
+      {hasRichCaption && (
+        <dl className="mt-3 space-y-1.5 text-left text-xs">
+          {imageId && (
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">Image ID</dt>
+              <dd className="text-muted-foreground">{imageId}</dd>
+            </div>
+          )}
+          {status && (
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">Status</dt>
+              <dd className="text-muted-foreground">{status.replaceAll("-", " ")}</dd>
+            </div>
+          )}
+          {desiredImage && (
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">
+                Desired image
+              </dt>
+              <dd className="text-muted-foreground">{desiredImage}</dd>
+            </div>
+          )}
+          {altText && (
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">Alt text</dt>
+              <dd className="text-muted-foreground">{altText}</dd>
+            </div>
+          )}
+          {sourceUrl && (
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">
+                Source candidate
+              </dt>
+              <dd>
+                <a
+                  href={sourceUrl}
+                  className="text-primary underline underline-offset-2"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {sourceName ?? sourceUrl}
+                </a>
+              </dd>
+            </div>
+          )}
+        </dl>
+      )}
     </figure>
   );
 }
