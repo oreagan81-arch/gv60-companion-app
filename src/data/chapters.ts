@@ -44,20 +44,714 @@ export const chapters: Chapter[] = [
     num: "02",
     title: "Complete Cabin Tour",
     subtitle: "Every control, screen, and storage nook",
-    summary: "Every control, screen, storage nook, and interior feature.",
-    status: "Needs content",
+    summary:
+      "A mobile-first walk-through of every daily control, screen, storage area, and setup habit in the 2023 Genesis GV60 Performance cabin.",
+    status: "Expanded",
     route: "/full-guide/cabin-tour",
     sections: [
-      { id: "wheel", title: "Steering wheel controls & paddles" },
-      { id: "cluster", title: "Cluster display (behind the wheel)" },
-      { id: "center", title: "Center touchscreen & rotary controller" },
-      { id: "sphere", title: "Crystal Sphere & Start-Stop" },
-      { id: "climate", title: "Climate controls & row of hard keys" },
-      { id: "console", title: "Center console storage & wireless charging" },
-      { id: "doors", title: "Doors: mirrors, memory seats, windows" },
-      { id: "overhead", title: "Overhead: sunroof, SOS, mic" },
-      { id: "rear", title: "Rear seat: climate, USB, seat controls" },
-      { id: "cargo", title: "Cargo area: cover, hooks, sub-trunk" },
+      {
+        id: "setup-order",
+        title: "Cabin setup philosophy",
+        body: "The GV60 cabin is easiest to learn in layers: first fit the car to Owen, then save the position, then connect the primary phone, then learn the high-use driving controls. Seat, steering wheel, mirrors, and driver profile should feel settled before pairing phones or changing deeper settings.",
+        recommendedSetting:
+          "Comfort mode, parked, primary driver profile selected, no phone pairing until the driving position feels correct.",
+        bestFor: [
+          "First week setup",
+          "Reducing menu confusion",
+          "Building repeatable muscle memory",
+        ],
+        changeItWhen: ["A second driver is setting up their own profile"],
+        ownerSuggestion:
+          "Set seat, steering wheel, and mirrors before pairing phones. The cabin should fit you before the software gets personal.",
+        troubleshooting:
+          "If settings seem to move around between drives, confirm the correct driver profile is loaded before adjusting the seat or mirrors again.",
+      },
+      {
+        id: "driver-seat-controls",
+        title: "Driver seat controls",
+        body: "The side-mounted driver seat controls move the seat base, backrest, lumbar support, and cushion position. These are the foundation for every other cabin adjustment because your reach to the wheel, pedals, mirrors, and screen depends on the seat being right.",
+        recommendedSetting:
+          "Adjust seat height for a clear cluster view, slide distance for a relaxed knee bend, then set backrest and lumbar for long-drive comfort.",
+        bestFor: [
+          "Daily driving comfort",
+          "Clear view of the driver display / cluster",
+          "Safe pedal reach",
+        ],
+        changeItWhen: ["Shoes, coat, or long-drive comfort changes your posture"],
+        ownerSuggestion:
+          "Take five quiet minutes here. Do not save seat memory until the position feels correct for both city and highway driving.",
+        troubleshooting:
+          "If the wheel or mirrors feel wrong after seat changes, re-adjust the seat first, then steering wheel, then mirrors in that order.",
+        imagePlaceholder: "Driver seat controls",
+      },
+      {
+        id: "seat-memory",
+        title: "Seat memory",
+        body: "Seat memory saves the driver seat and related position settings so the GV60 can return to Owen's preferred setup after another driver uses the car. It is one of the most useful convenience features once the driving position is genuinely dialed in.",
+        recommendedSetting:
+          "Save position 1 only after the seat, steering wheel, and mirrors are correct. Use position 2 for another frequent driver or a temporary alternate setup.",
+        bestFor: [
+          "Two-driver households",
+          "Keeping Owen's setup consistent",
+          "Fast recovery after service or valet use",
+        ],
+        changeItWhen: [
+          "The driving position has changed for more than a day, not just one quick errand",
+        ],
+        ownerSuggestion:
+          "Save memory positions after the driving position feels correct. Do not overwrite a good memory slot during a rushed adjustment.",
+        troubleshooting:
+          "If memory recall feels wrong, check the active driver profile first; the car may be loading a different profile or a different memory slot.",
+        imagePlaceholder: "Seat memory buttons",
+      },
+      {
+        id: "steering-wheel-adjustment",
+        title: "Steering wheel adjustment",
+        body: "The steering wheel adjusts for reach and height so Owen can see the cluster, rest hands naturally, and reach controls without leaning forward. This should be set after the seat and before the mirrors.",
+        recommendedSetting:
+          "Wheel close enough for relaxed elbows, low enough to see the road clearly, high enough not to block the driver display.",
+        bestFor: ["Comfortable wheel control", "Clear cluster view", "Reducing shoulder fatigue"],
+        changeItWhen: ["Seat height or seat distance changes"],
+        ownerSuggestion:
+          "Set the wheel with both hands at 9 and 3. If your shoulders lift or your wrists lock, the wheel is not done yet.",
+        troubleshooting:
+          "If the cluster is blocked, adjust wheel height before changing driver display settings.",
+        imagePlaceholder: "Steering wheel overview",
+      },
+      {
+        id: "mirrors",
+        title: "Mirrors",
+        body: "The side mirrors and rearview mirror complete the driving position. The GV60's camera systems help, but physical mirror setup still matters for lane changes, parking, and quick awareness.",
+        recommendedSetting:
+          "Set mirrors after seat and steering wheel. Minimize body reflection in side mirrors while keeping a small reference edge.",
+        bestFor: ["Lane changes", "Parking confidence", "Reducing blind spots"],
+        changeItWhen: ["Seat memory is changed", "Another driver used the vehicle"],
+        ownerSuggestion:
+          "Do mirrors before phone pairing. A clean driving position matters more than getting CarPlay online first.",
+        troubleshooting:
+          "If mirror positions keep changing, confirm the correct seat memory and driver profile are being recalled.",
+      },
+      {
+        id: "driver-profile",
+        title: "Driver profile connection",
+        body: "The driver profile ties cabin preferences to the person using the car. It can affect seat memory, display preferences, connected devices, and other convenience behavior depending on vehicle setup.",
+        recommendedSetting:
+          "Use one driver profile per regular driver. Load Owen's profile before saving seat memory or pairing the primary phone.",
+        bestFor: [
+          "Shared vehicle setup",
+          "Keeping personal settings stable",
+          "Reducing wrong-phone connections",
+        ],
+        changeItWhen: ["A second regular driver needs their own profile"],
+        ownerSuggestion:
+          "Profile first, memory second, phone third. That order prevents most cabin setup confusion.",
+        troubleshooting:
+          "If the wrong phone connects or the seat position changes unexpectedly, verify the active driver profile before changing anything else.",
+        relatedLinks: [{ to: "/full-guide/apple", label: "Apple Ecosystem Guide" }],
+      },
+      {
+        id: "steering-wheel-controls",
+        title: "Steering wheel controls",
+        body: "The wheel is the main no-look control surface: audio, calls, voice, cruise, lane assistance, driver display pages, and regen paddles all live here. Learn it before digging into touchscreen menus while moving.",
+        recommendedSetting:
+          "Practice the wheel controls while parked, then use them for common actions instead of reaching for the center screen.",
+        bestFor: ["Keeping eyes up", "Quick audio changes", "Driver-assistance adjustments"],
+        changeItWhen: ["A control is confusing - stop and test it parked"],
+        ownerSuggestion:
+          "Treat the steering wheel as the command center. The touchscreen is for setup, not constant fiddling.",
+        troubleshooting:
+          "If a wheel button seems to do the wrong thing, check whether it uses short-press, long-press, or a mode-specific function.",
+        imagePlaceholder: "Steering wheel overview",
+      },
+      {
+        id: "voice-button",
+        title: "Voice button / Siri vs vehicle voice",
+        body: "The voice button can reach different assistants depending on press length and source. Siri is for iPhone tasks through CarPlay; the vehicle voice assistant is for car-side tasks like navigation, climate, and built-in features.",
+        recommendedSetting:
+          "Learn short-press versus long-press while parked. Use Siri for phone, messages, music, and CarPlay. Use vehicle voice for car functions.",
+        bestFor: ["Hands-free messages", "Navigation requests", "Reducing touchscreen use"],
+        changeItWhen: [
+          "CarPlay is disconnected or you need a vehicle function instead of an iPhone function",
+        ],
+        ownerSuggestion:
+          "Learn the difference between short-press and long-press voice controls. It is one of the cabin's most useful habits.",
+        troubleshooting:
+          "If Siri does not respond, confirm CarPlay is connected and the iPhone allows Siri while locked.",
+        imagePlaceholder: "Voice button",
+        relatedLinks: [{ to: "/full-guide/apple", label: "Siri and CarPlay setup" }],
+      },
+      {
+        id: "audio-controls",
+        title: "Audio controls",
+        body: "Audio controls on the wheel and console handle volume, track skip, source behavior, and call audio. These are safer than reaching through CarPlay or media screens while driving.",
+        recommendedSetting:
+          "Use wheel controls for volume and track changes. Use the media screen only for larger source changes while stopped.",
+        bestFor: ["Music", "Podcasts", "Calls", "Keeping the center screen calm"],
+        changeItWhen: ["A passenger is managing audio from the center screen"],
+        ownerSuggestion:
+          "Let the wheel handle small audio moves. Keep glossy touch surfaces cleaner by touching them less.",
+        troubleshooting:
+          "If audio changes the wrong source, check whether the active source is CarPlay, Bluetooth, radio, or built-in media.",
+        relatedLinks: [{ to: "/full-guide/apple", label: "Apple audio setup" }],
+      },
+      {
+        id: "cruise-controls",
+        title: "Cruise controls",
+        body: "Cruise controls manage Smart Cruise speed, following distance, and related highway behavior. They sit where you can reach them without looking away from traffic.",
+        recommendedSetting:
+          "Use Comfort mode as the baseline while learning cruise behavior. Start with conservative following distance.",
+        bestFor: ["Highway driving", "Longer commutes", "Reducing fatigue"],
+        changeItWhen: ["Traffic, weather, or visibility gets worse"],
+        ownerSuggestion:
+          "Do not learn cruise and cabin controls at the same time in traffic. Get comfortable with the buttons first.",
+        troubleshooting:
+          "If cruise will not engage, check speed, brake status, sensor warnings, and whether driver-assistance systems are available.",
+        relatedLinks: [{ to: "/full-guide/safety", label: "Safety and Driver Assistance" }],
+      },
+      {
+        id: "lane-assistance-controls",
+        title: "Lane / driver-assistance controls",
+        body: "Lane and driver-assistance controls toggle or adjust systems that help with lane centering, warnings, and highway support. These systems are helpful, but they are not a substitute for steering attention.",
+        recommendedSetting:
+          "Keep safety alerts on while learning. Adjust sensitivity only after you understand what each alert means.",
+        bestFor: ["Highway support", "Learning ADAS feedback", "Reducing missed warnings"],
+        changeItWhen: [
+          "Construction, snow, faded lane lines, or confusing road markings make assistance less reliable",
+        ],
+        ownerSuggestion:
+          "Treat assistance buttons as support controls, not autopilot controls. Learn each warning before muting anything.",
+        troubleshooting:
+          "If lane support drops out, check lane markings, camera cleanliness, weather, and driver display messages.",
+        relatedLinks: [{ to: "/full-guide/safety", label: "Driver assistance details" }],
+      },
+      {
+        id: "regen-paddles",
+        title: "Regenerative braking paddles",
+        body: "The regen paddles behind the wheel change how strongly the GV60 slows when you lift off the accelerator. They are a major daily-driving control, especially in traffic, hills, and one-pedal-style driving.",
+        recommendedSetting:
+          "Start around Auto or Level 2 while learning. Move up or down intentionally based on traffic and passenger comfort.",
+        bestFor: ["Daily smoothness", "Traffic control", "Learning EV driving feel"],
+        changeItWhen: ["Passengers feel head-toss", "Roads are slick", "You want more coasting"],
+        ownerSuggestion:
+          "Treat the regen paddles as a major daily-driving control. They matter as much as drive mode for smoothness.",
+        troubleshooting:
+          "If the car slows more or less than expected, glance at the cluster regen level and reset to a familiar baseline.",
+        imagePlaceholder: "Regen paddles",
+        relatedLinks: [{ to: "/full-guide/driving", label: "Driving Like a Pro" }],
+      },
+      {
+        id: "driver-display",
+        title: "Driver display / cluster",
+        body: "The driver display / cluster shows speed, range, regen level, drive mode, driver-assistance state, warnings, and turn-by-turn information from supported native systems. It should be readable at a glance.",
+        recommendedSetting:
+          "Use a clean cluster layout while learning. Prioritize speed, range, regen, and driver-assistance status.",
+        bestFor: ["Core driving information", "Regen feedback", "Safety messages"],
+        changeItWhen: ["A display theme or page hides information you need often"],
+        ownerSuggestion:
+          "Do not clutter the cluster in week one. Learn what the car is telling you before customizing deeply.",
+        troubleshooting:
+          "If a warning appears, read the cluster message before opening menus. The cluster usually tells you what system needs attention.",
+        imagePlaceholder: "Driver display / cluster",
+      },
+      {
+        id: "blind-spot-camera",
+        title: "Blind-spot camera display",
+        body: "The blind-spot camera display shows a side camera view in the cluster when signaling, helping you check adjacent lanes in addition to mirrors and shoulder checks.",
+        recommendedSetting:
+          "Keep the feature enabled if equipped. Use it as an extra check, not as a mirror replacement.",
+        bestFor: ["Lane changes", "Urban traffic", "Learning the car's width"],
+        changeItWhen: ["Heavy rain, glare, or dirty cameras make the image unclear"],
+        ownerSuggestion:
+          "Use the blind-spot camera as confirmation after mirrors. The order is still mirror, signal, glance, move.",
+        troubleshooting:
+          "If the blind-spot camera image is blurry, clean the exterior camera area and check whether the turn signal fully engaged.",
+        imagePlaceholder: "Blind-spot camera display",
+        relatedLinks: [{ to: "/full-guide/safety", label: "Blind-spot and safety systems" }],
+      },
+      {
+        id: "head-up-display",
+        title: "Head-up display",
+        body: "The HUD projects key information near the driver's forward view, reducing the need to look down. It works best when it is subtle and not overloaded.",
+        recommendedSetting:
+          "Use speed and essential guidance only. Keep brightness comfortable and position low enough not to distract.",
+        bestFor: ["Speed awareness", "Native navigation prompts", "Keeping eyes up"],
+        changeItWhen: ["The HUD competes with the road, windshield glare, or night visibility"],
+        ownerSuggestion:
+          "Use the HUD subtly, not cluttered. It should feel like a quiet aid, not another screen demanding attention.",
+        troubleshooting:
+          "If HUD information is hard to see, adjust brightness, height, and display content before assuming a fault.",
+        imagePlaceholder: "HUD settings",
+      },
+      {
+        id: "center-touchscreen",
+        title: "Center touchscreen",
+        body: "The center touchscreen is the main surface for infotainment, settings, EV information, navigation, media, phone connections, and many vehicle menus. It is powerful, but it should not become a distraction while moving.",
+        recommendedSetting:
+          "Set up major menus while parked. Use bookmarks, wheel controls, and physical controls for common driving tasks.",
+        bestFor: ["Setup", "Navigation entry", "EV information", "CarPlay"],
+        changeItWhen: ["A passenger can safely manage a deeper menu"],
+        ownerSuggestion:
+          "Clean fingerprints from glossy/touch surfaces with a microfiber cloth. Do not use harsh cleaners on screens or glossy trim.",
+        troubleshooting:
+          "If the screen seems laggy, wait for startup to finish before tapping through multiple menus.",
+        imagePlaceholder: "Center touchscreen home screen",
+        relatedLinks: [{ to: "/full-guide/maintenance", label: "Cleaning touch surfaces" }],
+      },
+      {
+        id: "setup-menu",
+        title: "Setup menu",
+        body: "The Setup menu is where deeper vehicle, display, sound, phone, profile, and connectivity preferences live. It is the right place for intentional configuration, not constant driving adjustments.",
+        recommendedSetting:
+          "Use Setup while parked. Change one setting at a time and test it before changing another.",
+        bestFor: [
+          "Initial configuration",
+          "Driver profile preferences",
+          "Display and sound settings",
+        ],
+        changeItWhen: ["A setting is clearly annoying after several drives"],
+        ownerSuggestion:
+          "Avoid menu wandering. If you cannot describe the setting you want, bookmark the question and come back parked.",
+        troubleshooting:
+          "If a setting does not seem to stick, check driver profile, user permissions, and whether the vehicle needs to be in Park.",
+      },
+      {
+        id: "device-connections",
+        title: "Device Connections",
+        body: "Device Connections manages Bluetooth, phone pairing, and CarPlay-capable devices. This is where wrong-phone and primary-phone behavior usually starts.",
+        recommendedSetting:
+          "Pair the primary phone first. Keep unnecessary phones out of the priority list until Owen's phone is reliable.",
+        bestFor: [
+          "Primary phone setup",
+          "CarPlay troubleshooting",
+          "Shared vehicle phone management",
+        ],
+        changeItWhen: ["Adding a second regular driver or replacing a phone"],
+        ownerSuggestion:
+          "Primary phone first. Test it for a couple of drives before adding secondary phones.",
+        troubleshooting:
+          "If the wrong phone connects, open Device Connections, disconnect the wrong device, and review phone priority.",
+        imagePlaceholder: "Device Connections screen",
+        relatedLinks: [{ to: "/full-guide/apple", label: "Apple and CarPlay setup" }],
+      },
+      {
+        id: "ev-screen",
+        title: "EV screen",
+        body: "The EV screen shows charge status, range information, charging settings, energy use, and EV-specific planning tools. It is the cabin's main window into battery behavior.",
+        recommendedSetting:
+          "Check the EV screen before longer drives and before changing charge targets or charging schedules.",
+        bestFor: ["Range awareness", "Charging planning", "Understanding energy use"],
+        changeItWhen: ["Road trip, winter weather, or charging schedule changes"],
+        ownerSuggestion:
+          "Learn the EV screen early. It makes charging decisions feel less mysterious.",
+        troubleshooting:
+          "If range looks surprising, check recent driving efficiency, climate use, outside temperature, and charge target before assuming a battery issue.",
+        imagePlaceholder: "EV screen",
+        relatedLinks: [{ to: "/full-guide/charging", label: "Charging and Battery Guide" }],
+      },
+      {
+        id: "navigation-screen",
+        title: "Navigation screen",
+        body: "The built-in navigation screen handles Genesis navigation, route guidance, charger-aware planning, and directions that can integrate with the driver display or HUD depending on feature support.",
+        recommendedSetting:
+          "Use built-in navigation for EV trips that need charging stops or preconditioning. Use Apple Maps or other CarPlay apps for simple daily routes.",
+        bestFor: ["Longer EV trips", "HUD guidance", "Built-in route planning"],
+        changeItWhen: ["A local trip is easier through CarPlay"],
+        ownerSuggestion:
+          "For a route inside comfortable battery range, CarPlay is fine. If charging matters, use the native navigation tools.",
+        troubleshooting:
+          "If Apple Maps directions do not appear in the HUD, use built-in navigation; that is a system limitation, not a cabin fault.",
+        relatedLinks: [
+          { to: "/full-guide/apple", label: "Apple navigation setup" },
+          { to: "/full-guide/charging", label: "EV trip planning" },
+        ],
+      },
+      {
+        id: "media-screen",
+        title: "Media screen",
+        body: "The media screen shows current audio source, playback, radio, Bluetooth, and CarPlay audio information. It is useful for source selection, but most small adjustments can happen from the wheel or console controls.",
+        recommendedSetting:
+          "Keep daily audio sources simple: primary phone / CarPlay first, built-in sources as backup.",
+        bestFor: ["Changing source", "Seeing now playing", "Passenger-controlled audio"],
+        changeItWhen: ["Audio is coming from the wrong source"],
+        ownerSuggestion:
+          "If CarPlay is connected, let the phone own media. Do not fight the car and phone for the same audio job.",
+        troubleshooting:
+          "If media audio is silent, check source, volume, mute state, and whether a call or voice assistant has taken audio focus.",
+        relatedLinks: [{ to: "/full-guide/apple", label: "Apple audio setup" }],
+      },
+      {
+        id: "climate-controls",
+        title: "Climate controls",
+        body: "The climate controls manage temperature, fan, seat heat/ventilation where equipped, airflow, and comfort settings. Physical climate access is one of the best reasons not to bury common tasks in the touchscreen.",
+        recommendedSetting:
+          "Set a comfortable auto climate baseline and make small changes instead of constantly changing fan and temperature.",
+        bestFor: ["Daily comfort", "Passenger comfort", "Reducing screen touches"],
+        changeItWhen: ["Weather, fogging, or passenger comfort changes"],
+        ownerSuggestion:
+          "Use Comfort mode as the baseline while learning the vehicle, including cabin comfort behavior.",
+        troubleshooting:
+          "If the cabin is not warming or cooling as expected, check Auto mode, sync/zone settings, and whether defrost is redirecting airflow.",
+        imagePlaceholder: "Climate control panel",
+      },
+      {
+        id: "defrost-controls",
+        title: "Defrost controls",
+        body: "Defrost controls prioritize windshield and window clearing. They temporarily change airflow and fan behavior to restore visibility quickly.",
+        recommendedSetting:
+          "Use front defrost at the first sign of fogging, then return to normal climate once visibility is clear.",
+        bestFor: ["Rain", "Cold mornings", "Fast visibility recovery"],
+        changeItWhen: ["Windows are clear and normal comfort matters again"],
+        ownerSuggestion:
+          "Visibility beats comfort. Hit defrost early instead of trying to finesse fan settings while driving.",
+        troubleshooting:
+          "If fogging returns, check recirculation, wet floor mats, cabin humidity, and whether passengers are adding moisture.",
+      },
+      {
+        id: "center-console",
+        title: "Center console",
+        body: "The center console collects the shifter area, drive controls, infotainment controller, cupholders, storage, charging, and frequently used hard buttons. It is the second command center after the steering wheel.",
+        recommendedSetting:
+          "Learn the console by touch while parked: shifter, drive mode, camera, Auto Hold, parking brake, and controller locations.",
+        bestFor: ["Daily driving controls", "Parking", "Phone storage", "Quick camera access"],
+        changeItWhen: ["You find yourself looking down too long for a control"],
+        ownerSuggestion:
+          "Practice the center console parked until your hand knows where camera, Auto Hold, and Drive Mode live.",
+        troubleshooting:
+          "If a console button does not respond, check vehicle state first; some controls require Park, brake pedal, or Ready mode.",
+      },
+      {
+        id: "crystal-sphere",
+        title: "Crystal Sphere / gear selector",
+        body: "The Crystal Sphere rotates to reveal the gear selector when the vehicle is ready. It is a signature GV60 feature and a useful visual cue for whether the car is ready to drive.",
+        recommendedSetting:
+          "Confirm the selector position and cluster gear indicator before moving. Do not rush the startup animation.",
+        bestFor: ["Gear selection", "Startup orientation", "Confirming vehicle state"],
+        changeItWhen: ["Parking, reversing, or handing the car to someone unfamiliar"],
+        ownerSuggestion:
+          "Let the Crystal Sphere be a state check: pretty is nice, but gear confirmation is the useful part.",
+        troubleshooting:
+          "If the selector is unavailable, confirm the vehicle is on, the brake is pressed, and no startup warning is active.",
+        imagePlaceholder: "Crystal Sphere / gear selector",
+      },
+      {
+        id: "start-stop-button",
+        title: "Start/Stop button",
+        body: "The Start/Stop button powers the vehicle into accessory or ready states depending on brake pedal use. In an EV, silence can make state confusing, so rely on the cluster and Crystal Sphere cues.",
+        recommendedSetting:
+          "Brake pressed, Start/Stop once, confirm Ready state and gear availability before selecting Drive or Reverse.",
+        bestFor: ["Starting", "Shutting down", "Understanding vehicle state"],
+        changeItWhen: ["You only need accessory power while parked"],
+        ownerSuggestion:
+          "Do not assume silence means off. Check the cluster before leaving the vehicle.",
+        troubleshooting:
+          "If the car will not go Ready, check key/phone key presence where applicable, brake pedal pressure, and cluster messages.",
+      },
+      {
+        id: "drive-mode-selector",
+        title: "Drive Mode selector",
+        body: "The Drive Mode selector changes the vehicle's personality: throttle response, steering feel, AWD behavior, and related driving calibration. It is one of the most important cabin controls.",
+        recommendedSetting:
+          "Use Comfort mode as the baseline while learning the vehicle. Move to Eco, Sport, or My Mode intentionally.",
+        bestFor: ["Daily driving", "Weather changes", "Learning car behavior"],
+        changeItWhen: ["Range, weather, road, or performance needs change"],
+        ownerSuggestion:
+          "Comfort first. Learn what normal feels like before adding Sport or Boost.",
+        troubleshooting:
+          "If the car feels too sharp or too muted, check Drive Mode before changing other settings.",
+        imagePlaceholder: "Drive Mode selector",
+        relatedLinks: [{ to: "/full-guide/driving", label: "Drive modes explained" }],
+      },
+      {
+        id: "boost-button",
+        title: "Boost button",
+        body: "Boost temporarily sharpens the Performance model's acceleration response. It is exciting, but it is not a casual learning tool and should never be used when cabin controls still feel unfamiliar.",
+        recommendedSetting:
+          "Leave Boost alone while learning the cabin. Use only in safe, dry, legal conditions with full attention.",
+        bestFor: ["Brief performance use", "Already-familiar drivers", "Open, appropriate roads"],
+        changeItWhen: [
+          "Roads are wet, traffic is present, passengers are uncomfortable, or the driver is still learning",
+        ],
+        ownerSuggestion:
+          "Do not use Boost casually while learning the cabin controls. There is enough going on already.",
+        troubleshooting:
+          "If Boost is unavailable, check drive state, battery/temperature constraints, and vehicle messages.",
+        imagePlaceholder: "Boost button",
+        relatedLinks: [{ to: "/full-guide/driving", label: "Boost guidance" }],
+      },
+      {
+        id: "camera-button",
+        title: "Camera button",
+        body: "The camera button opens parking and surround-view camera angles where equipped. It is a confidence builder for learning the GV60's corners, wheels, and parking clearance.",
+        recommendedSetting:
+          "Use the 360 camera often at first, especially in tight parking, curbs, garages, and unfamiliar spaces.",
+        bestFor: ["Parking", "Garage entry", "Learning vehicle size"],
+        changeItWhen: [
+          "Camera view is dirty, distorted by weather, or less useful than direct visibility",
+        ],
+        ownerSuggestion:
+          "Use the 360 camera often at first. Build a mental map of the car before you need it in a tight spot.",
+        troubleshooting:
+          "If the camera view is unclear, clean exterior camera lenses and check lighting or weather conditions.",
+        imagePlaceholder: "Camera button",
+        relatedLinks: [{ to: "/full-guide/safety", label: "Cameras and sensors" }],
+      },
+      {
+        id: "auto-hold",
+        title: "Auto Hold",
+        body: "Auto Hold keeps the vehicle stopped after you release the brake, usually in traffic or at lights. It can be convenient, but the feel must be understood before relying on it.",
+        recommendedSetting:
+          "Practice Auto Hold in a quiet area before using it in stop-and-go traffic.",
+        bestFor: ["Traffic lights", "Drive-throughs", "Stop-and-go comfort"],
+        changeItWhen: [
+          "Parking maneuvers, car washes, tight spaces, or any moment where creeping control matters",
+        ],
+        ownerSuggestion:
+          "Keep Auto Hold understandable before relying on it. Know when it is on, when it releases, and how the pedal feels.",
+        troubleshooting:
+          "If the car does not creep as expected, check whether Auto Hold is active before pressing harder on the accelerator.",
+        imagePlaceholder: "Auto Hold button",
+        relatedLinks: [{ to: "/full-guide/driving", label: "Smooth driving habits" }],
+      },
+      {
+        id: "parking-brake",
+        title: "Parking brake",
+        body: "The electronic parking brake secures the vehicle when parked and may apply automatically in some conditions. It is separate from Auto Hold and should be understood as its own control.",
+        recommendedSetting:
+          "Use Park and confirm the parking brake state on slopes or when parking for longer periods.",
+        bestFor: [
+          "Parking on inclines",
+          "Secure shutdown",
+          "Understanding hold versus park behavior",
+        ],
+        changeItWhen: [
+          "Car wash, towing, service, or special movement procedures require a different state",
+        ],
+        ownerSuggestion:
+          "Do not confuse parking brake with Auto Hold. One is for parking; one is for temporary stops.",
+        troubleshooting:
+          "If the vehicle resists movement, check the parking brake indicator before assuming a drive system issue.",
+        relatedLinks: [{ to: "/full-guide/driving", label: "Driving basics" }],
+      },
+      {
+        id: "infotainment-controller",
+        title: "Infotainment controller",
+        body: "The infotainment controller gives a physical way to move through screen functions without reaching to tap the display. It is useful when roads are bumpy or the screen is just out of comfortable reach.",
+        recommendedSetting: "Use it parked first, then for simple selections only while moving.",
+        bestFor: ["Menu selection", "Reducing fingerprints", "Passenger-free control"],
+        changeItWhen: ["Touch is faster and the vehicle is stopped"],
+        ownerSuggestion:
+          "The controller is a precision tool, not a reason to browse menus while driving.",
+        troubleshooting:
+          "If focus seems to jump unexpectedly, slow down inputs and watch which screen region is active.",
+      },
+      {
+        id: "volume-tune-controls",
+        title: "Volume/tune controls",
+        body: "Volume and tune controls give tactile access to audio level and station or track behavior. They are often faster and safer than touchscreen audio controls.",
+        recommendedSetting:
+          "Use physical volume for every drive. Keep startup volume moderate so CarPlay or media surprises are not loud.",
+        bestFor: ["Fast volume changes", "Radio tuning", "Passenger-friendly audio control"],
+        changeItWhen: [
+          "A phone call, navigation prompt, or voice assistant temporarily changes audio focus",
+        ],
+        ownerSuggestion:
+          "If something sounds wrong, lower volume first, then figure out the source.",
+        troubleshooting:
+          "If volume changes do not affect the expected audio, wait for the active prompt or call to finish and try again.",
+      },
+      {
+        id: "usb-wireless-charging",
+        title: "USB / wireless charging",
+        body: "The console charging area handles phone power through USB and wireless charging where equipped. It is also the practical backup path when wireless CarPlay or phone battery becomes unreliable.",
+        recommendedSetting:
+          "Keep a known-good backup cable in the vehicle and place the phone carefully on the wireless charging pad.",
+        bestFor: ["Phone charging", "CarPlay backup cable", "Road-trip reliability"],
+        changeItWhen: ["Phone overheats, wireless charging pauses, or CarPlay needs a wired test"],
+        ownerSuggestion:
+          "Wireless charging is convenient; a cable is dependable. Keep both options ready.",
+        troubleshooting:
+          "If wireless charging stops, remove thick cases or metal accessories, re-center the phone, and let the phone cool.",
+        imagePlaceholder: "Center console USB / wireless charging area",
+        relatedLinks: [{ to: "/full-guide/apple", label: "When to use a cable" }],
+      },
+      {
+        id: "storage-areas",
+        title: "Storage areas",
+        body: "Cabin storage includes console bins, cupholders, door pockets, phone areas, and smaller trays. Good storage habits keep the cabin quiet and controls unobstructed.",
+        recommendedSetting:
+          "Keep a microfiber cloth, backup cable, tire gauge, and small essentials in predictable places.",
+        bestFor: ["Daily carry", "Charging gear", "Keeping glossy surfaces clean"],
+        changeItWhen: ["Items slide, rattle, block controls, or overheat near charging areas"],
+        ownerSuggestion:
+          "A tidy console makes the GV60 feel calmer. Do not let loose items crowd the shifter or buttons.",
+        troubleshooting:
+          "If rattles appear, empty door pockets and console bins before assuming a trim issue.",
+        relatedLinks: [{ to: "/full-guide/maintenance", label: "In-car care kit" }],
+      },
+      {
+        id: "door-controls",
+        title: "Door controls",
+        body: "Door controls group mirrors, windows, locks, and memory buttons around the driver's left side. This area should be learned early because it affects setup, visibility, and daily entry/exit.",
+        recommendedSetting:
+          "Learn mirror, window, lock, and memory button positions while parked before saving final memory.",
+        bestFor: ["Driver setup", "Window and mirror control", "Seat memory access"],
+        changeItWhen: ["A second driver needs their own setup"],
+        ownerSuggestion:
+          "This is the setup panel. Use it deliberately, then leave it alone while driving.",
+        troubleshooting:
+          "If a door control seems disabled, check child locks, window lock, vehicle state, and whether the door is fully closed.",
+        imagePlaceholder: "Door controls",
+      },
+      {
+        id: "window-controls",
+        title: "Window controls",
+        body: "Window controls handle each cabin window and may include auto-up/down behavior. The driver's panel also usually includes a lockout for passenger windows.",
+        recommendedSetting: "Keep window lock off unless children or passengers make it useful.",
+        bestFor: ["Ventilation", "Toll booths", "Passenger control"],
+        changeItWhen: ["Kids, pets, or car wash procedures require more control"],
+        ownerSuggestion:
+          "Know where the window lock is before someone thinks their window is broken.",
+        troubleshooting:
+          "If a passenger window will not move, check the window lock before checking the window switch.",
+      },
+      {
+        id: "mirror-fold-controls",
+        title: "Mirror fold controls",
+        body: "Mirror fold controls tuck the side mirrors for tight spaces, parking, and garages. Depending on settings, the mirrors may also fold automatically when locking.",
+        recommendedSetting:
+          "Use auto-fold if it suits the parking environment; manually fold in tight garages or narrow streets.",
+        bestFor: ["Garage parking", "Street parking", "Tight spaces"],
+        changeItWhen: ["Ice, snow, or tight mechanical resistance could make folding unwise"],
+        ownerSuggestion: "Fold mirrors for tight spaces, not as a substitute for careful parking.",
+        troubleshooting:
+          "If a mirror does not fold smoothly, check for ice, dirt, or obstruction before forcing it.",
+      },
+      {
+        id: "lighting-controls",
+        title: "Lighting controls",
+        body: "Lighting controls manage headlights, interior lighting behavior, and visibility-related settings. Auto lighting is usually the easiest daily baseline.",
+        recommendedSetting:
+          "Use Auto headlights for daily driving and verify exterior lights in rain, fog, or unusual lighting.",
+        bestFor: ["Daily visibility", "Night driving", "Reducing forgotten-light issues"],
+        changeItWhen: ["Weather or visibility calls for manual lights"],
+        ownerSuggestion:
+          "Auto is a baseline, not an excuse. Look for the lighting indicator when conditions are weird.",
+        troubleshooting:
+          "If lighting behavior seems wrong, check the stalk/control position and whether Auto mode is active.",
+      },
+      {
+        id: "wipers",
+        title: "Wipers",
+        body: "The wiper stalk controls front and rear wiping, washer functions, and intermittent or auto behavior depending on equipment. It is a high-use bad-weather control that should be familiar before you need it.",
+        recommendedSetting:
+          "Learn mist, intermittent/auto, low, high, and washer positions while parked.",
+        bestFor: ["Rain", "Road spray", "Snow-season visibility"],
+        changeItWhen: ["Rain intensity changes or auto wiping is too sensitive"],
+        ownerSuggestion:
+          "Do not wait for a storm to learn the wipers. The stalk should be muscle memory.",
+        troubleshooting:
+          "If wiping streaks or chatters, clean the glass and blades before replacing parts.",
+        imagePlaceholder: "Wiper stalk",
+        relatedLinks: [{ to: "/full-guide/maintenance", label: "Glass and wiper care" }],
+      },
+      {
+        id: "hazard-lights",
+        title: "Hazard lights",
+        body: "Hazard lights warn other drivers when the vehicle is stopped, disabled, or creating an unusual road situation. The button should be easy to find without hunting.",
+        recommendedSetting:
+          "Know the hazard button location before driving. Use it when stopped unexpectedly or when visibility/safety calls for it.",
+        bestFor: ["Emergency stops", "Roadside issues", "Warning traffic"],
+        changeItWhen: ["The vehicle is moving normally again and the warning is no longer needed"],
+        ownerSuggestion:
+          "Find this button parked. In a stressful moment, you do not want to search.",
+        troubleshooting:
+          "If hazards are on unintentionally, press the hazard button once and confirm exterior indicators stop flashing.",
+      },
+      {
+        id: "glovebox",
+        title: "Glovebox",
+        body: "The glovebox is best for documents and low-use essentials, not heavy clutter. Keep registration, insurance, service papers, and a small microfiber if space allows.",
+        recommendedSetting:
+          "Keep paperwork organized and leave room for a small cleaning cloth or emergency note.",
+        bestFor: ["Documents", "Owner materials", "Low-use cabin items"],
+        changeItWhen: ["Items rattle, jam the latch, or make documents hard to find"],
+        ownerSuggestion: "Treat the glovebox like a document drawer, not a junk drawer.",
+        troubleshooting: "If the glovebox rattles, empty it first and re-pack only flat items.",
+      },
+      {
+        id: "rear-seat-controls",
+        title: "Rear seat controls",
+        body: "Rear seat controls may include climate vents, USB power, heated seats where equipped, armrest/cupholders, and seat fold or comfort features depending on trim. Rear passengers should know the basics without changing driver settings.",
+        recommendedSetting:
+          "Show regular passengers vents, USB power, and seat controls once, then keep driver climate baseline stable.",
+        bestFor: ["Family trips", "Passenger comfort", "Rear charging"],
+        changeItWhen: ["Passengers need different airflow, heat, or charging access"],
+        ownerSuggestion:
+          "Give rear passengers the controls they need, but keep driver setup and front climate predictable.",
+        troubleshooting:
+          "If rear passengers report no airflow or power, check front climate state, rear vents, and USB cable/device condition.",
+      },
+      {
+        id: "cargo-area",
+        title: "Cargo area",
+        body: "The cargo area handles daily bags, charging accessories, emergency gear, and fold-down flexibility. It should stay organized so charging gear and safety items are easy to reach.",
+        recommendedSetting:
+          "Keep charging adapters/cards, gloves, towel, and roadside essentials in a consistent cargo or underfloor location.",
+        bestFor: ["Errands", "Road trips", "Charging gear", "Emergency supplies"],
+        changeItWhen: ["Cargo blocks visibility, rattles, or hides charging gear"],
+        ownerSuggestion:
+          "Make the cargo area boring and predictable. That is exactly what you want when charging in bad weather.",
+        troubleshooting:
+          "If cargo noise appears, check loose charging gear, cargo cover fit, and underfloor storage before assuming a trim rattle.",
+        imagePlaceholder: "Cargo area",
+        relatedLinks: [
+          { to: "/full-guide/charging", label: "Charging gear" },
+          { to: "/full-guide/maintenance", label: "Care kit" },
+        ],
+      },
+      {
+        id: "cabin-checklist",
+        title: "Cabin setup checklist",
+        body: "Use this checklist when setting up the GV60 for Owen or after a reset: profile, seat, wheel, mirrors, memory, primary phone, CarPlay, display/HUD, climate, drive baseline, regen baseline, camera practice, storage kit.",
+        recommendedSetting:
+          "Profile -> seat -> steering wheel -> mirrors -> seat memory -> primary phone -> Device Connections -> CarPlay -> HUD -> Comfort mode -> regen baseline.",
+        bestFor: ["First setup", "New phone", "After service", "Shared vehicle reset"],
+        changeItWhen: ["A new regular driver is added"],
+        ownerSuggestion:
+          "Pair the primary phone first, but only after the physical cabin setup is saved. That order keeps everything calmer.",
+        troubleshooting:
+          "If the checklist feels out of order, restart at driver profile and physical position before touching phone or screen settings.",
+        relatedLinks: [
+          { to: "/full-guide/apple", label: "Apple setup" },
+          { to: "/full-guide/driving", label: "Driving baseline" },
+          { to: "/settings", label: "Recommended Settings" },
+        ],
+      },
+      {
+        id: "cabin-troubleshooting",
+        title: "Cabin troubleshooting",
+        body: "Most cabin confusion comes from the wrong profile, unsaved seat memory, a second phone taking over, unfamiliar press-and-hold controls, or a feature being unavailable in the current vehicle state. Work from physical setup outward.",
+        recommendedSetting:
+          "Troubleshoot in this order: driver profile, seat memory, vehicle state, phone connection, active drive mode, then deeper settings.",
+        bestFor: [
+          "Wrong seat position",
+          "Wrong phone connects",
+          "Buttons feel inconsistent",
+          "Display or HUD confusion",
+        ],
+        changeItWhen: [
+          "A warning light or safety issue appears - follow the vehicle message first",
+        ],
+        ownerSuggestion:
+          "Do not chase every symptom at once. Fix the profile and physical setup first; then test the cabin controls one by one.",
+        troubleshooting:
+          "If a control still behaves oddly after a restart and profile check, search the Troubleshooting hub and note the exact screen message.",
+        relatedLinks: [
+          { to: "/troubleshooting", label: "Troubleshooting hub" },
+          { to: "/full-guide/apple", label: "Phone and CarPlay issues" },
+          { to: "/full-guide/safety", label: "Driver assistance issues" },
+        ],
+      },
     ],
   },
   {
