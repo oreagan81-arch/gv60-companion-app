@@ -176,6 +176,13 @@ export const settingsCards: SettingsCard[] = [
         changeWhen: "If primary connection gets glitchy, remove secondaries and rebuild.",
         bestFor: "Household or work phone as a secondary device.",
       },
+      {
+        feature: "Valet mode",
+        setting: "Enable Valet Mode before handing over the key",
+        why: "Locks personal info, limits speed/access, and hides Owen's saved places.",
+        changeWhen: "Disable the moment the car is back in Owen's hands.",
+        bestFor: "Hotel valets, service appointments, parking attendants.",
+      },
     ],
   },
   {
