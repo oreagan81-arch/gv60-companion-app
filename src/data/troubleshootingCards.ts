@@ -154,5 +154,57 @@ export const troubleshootingCards: TroubleshootingCard[] = [
       "Reseat the connector firmly.",
       "Try a scheduled charge later — sometimes the handshake needs a retry.",
     ],
+  {
+    id: "wrong-phone",
+    problem: "Wrong phone connects when I get in",
+    category: "Phone & CarPlay",
+    firstCheck: "Device Connections list — the last-connected phone usually wins.",
+    steps: [
+      "Open Device Connections on the center screen.",
+      "Disconnect the phone you don't want to use right now.",
+      "Turn Bluetooth off on the secondary phone before you enter the car.",
+      "For a permanent fix: clean pair — remove all phones and re-add the primary iPhone first.",
+    ],
+    relatedSections: [{ to: "/full-guide/apple", label: "Apple Ecosystem" }],
+  },
+  {
+    id: "clean-pair",
+    problem: "CarPlay is glitchy — need a clean pair",
+    category: "Phone & CarPlay",
+    firstCheck: "Remove every paired device and start over with just the primary iPhone.",
+    steps: [
+      "Device Connections → remove every phone.",
+      "On the iPhone: Settings → General → CarPlay → forget the car.",
+      "Restart the iPhone.",
+      "Pair the primary iPhone fresh, native path only — no adapters.",
+      "Only add a secondary phone after two clean drives.",
+    ],
+    relatedSections: [{ to: "/full-guide/apple", label: "Apple Ecosystem" }],
+  },
+  {
+    id: "software-update",
+    problem: "Software update won't install",
+    category: "Phone & CarPlay",
+    firstCheck: "Wi-Fi connection + battery state + parked with ignition off.",
+    steps: [
+      "Confirm the car is on strong Wi-Fi.",
+      "Battery should be comfortably above 20% or plugged in.",
+      "Park, close doors, and leave the car alone during the update.",
+      "If it stalls, try again overnight while plugged in.",
+    ],
+  },
+  {
+    id: "tire-pressure",
+    problem: "Tire pressure warning is on",
+    category: "Cameras & Sensors",
+    firstCheck: "Check all four tires cold with a real gauge.",
+    steps: [
+      "Inflate to the door-jamb sticker pressure (cold).",
+      "Cold snaps drop pressure ~1 psi per 10°F — this is the most common cause.",
+      "Inspect tread and sidewalls for damage.",
+      "Reset TPMS after inflating and drive a few miles.",
+    ],
+    relatedSections: [{ to: "/full-guide/maintenance", label: "Maintenance" }],
   },
 ];
+
