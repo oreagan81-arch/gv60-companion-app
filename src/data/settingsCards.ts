@@ -298,6 +298,28 @@ export const settingsCards: SettingsCard[] = [
         bestFor: "Every real EV owner situation you actually run into.",
       },
       {
+        feature: "Sensor cleaning",
+        setting: "Wipe front radar, windshield camera, side mirrors, and rear cameras weekly",
+        why: "ADAS is only as good as what the sensors can see. Dirty sensors = phantom warnings and missed alerts.",
+        changeWhen: "After every rain, snow, dusty highway, or car wash — check sooner.",
+        bestFor: "Reliable blind-spot, forward warning, and 360 camera behavior.",
+        related: { to: "/full-guide/maintenance", label: "Maintenance guide" },
+      },
+      {
+        feature: "Tire pressure",
+        setting: "Check monthly with a real gauge · match door-jamb sticker (cold)",
+        why: "The TPMS light is late by design. A gauge catches it early.",
+        changeWhen: "Cold snaps drop pressure ~1 psi per 10°F — top up in fall.",
+        bestFor: "Range, tire life, and confident wet-road grip.",
+      },
+      {
+        feature: "Software update",
+        setting: "Install OTA updates promptly, parked & plugged in overnight",
+        why: "Updates ship real fixes for CarPlay, charging, and ADAS behavior.",
+        changeWhen: "If an update fails, retry overnight on strong Wi-Fi.",
+        bestFor: "Keeping the car's software at its best.",
+      },
+      {
         feature: "Cleaning",
         setting: "Avoid harsh chemicals on screens, gloss trim, cameras, sensors",
         why: "Clean often, clean gently. Aggressive cleaners cost more than dirt.",
