@@ -41,6 +41,13 @@ export const settingsCards: SettingsCard[] = [
         changeWhen: "Passengers → Level 1–2. Downhill / heavy traffic → step higher.",
         bestFor: "Efficient daily driving without being harsh on lift-off.",
       },
+      {
+        feature: "Auto Hold",
+        setting: "On",
+        why: "Keeps the brakes applied at stops so Owen's foot can rest — smoother, calmer city driving.",
+        changeWhen: "Off only for parade-crawl traffic or precision maneuvering.",
+        bestFor: "Stop-and-go traffic, red lights, drive-thrus.",
+      },
     ],
   },
   {
