@@ -154,6 +154,7 @@ export const troubleshootingCards: TroubleshootingCard[] = [
       "Reseat the connector firmly.",
       "Try a scheduled charge later — sometimes the handshake needs a retry.",
     ],
+  },
   {
     id: "wrong-phone",
     problem: "Wrong phone connects when I get in",
