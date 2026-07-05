@@ -82,6 +82,9 @@ function Home() {
           <QuickLink to="/owen" label="For Owen" />
           <QuickLink to="/favorites" label="★ Favorites" />
           <QuickLink to="/in-car" label="In the Car Now" />
+          <QuickLink to="/search" label="🔍 Search" />
+          <QuickLink to="/images" label="Image Sources" />
+
         </div>
       </section>
     </div>
