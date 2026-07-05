@@ -34,10 +34,11 @@ function highlight(text: string, query: string) {
   const words = Array.from(new Set(q.split(/\s+/).filter(Boolean)));
   if (!words.length) return text;
   const escaped = words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
-  const re = new RegExp(`(${escaped.join("|")})`, "gi");
-  const parts = text.split(re);
+  const splitRe = new RegExp(`(${escaped.join("|")})`, "gi");
+  const testRe = new RegExp(`^(?:${escaped.join("|")})$`, "i");
+  const parts = text.split(splitRe);
   return parts.map((p, i) =>
-    re.test(p) ? <mark key={i} className="bg-primary/25 text-foreground rounded-sm px-0.5">{p}</mark> : <span key={i}>{p}</span>
+    testRe.test(p) ? <mark key={i} className="bg-primary/25 text-foreground rounded-sm px-0.5">{p}</mark> : <span key={i}>{p}</span>
   );
 }
 
