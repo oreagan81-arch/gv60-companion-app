@@ -35,6 +35,11 @@ function ImagesPage() {
       <section className="card-glass p-4 space-y-3 text-sm">
         <h2 className="font-display font-semibold">Source rules</h2>
         <p className="text-muted-foreground leading-relaxed">{imageSourcePreferences.usageNote}</p>
+        <p className="text-muted-foreground leading-relaxed">
+          External source URLs are review links, not embedded images. Some websites block direct
+          image loading, redirect, expire, or disallow hotlinking. Approved local assets can be
+          added later.
+        </p>
         <div>
           <p className="text-[10px] uppercase tracking-[0.15em] text-primary mb-1">
             Exterior color target
@@ -72,6 +77,9 @@ function ImagesPage() {
                 category: c.category,
                 sourceUrl: c.sourceUrl,
                 sourceName: c.sourceName,
+                imagePreviewUrl: c.imagePreviewUrl,
+                safeToEmbed: c.safeToEmbed,
+                localAssetPath: c.localAssetPath,
                 licenseNotes: c.licenseNotes,
                 usageStatus: c.usageStatus,
                 preferredSourceType: c.preferredSourceType,

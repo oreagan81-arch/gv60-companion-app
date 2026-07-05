@@ -34,6 +34,9 @@ export type ImageSourceItem = {
   preferredSourceType: PreferredSourceType;
   sourceUrl?: string;
   sourceName?: string;
+  imagePreviewUrl?: string;
+  safeToEmbed?: boolean;
+  localAssetPath?: string;
   licenseNotes: string;
   usageStatus: ImageUsageStatus;
   altText: string;

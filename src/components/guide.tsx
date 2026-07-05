@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
 export function SectionHeader({
   eyebrow,
@@ -33,6 +33,9 @@ export type ImagePlaceholderData = {
   desiredImage?: string;
   sourceUrl?: string;
   sourceName?: string;
+  imagePreviewUrl?: string;
+  safeToEmbed?: boolean;
+  localAssetPath?: string;
   licenseNotes?: string;
   usageStatus?: string;
   preferredSourceType?: string;
@@ -67,6 +70,7 @@ export function ImagePlaceholder({
         : image.priority === "Medium"
           ? "bg-amber-500/15 text-amber-400"
           : "bg-muted text-muted-foreground";
+    const previewUrl = getSafeImagePreviewUrl(image);
     return (
       <figure className="my-4 rounded-xl border border-dashed border-border/70 bg-muted/40 p-4">
         <div className="flex items-center justify-between gap-2 mb-2">
@@ -86,9 +90,7 @@ export function ImagePlaceholder({
             )}
           </div>
         </div>
-        <div className="flex items-center justify-center h-24 rounded-lg bg-background/50 text-2xl text-primary/60 mb-3">
-          ◧
-        </div>
+        <ImagePreviewFrame src={previewUrl} alt={image.altText ?? image.title} />
         <dl className="space-y-1.5 text-xs">
           <div>
             <dt className="text-[10px] uppercase tracking-[0.15em] text-primary">What to shoot</dt>
@@ -226,6 +228,50 @@ export function ImagePlaceholder({
         </dl>
       )}
     </figure>
+  );
+}
+
+function getSafeImagePreviewUrl(image: ImagePlaceholderData): string | undefined {
+  if (image.usageStatus !== "approved-local-asset" || image.safeToEmbed !== true) {
+    return undefined;
+  }
+
+  if (image.localAssetPath && isLocalAssetPath(image.localAssetPath)) {
+    return image.localAssetPath;
+  }
+
+  if (image.imagePreviewUrl && (isLocalAssetPath(image.imagePreviewUrl) || image.safeToEmbed)) {
+    return image.imagePreviewUrl;
+  }
+
+  return undefined;
+}
+
+function isLocalAssetPath(path: string) {
+  return path.startsWith("/") && !path.startsWith("//") && !/^https?:\/\//i.test(path);
+}
+
+function ImagePreviewFrame({ src, alt }: { src?: string; alt: string }) {
+  const [failed, setFailed] = useState(false);
+
+  if (!src || failed) {
+    return (
+      <div className="flex items-center justify-center h-24 rounded-lg bg-background/50 text-2xl text-primary/60 mb-3">
+        ◧
+      </div>
+    );
+  }
+
+  return (
+    <div className="h-24 rounded-lg bg-background/50 overflow-hidden mb-3">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="h-full w-full object-cover"
+        onError={() => setFailed(true)}
+      />
+    </div>
   );
 }
 
