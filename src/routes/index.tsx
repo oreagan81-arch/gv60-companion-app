@@ -70,6 +70,8 @@ function Home() {
           <QuickLink to="/guide/maintenance" label="Maintenance & Kit" />
           <QuickLink to="/troubleshooting" label="Troubleshooting" />
           <QuickLink to="/owen" label="For Owen" />
+          <QuickLink to="/favorites" label="★ Favorites" />
+          <QuickLink to="/in-car" label="In the Car Now" />
         </div>
       </section>
     </div>
